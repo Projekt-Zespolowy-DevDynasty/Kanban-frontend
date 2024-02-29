@@ -1,0 +1,17 @@
+.karta{
+    width: 300px;
+    background-color: black;
+    height: 100px;
+}
+.zadania{
+    color: blue;
+    margin-left: 15px;
+}
+.zadaniacontext{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+}
