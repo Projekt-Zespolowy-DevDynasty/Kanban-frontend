@@ -11,4 +11,5 @@ import { Comp1Component } from './comp1/comp1.component';
 })
 export class AppComponent {
   title = 'BOARD-KANBAN';
+  
 }
