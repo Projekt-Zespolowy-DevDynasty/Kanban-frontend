@@ -1,27 +1,25 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./comp1.component.scss">
-    <title>Kanban Board</title>
-</head>
-<body>
-    <div class="kanban-board">
-        <div class="column">
-            <h2>To Do</h2>
-            <div class="task">Task 1</div>
-            <div class="task">Task 2</div>
-            <!-- Add more tasks here -->
+<div class="kanban-board">
+    <div class="column">
+        <h2>To Do</h2>
+        <div class="task">Task 1 
+            <button type="button" class="btn btn-outline-info">
+                <i class="bi bi-pencil"></i>
+            </button>
+            <button type="button" class="btn btn-outline-danger">
+                <i class="bi bi-trash"></i>
+            </button>
+
         </div>
-        <div class="column">
-            <h2>In Progress</h2>
-            <!-- Tasks in progress go here -->
-        </div>
-        <div class="column">
-            <h2>Done</h2>
-            <!-- Completed tasks go here -->
-        </div>
+        <div class="task">Task 2</div>
+        <button type="button" class="btn btn-outline-success"><i class="bi bi-plus-lg"></i>Dodaj zadanie</button>
+        <!-- Add more tasks here -->
     </div>
-</body>
-</html>
+    <div class="column">
+        <h2>In Progress</h2>
+        <!-- Tasks in progress go here -->
+    </div>
+    <div class="column">
+        <h2>Done</h2>
+        <!-- Completed tasks go here -->
+    </div>
+</div>
