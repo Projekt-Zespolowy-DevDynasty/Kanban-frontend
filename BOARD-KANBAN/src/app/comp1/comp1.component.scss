@@ -73,3 +73,17 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
+.input-text {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    height: 36px;
+    font-weight: normal;
+    border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
+    border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
+  }
+  
+  .input-text:focus {
+    border-bottom-color: #007bff;
+    border-bottom-width: 2px;
+  }

@@ -18,8 +18,10 @@
                 </div>
             </div>
         }
-        <input type="text" class="input-text" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
-        <button type="button" class="btn btn-success"><i class="bi bi-plus-circle-fill"></i></button>
+        <div class="dodawanieTaska">
+            <input type="text" #box (keyup.enter)="onEnter(box.value, card.id)" class="input-text" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
+            <button type="button" (click)="onEnter(box.value, card.id)" class="btn btn-outline-success"><i class="bi bi-plus-lg"></i>Dodaj zadanie</button>
+        </div>
     </div>
 }
 </div>

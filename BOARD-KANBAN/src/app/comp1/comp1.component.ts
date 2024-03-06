@@ -16,6 +16,13 @@ export class Comp1Component {
   http = inject(HttpClient)
   private cardService = inject(CardsService);
 
+  value = '';
+
+  onEnter(value: string, card_id: number) {
+    this.value = value;
+    console.log(this.value + " " + card_id);
+  }
+
   ngOnInit(): void{
     this.fetchCards();
   }
