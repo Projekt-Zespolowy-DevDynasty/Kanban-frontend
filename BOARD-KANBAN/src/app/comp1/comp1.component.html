@@ -1,7 +1,12 @@
 <div class="kanban-board">
     @for (card of data; track card.id) {
     <div class="column">
-        <h2>{{ card.name }}</h2>
+        <div class="naglowek">
+            <h2>{{ card.name }}</h2>
+            <p> limit 0/2 </p>
+            
+
+        </div>
             <hr>
         @for (task of card.tasks; track task.id) {
             <div class="task">
