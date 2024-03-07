@@ -28,11 +28,11 @@
                             <i class="bi bi-three-dots-vertical"></i>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                          <li><a class="dropdown-item active" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            <p class="naglowek-do-przycisku">Przenieś do:</p>
+                            @for (card of data; track card.id) {
+                                <li><a class="dropdown-item"  href="#">
+                                    {{ card.name }}</a></li>
+                            }
                         </ul>                
                     <button (click)="usunTask(task.id)" type="button" class="btn btn-danger">
                         <i class="bi bi-trash-fill"></i>
