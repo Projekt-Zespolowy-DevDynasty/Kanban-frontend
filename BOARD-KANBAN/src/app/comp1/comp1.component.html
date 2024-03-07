@@ -1,11 +1,21 @@
 <div class="kanban-board">
+    <div class="btn-group dropup">
+        <button type="button" class="btn btn-warning" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-file-earmark-plus-fill" ></i>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+            <input type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
+            <button type="button" class="btn btn-light"><i class="bi bi-plus-circle"></i>
+            </button>
+            </li>
+        </ul>
+      </div>
     @for (card of data; track card.id) {
     <div class="column">
         <div class="naglowek">
             <h2>{{ card.name }}</h2>
-            <p> limit 0/2 </p>
-            
-
+            <p class="wip">limit 0/2 </p>
         </div>
             <hr>
         @for (task of card.tasks; track task.id) {
@@ -14,9 +24,16 @@
                     <p>{{ task.name }}</p>
                 </div> 
                 <div class="przycisk-do-edycji"> 
-                    <button type="button" class="btn btn-info">
-                        <i class="bi bi-pencil-fill"></i>
-                    </button>
+                        <button class="btn btn-info" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-three-dots-vertical"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                          <li><a class="dropdown-item active" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        </ul>                
                     <button type="button" class="btn btn-danger">
                         <i class="bi bi-trash-fill"></i>
                     </button>
@@ -25,7 +42,9 @@
         }
         <div class="dodawanieTaska">
             <input type="text" #box (keyup.enter)="onEnter(box.value, card.id)" class="input-text" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
-            <button type="button" (click)="onEnter(box.value, card.id)" class="btn btn-outline-success"><i class="bi bi-plus-lg"></i>Dodaj zadanie</button>
+            <button type="button" (click)="onEnter(box.value, card.id)" class="btn btn-success">
+                <i class="bi bi-plus-circle-fill"></i>
+            </button>
         </div>
     </div>
 }

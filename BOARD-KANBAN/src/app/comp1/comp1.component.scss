@@ -53,7 +53,7 @@ body {
 }
 .btn-warning{
     position: fixed; 
-    right: 40px;
+    left: 40px;
     bottom: 40px; 
     padding: 10px;
     font-size: 30px;
@@ -68,23 +68,55 @@ body {
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
+    
 }
-.btn-success{
+.btn-success {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
+    margin-left: 5px;
+    
 }
 .input-text {
     border: none;
     border-bottom: 2px solid #ccc;
     outline: none;
     height: 36px;
-    width: 140px;
+    width: 262px;
     font-weight: normal;
     border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
     border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
+    
   }
   
   .input-text:focus {
-    border-bottom-color: #007bff;
+    border-bottom-color: #2ca611;
     border-bottom-width: 2px;
   }
+  .dodawanieTaska{
+    
+    
+  }
+  .wip{
+    margin-left: 10px;
+  }
+  .input-textv2{
+    border: none;
+    outline: none;
+    height: 36px;
+    width: 262px;
+    font-weight: normal;
+    border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
+    border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
+   
+  }
+  
+  .dropdown-menu li {
+    display: flex; /* Używa Flexboxa do wyrównania elementów w linii */
+    align-items: center; /* Wyrównuje elementy pionowo do środka */
+    margin-right: 10px;
+    margin-left: 10px;
+    
+}
+.bi-plus-circle{
+    font-size: 20px;
+}
