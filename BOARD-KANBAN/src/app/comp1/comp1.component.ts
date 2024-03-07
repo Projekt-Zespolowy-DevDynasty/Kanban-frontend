@@ -12,6 +12,24 @@ import { CardsService } from '../service/cards.service';
   styleUrl: './comp1.component.scss'
 })
 export class Comp1Component {
+
+
+  usunTask(taskId: number) {
+    this.cardService.deleteTask(taskId).subscribe(() => {
+      this.fetchCards();
+    });
+  }
+
+  cardName = '';
+  dodajKarte(cardName: string) {
+    const card: Card = {id: -1, name: cardName, tasks: [] };
+    this.cardService.postCard(card).subscribe((card: Card) => {
+      console.log(card);
+      this.fetchCards();
+    });
+  }
+
+
   data!: Card[];
   http = inject(HttpClient)
   private cardService = inject(CardsService);
@@ -19,6 +37,9 @@ export class Comp1Component {
   value = '';
 
   onEnter(value: string, card_id: number) {
+    this.cardService.postTask(value, card_id).subscribe(() => {
+      this.fetchCards();
+    });
     this.value = value;
     console.log(this.value + " " + card_id);
   }

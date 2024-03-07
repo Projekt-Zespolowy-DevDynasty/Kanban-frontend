@@ -5,8 +5,8 @@
         </button>
         <ul class="dropdown-menu">
             <li>
-            <input type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
-            <button type="button" class="btn btn-light"><i class="bi bi-plus-circle"></i>
+            <input #dodawanieKarty type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
+            <button (click)="dodajKarte(dodawanieKarty.value)" type="button" class="btn btn-light"><i class="bi bi-plus-circle"></i>
             </button>
             </li>
         </ul>
@@ -34,7 +34,7 @@
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item" href="#">Separated link</a></li>
                         </ul>                
-                    <button type="button" class="btn btn-danger">
+                    <button (click)="usunTask(task.id)" type="button" class="btn btn-danger">
                         <i class="bi bi-trash-fill"></i>
                     </button>
                 </div>
