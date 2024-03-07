@@ -21,34 +21,39 @@
             </button>
         </div>
             <hr>
-        @for (task of card.tasks; track task.id) {
-            <div class="task">
-                <div class="tekst-zadan">
-                    <p>{{ task.name }}</p>
-                </div> 
-                <div class="przycisk-do-edycji"> 
-                        <button class="btn btn-info" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-three-dots-vertical"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <p class="naglowek-do-przycisku">Przenieś do:</p>
-                            @for (card of data; track card.id) {
-                                <li><a class="dropdown-item"  href="#">
-                                    {{ card.name }}</a></li>
-                            }
-                        </ul>                
-                    <button (click)="usunTask(task.id, card.id)" type="button" class="btn btn-danger">
-                        <i class="bi bi-trash-fill"></i>
-                    </button>
-                </div>
+        <div style="height: 30vh;">
+            <div class="overflow-auto" style="height: 20vh;">
+                @for (task of card.tasks; track task.id) {
+                    <div class="task">
+                        <div class="tekst-zadan">
+                            <p>{{ task.name }}</p>
+                        </div> 
+                        <div class="przycisk-do-edycji"> 
+                                <button class="btn btn-info" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <p class="naglowek-do-przycisku">Przenieś do:</p>
+                                    @for (card of data; track card.id) {
+                                        <li><a class="dropdown-item"  href="#">
+                                            {{ card.name }}</a></li>
+                                    }
+                                </ul>                
+                            <button (click)="usunTask(task.id, card.id)" type="button" class="btn btn-danger">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        </div>
+                    </div>
+                }
             </div>
-        }
-        <div class="dodawanieTaska">
-            <input type="text" #box (keyup.enter)="onEnter(box.value, card.id)" class="input-text" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
-            <button type="button" (click)="onEnter(box.value, card.id)" class="btn btn-success">
-                <i class="bi bi-plus-circle-fill"></i>
-            </button>
+            <div class="dodawanieTaska">
+                <input type="text" #box (keyup.enter)="onEnter(box.value, card.id)" class="input-text" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
+                <button type="button" (click)="onEnter(box.value, card.id)" class="btn btn-success">
+                    <i class="bi bi-plus-circle-fill"></i>
+                </button>
+            </div>
         </div>
+
     </div>
 }
 </div>
