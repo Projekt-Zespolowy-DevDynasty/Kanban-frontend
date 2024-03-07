@@ -13,6 +13,12 @@ import { CardsService } from '../service/cards.service';
 })
 export class Comp1Component {
 
+    usunKarte(cardId: number) {
+    this.cardService.deleteCard(cardId).subscribe(() => {
+      this.fetchCards();
+    });
+    }
+
 
   usunTask(taskId: number) {
     this.cardService.deleteTask(taskId).subscribe(() => {

@@ -16,6 +16,9 @@
         <div class="naglowek">
             <h2>{{ card.name }}</h2>
             <p class="wip">limit 0/2 </p>
+            <button (click)="usunKarte(card.id)" type="button" class="btn btn-danger">
+                <i class="bi bi-trash-fill"></i>
+            </button>
         </div>
             <hr>
         @for (task of card.tasks; track task.id) {
