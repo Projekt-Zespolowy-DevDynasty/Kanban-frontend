@@ -15,8 +15,8 @@ export class CardsService {
     postCard(card: Card): Observable<Card> {
         return this.http.post<Card>('http://localhost:8080/api/card/add', card);
     }
-    deleteTask(taskId: number): Observable<any> {
-        return this.http.delete(`http://localhost:8080/api/tasks/${taskId}`);
+    deleteTask(taskId: number, cardId: number): Observable<any> {
+        return this.http.delete(`http://localhost:8080/api/tasks/${taskId}/${cardId}`);
     }
     putTask(name: string, cardId: number): Observable<any> {
         return this.http.put(`http://localhost:8080/api/card/addtask/${cardId}`, name);

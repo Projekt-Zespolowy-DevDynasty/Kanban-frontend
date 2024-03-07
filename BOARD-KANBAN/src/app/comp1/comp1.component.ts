@@ -19,8 +19,8 @@ export class Comp1Component {
     });
     }
 
-  usunTask(taskId: number) {
-    this.cardService.deleteTask(taskId).subscribe(() => {
+  usunTask(taskId: number, cardId: number) {
+    this.cardService.deleteTask(taskId, cardId).subscribe(() => {
       this.fetchCards();
     });
   }
