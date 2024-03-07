@@ -19,7 +19,6 @@ export class Comp1Component {
     });
     }
 
-
   usunTask(taskId: number) {
     this.cardService.deleteTask(taskId).subscribe(() => {
       this.fetchCards();
@@ -43,7 +42,7 @@ export class Comp1Component {
   value = '';
 
   onEnter(value: string, card_id: number) {
-    this.cardService.postTask(value, card_id).subscribe(() => {
+    this.cardService.putTask(value, card_id).subscribe(() => {
       this.fetchCards();
     });
     this.value = value;

@@ -1,31 +1,29 @@
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f6f6f6;
 }
 
-
 .kanban-board {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
 }
 
 .column {
-    flex: 1;
+    min-height: 40vh;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 10px;
-    margin: 0 10px;
+    margin: 15px 10px 0px 15px;
 }
-
 .column h2 {
     font-size: 30px;
     margin-bottom: 10px;
     margin-left: 5px;
-    
-    
 }
 
 .task {
@@ -40,9 +38,6 @@ body {
     justify-content: space-between;
     align-items: center;
     align-content: flex-start;
-    
-
-    
 }
 
 .btn-danger {
@@ -51,6 +46,7 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
+
 .btn-warning{
     position: fixed; 
     left: 40px;
