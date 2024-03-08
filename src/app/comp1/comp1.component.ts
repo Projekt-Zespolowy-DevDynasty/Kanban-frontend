@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Card } from '../models/card.model';
 import { CardsService } from '../service/cards.service';
+import { provideHttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-comp1',
