@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Card } from '../models/card.model';
 import { CardsService } from '../service/cards.service';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-comp1',
@@ -13,6 +13,7 @@ import { provideHttpClient } from '@angular/common/http';
 })
 export class Comp1Component {
 
+  constructor(private cardService: CardsService, private http: HttpClient) {}
     usunKarte(cardId: number) {
     this.cardService.deleteCard(cardId).subscribe(() => {
       this.fetchCards();
@@ -36,7 +37,7 @@ export class Comp1Component {
 
 
   data!: Card[];
-  private cardService = inject(CardsService);
+  //private cardService = inject(CardsService);
 
   value = '';
 
