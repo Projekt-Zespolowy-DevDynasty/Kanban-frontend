@@ -7,7 +7,9 @@ import { Card } from "../models/card.model";
     providedIn: 'root'
 })
 export class CardsService {
-    private http = inject(HttpClient)
+    //private http = inject(HttpClient)
+    constructor(private http: HttpClient) { }
+
 
     getCards(): Observable<Card[]> {
         return this.http.get<Card[]>('http://localhost:8080/api/card/all');
