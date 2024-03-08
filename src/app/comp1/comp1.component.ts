@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { Card } from '../models/card.model';
-import { HttpClient } from '@angular/common/http';
 import { CardsService } from '../service/cards.service';
 
 @Component({
@@ -36,7 +35,6 @@ export class Comp1Component {
 
 
   data!: Card[];
-  http = inject(HttpClient)
   private cardService = inject(CardsService);
 
   value = '';
