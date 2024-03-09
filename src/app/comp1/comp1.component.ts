@@ -32,7 +32,9 @@ export class Comp1Component {
     this.cardService.postCard(card).subscribe((card: Card) => {
       console.log(card);
       this.fetchCards();
+      
     });
+    
   }
 
 

@@ -1,11 +1,11 @@
 <div class="kanban-board">
     <div class="btn-group dropup">
-        <button type="button" class="btn btn-warning" data-bs-toggle="dropdown" aria-expanded="false">
+        <button type="button" class="btn btn-warning" style="border-radius: 15px;" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-file-earmark-plus-fill" ></i>
         </button>
         <ul class="dropdown-menu">
             <li>
-            <input #dodawanieKarty type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
+            <input #dodawanieKarty (keyup.enter)="dodajKarte(dodawanieKarty.value)" type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
             <button (click)="dodajKarte(dodawanieKarty.value)" type="button" class="btn btn-light"><i class="bi bi-plus-circle"></i>
             </button>
             </li>
@@ -16,13 +16,19 @@
         <div class="naglowek">
             <h2>{{ card.name }}</h2>
             <p class="wip">limit 0/2 </p>
+            <button  type="button" class="btn btn-primary">
+                <i class="bi bi-bookmark-star-fill"></i>
+            </button>
+            
+
+            
             <button (click)="usunKarte(card.id)" type="button" class="btn btn-danger">
                 <i class="bi bi-trash-fill"></i>
             </button>
         </div>
             <hr>
         <div style="height: 30vh;">
-            <div class="overflow-auto" style="height: 20vh;">
+            <div class="overflow-auto" style="height: 262px;">
                 @for (task of card.tasks; track task.id) {
                     <div class="task">
                         <div class="tekst-zadan">
@@ -38,10 +44,12 @@
                                         <li><a class="dropdown-item"  href="#">
                                             {{ card.name }}</a></li>
                                     }
-                                </ul>                
+                                </ul> 
+                                            
                             <button (click)="usunTask(task.id, card.id)" type="button" class="btn btn-danger">
                                 <i class="bi bi-trash-fill"></i>
                             </button>
+                      
                         </div>
                     </div>
                 }

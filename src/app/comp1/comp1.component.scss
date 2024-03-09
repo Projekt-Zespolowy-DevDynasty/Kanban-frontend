@@ -13,7 +13,7 @@ body {
 }
 
 .column {
-    height: 45vh;
+    height: 400px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -23,7 +23,7 @@ body {
 }
 .column h2 {
     font-size: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 18px;
     margin-left: 5px;
 }
 
@@ -82,6 +82,7 @@ body {
     font-weight: normal;
     border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
     border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
+    margin-bottom: 10px; /* Dodaj margines na dole dla odstępu między polem tekstowym a przyciskiem */
     
   }
   
@@ -98,10 +99,18 @@ body {
     outline: none;
     height: 36px;
     width: 262px;
+    border-bottom: 2px solid #ccc;
     font-weight: normal;
     border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
     border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
+    //width: calc(100% - 16px); /* Ustaw szerokość pola tekstowego na 100% minus marginesy */
+    
+
    
+  }
+  .input-textv2:focus {
+    border-bottom-color: #f1e509;
+    border-bottom-width: 2px;
   }
   
   .dropdown-menu li {
@@ -120,4 +129,25 @@ body {
 }
 .dodawanieTaska{
     margin-bottom: 0px;
+    
+}
+.column .naglowek {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+}
+.btn-primary{
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+}
+.naglowek{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    
 }
