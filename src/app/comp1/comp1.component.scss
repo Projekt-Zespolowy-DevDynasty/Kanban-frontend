@@ -153,10 +153,10 @@ body {
 }
 .naglowek{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     align-content: flex-start;
 }
 .button-group {
