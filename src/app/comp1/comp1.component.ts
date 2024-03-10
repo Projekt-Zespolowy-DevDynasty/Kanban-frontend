@@ -19,7 +19,7 @@ export class Comp1Component {
       this.fetchCards();
     });
     }
-
+textValue = '2';
   usunTask(taskId: number, cardId: number) {
     this.cardService.deleteTask(taskId, cardId).subscribe(() => {
       this.fetchCards();

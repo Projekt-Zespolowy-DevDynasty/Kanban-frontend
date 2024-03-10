@@ -11,58 +11,64 @@
             </li>
         </ul>
       </div>
-    @for (card of data; track card.id) {
-    <div class="column">
-        <div class="naglowek">
-            <h2 style="width: 100%;">{{ card.name }}</h2>
-            <div style="display: flex; width: 100%;">
-                <p class="wip">limit 0/2 </p>
-                <div class="button-group">
-                <button  type="button" class="btn btn-primary" >
-                    <i class="bi bi-bookmark-star-fill"></i>
-                </button>
-                <button (click)="usunKarte(card.id)" type="button" class="btn btn-danger">
-                    <i class="bi bi-trash-fill"></i>
-                </button>
-            </div>
-        </div>
-        </div>
-            <hr>
-        <div style="height: 30vh;">
-            <div class="overflow-auto" style="height: 270px;">
-                @for (task of card.tasks; track task.id) {
-                    <div class="task">
-                        <div class="tekst-zadan">
-                            <p>{{ task.name }}</p>
-                        </div> 
-                        <div class="przycisk-do-edycji"> 
-                                <button class="btn btn-info" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-three-dots-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <p class="naglowek-do-przycisku">Przenieś do:</p>
-                                    @for (card of data; track card.id) {
-                                        <li><a class="dropdown-item"  href="#">
-                                            {{ card.name }}</a></li>
-                                    }
-                                </ul> 
-                                            
-                            <button (click)="usunTask(task.id, card.id)" type="button" class="btn btn-danger">
-                                <i class="bi bi-trash-fill"></i>
-                            </button>
-                      
+      <div class="tablica-kolumn">
+        @for (card of data; track card.id) {
+            <div class="column">
+                <div class="naglowek">
+                    <h2 style="width: 100%;">{{ card.name }}</h2>
+                    <div style="display: flex; width: 100%;">
+                        <div style="display: flex;">
+                            <input style="height: 20px; width: 22px;" class="input-text wip-limit-number" [value]="textValue" type="number" [placeholder]="textValue">
+                            <p> / 5</p>
                         </div>
+                        <div class="button-group">
+                        <button  type="button" class="btn btn-primary" >
+                            <i class="bi bi-bookmark-star-fill"></i>
+                        </button>
+                        <button (click)="usunKarte(card.id)" type="button" class="btn btn-danger">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
                     </div>
-                }
+                </div>
+                </div>
+                    <hr>
+                <div style="height: 30vh;">
+                    <div class="overflow-auto" style="height: 270px;">
+                        @for (task of card.tasks; track task.id) {
+                            <div class="task">
+                                <div class="tekst-zadan">
+                                    <p>{{ task.name }}</p>
+                                </div> 
+                                <div class="przycisk-do-edycji"> 
+                                        <button class="btn btn-info" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-dark">
+                                            <p class="naglowek-do-przycisku">Przenieś do:</p>
+                                            @for (card of data; track card.id) {
+                                                <li><a class="dropdown-item"  href="#">
+                                                    {{ card.name }}</a></li>
+                                            }
+                                        </ul> 
+                                                    
+                                    <button (click)="usunTask(task.id, card.id)" type="button" class="btn btn-danger">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </button>
+                              
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="dodawanieTaska">
+                        <input type="text" #box (keyup.enter)="onEnter(box.value, card.id)" class="input-text" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
+                        <button type="button" (click)="onEnter(box.value, card.id)" class="btn btn-success">
+                            <i class="bi bi-plus-circle-fill"></i>
+                        </button>
+                    </div>
+                </div>
+        
             </div>
-            <div class="dodawanieTaska">
-                <input type="text" #box (keyup.enter)="onEnter(box.value, card.id)" class="input-text" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
-                <button type="button" (click)="onEnter(box.value, card.id)" class="btn btn-success">
-                    <i class="bi bi-plus-circle-fill"></i>
-                </button>
-            </div>
-        </div>
-
-    </div>
-}
+        }
+      </div>
+    
 </div>

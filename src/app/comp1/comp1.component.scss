@@ -170,14 +170,6 @@ body {
 .btn-warning {
     z-index: 9999; 
 }
-.overflow-auto {
-   // max-height: 270px; /* Maksymalna wysokość dla elementu overflow-auto */
-   // overflow-y: auto; /* Dodaj pionowy pasek przewijania, gdy tekst jest zbyt długi */
-  //  position: absolute; /* Ustaw pozycję na absolute, aby element był w tym samym miejscu */
-   // top: 70px; /* Dostosuj top na podstawie wysokości nagłówka, aby element nie zachodził na nagłówek */
-   // left: 0; /* Ustaw left na 0, aby element był na lewo od kolumny */
-   // width: 100%; /* Ustaw szerokość na 100%, aby element zajmował całą szerokość kolumny */
-}
 .column .naglowek h2 {
     white-space: nowrap; /* Zapobiega zawijaniu tekstu na nowej linii */
     overflow: hidden; /* Ukrywa nadmiarowy tekst, który nie mieści się w obszarze */
@@ -197,4 +189,19 @@ body {
     overflow-wrap: break-word;
     /* Ograniczenie dozwolonej szerokości */
     max-width: 100%;
+}
+.tablica-kolumn{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.wip-limit-number{
+    margin-right: 2px;
+    margin-top: 2px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
