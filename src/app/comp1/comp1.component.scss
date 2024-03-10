@@ -186,3 +186,15 @@ body {
 .button-group  {
     margin-left: 133px;
 }
+.tekst-zadan {
+    /* Ustawienie automatycznej wysokości */
+    height: auto;
+    /* Maksymalna szerokość, aby uniknąć zbyt szerokich kontenerów */
+    max-width: 100%;
+    /* Zawijanie tekstu tylko w granicach słów */
+    word-wrap: break-word;
+    /* Rozwiązanie problemu zbyt długich pojedynczych słów */
+    overflow-wrap: break-word;
+    /* Ograniczenie dozwolonej szerokości */
+    max-width: 100%;
+}
