@@ -13,7 +13,7 @@ body {
 }
 
 .column {
-    height: 430px;
+    height: 450px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -144,6 +144,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-right: 20px;
+    position: relative;
 }
 .btn-primary{
     border-radius: 10px;
@@ -168,4 +169,17 @@ body {
 }
 .btn-warning {
     z-index: 9999; 
+}
+.overflow-auto {
+   // max-height: 270px; /* Maksymalna wysokość dla elementu overflow-auto */
+   // overflow-y: auto; /* Dodaj pionowy pasek przewijania, gdy tekst jest zbyt długi */
+  //  position: absolute; /* Ustaw pozycję na absolute, aby element był w tym samym miejscu */
+   // top: 70px; /* Dostosuj top na podstawie wysokości nagłówka, aby element nie zachodził na nagłówek */
+   // left: 0; /* Ustaw left na 0, aby element był na lewo od kolumny */
+   // width: 100%; /* Ustaw szerokość na 100%, aby element zajmował całą szerokość kolumny */
+}
+.column .naglowek h2 {
+    white-space: nowrap; /* Zapobiega zawijaniu tekstu na nowej linii */
+    overflow: hidden; /* Ukrywa nadmiarowy tekst, który nie mieści się w obszarze */
+    text-overflow: ellipsis; /* Wyświetla trzy kropki, gdy tekst jest zbyt długi, aby się zmieścić */
 }
