@@ -13,7 +13,7 @@ body {
 }
 
 .column {
-    height: 450px;
+    height: 480px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -182,4 +182,7 @@ body {
     white-space: nowrap; /* Zapobiega zawijaniu tekstu na nowej linii */
     overflow: hidden; /* Ukrywa nadmiarowy tekst, który nie mieści się w obszarze */
     text-overflow: ellipsis; /* Wyświetla trzy kropki, gdy tekst jest zbyt długi, aby się zmieścić */
+}
+.button-group  {
+    margin-left: 133px;
 }
