@@ -16,19 +16,18 @@
         <div class="naglowek">
             <h2>{{ card.name }}</h2>
             <p class="wip">limit 0/2 </p>
+            <div class="button-group">
             <button  type="button" class="btn btn-primary">
                 <i class="bi bi-bookmark-star-fill"></i>
             </button>
-            
-
-            
             <button (click)="usunKarte(card.id)" type="button" class="btn btn-danger">
                 <i class="bi bi-trash-fill"></i>
             </button>
         </div>
+        </div>
             <hr>
         <div style="height: 30vh;">
-            <div class="overflow-auto" style="height: 262px;">
+            <div class="overflow-auto" style="height: 270px;">
                 @for (task of card.tasks; track task.id) {
                     <div class="task">
                         <div class="tekst-zadan">

@@ -13,14 +13,17 @@ body {
 }
 
 .column {
-    height: 400px;
+    height: 430px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 10px;
-    margin: 15px 10px 0px 15px;
+    margin: 10px 5px 15px 15px;
     width: 340px;
+    position: relative;
+   // padding-bottom: 20px;
 }
+
 .column h2 {
     font-size: 30px;
     margin-bottom: 18px;
@@ -129,7 +132,12 @@ body {
 }
 .dodawanieTaska{
     margin-bottom: 0px;
-    
+    position: absolute;
+    bottom: 0px; /* Dostosuj odległość od dolnej krawędzi kolumny */
+    left: 50%; /* Ustaw element na środku kolumny */
+    transform: translateX(-50%); /* Skoryguj położenie w poziomie */
+    width: calc(100% - 20px);
+
 }
 .column .naglowek {
     display: flex;
@@ -149,5 +157,12 @@ body {
     justify-content: space-between;
     align-items: center;
     align-content: flex-start;
-    
+}
+.button-group {
+    display: flex;
+    align-items: center;
+}
+
+.button-group button {
+    margin-left: 5px; /* Lub dostosuj margines według preferencji */
 }
