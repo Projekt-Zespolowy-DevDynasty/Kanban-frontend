@@ -11,25 +11,44 @@
             </li>
         </ul>
       </div>
-      <div class="tablica-kolumn">
+      <div class="tablica-kolumn overflow-x-auto">
         @for (card of data; track card.id) {
             <div class="column">
                 <div class="naglowek">
                     <h2 style="width: 100%;">{{ card.name }}</h2>
-                    <div style="display: flex; width: 100%;">
-                        <div style="display: flex;">
-                            <p> 0 / </p>
-                            <input style="height: 20px; width: 22px;" class="input-text wip-limit-number" [value]="textValue" type="number" [placeholder]="textValue">
+
+                    @if (card.name == "To do" || card.name == "Done") {
+                        <div style="display: flex; width: 100%;">
+                            <div class="wip-limit-text" style="width: 100px;">
+                                <p>0</p>
+                            </div>
+                            <div class="button-group">
+                                <button  type="button" disabled class="btn btn-primary" >
+                                    <i class="bi bi-bookmark-star-fill"></i>
+                                </button>
+                                <button (click)="usunKarte(card.id)" disabled type="button" class="btn btn-danger">
+                                    <i class="bi bi-trash-fill"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="button-group">
-                        <button  type="button" class="btn btn-primary" >
-                            <i class="bi bi-bookmark-star-fill"></i>
-                        </button>
-                        <button (click)="usunKarte(card.id)" type="button" class="btn btn-danger">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </div>
-                </div>
+                    }@else {
+                        <div style="display: flex; width: 100%;">
+                            <div class="wip-limit-text" style="width: 100px;">
+                                <p> 0 / </p>
+                                <input style="height: 20px; width: 22px; margin-top: 3.5px; margin-left: 4px;" class="input-text wip-limit-number" [value]="textValue" type="number" [placeholder]="textValue">
+                            </div>
+                            <div class="button-group">
+                                <button  type="button" class="btn btn-primary" >
+                                    <i class="bi bi-bookmark-star-fill"></i>
+                                </button>
+                                <button (click)="usunKarte(card.id)" type="button" class="btn btn-danger">
+                                    <i class="bi bi-trash-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                    }
+
+
                 </div>
                     <hr>
                 <div style="height: 30vh;">

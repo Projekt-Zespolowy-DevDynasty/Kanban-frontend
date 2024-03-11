@@ -143,7 +143,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-right: 20px;
     position: relative;
 }
 .btn-primary{
@@ -152,6 +151,7 @@ body {
     
 }
 .naglowek{
+    margin: 0 0 0 0;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -162,11 +162,9 @@ body {
 .button-group {
     display: flex;
     align-items: center;
+    margin-right: 10px;
 }
 
-.button-group button {
-    margin-left: 5px; /* Lub dostosuj margines według preferencji */
-}
 .btn-warning {
     z-index: 9999; 
 }
@@ -204,4 +202,9 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.wip-limit-text{
+    display: flex;
+    font-size: large;
+    padding-left: 8px;
 }
