@@ -18,7 +18,7 @@
                     <h2 style="width: 100%;">{{ card.name }}</h2>
 
                     @if (card.name == "To do" || card.name == "Done") {
-                        <div style="display: flex; width: 100%;">
+                        <div style="display: flex; justify-content: space-between; width: 100%;">
                             <div class="wip-limit-text" style="width: 100px;">
                                 <p>0</p>
                             </div>
@@ -29,15 +29,12 @@
                             </div>
                         </div>
                     }@else {
-                        <div style="display: flex; width: 100%;">
-                            <div class="wip-limit-text" style="width: 100px;">
+                        <div style="display: flex; justify-content: space-between; width: 100%;">
+                            <div class="wip-limit-text" style="width: 100px;padding-top: 10px">
                                 <p> 0 / </p>
                                 <input style="" class="wip-limit-number" [value]="textValue" type="number" [placeholder]="textValue">
                             </div>
                             <div class="button-group">
-                                <button  type="button" class="btn btn-primary" >
-                                    <i class="bi bi-bookmark-star-fill"></i>
-                                </button>
                                 <button (click)="usunKarte(card.id)" type="button" class="btn btn-danger">
                                     <i class="bi bi-trash-fill"></i>
                                 </button>

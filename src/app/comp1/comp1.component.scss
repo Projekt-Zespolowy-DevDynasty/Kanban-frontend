@@ -153,6 +153,7 @@ body {
 
 }
 .naglowek{
+  width: 330px;
     margin: 0 0 0 0;
     display: flex;
     flex-direction: column;
@@ -197,10 +198,10 @@ body {
 }
 .wip-limit-number{
   height: 20px;
-  width: 22px;
+  width: 26px;
   margin-left: 4px;
   margin-right: 2px;
-  margin-top: 3.5px;
+  margin-top: 4.2px;
   border: none;
   border-bottom: 2px solid #ccc;
   outline: none;
@@ -208,13 +209,12 @@ body {
   border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
   border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
   margin-bottom: 10px; /* Dodaj margines na dole dla odstępu między polem tekstowym a przyciskiem */
-  transition: width 0.5s;
+
 }
 
 .wip-limit-number:focus {
   border-bottom-color: #2ca611;
   border-bottom-width: 2px;
-  width: 44px;
 }
 
 input::-webkit-outer-spin-button,
