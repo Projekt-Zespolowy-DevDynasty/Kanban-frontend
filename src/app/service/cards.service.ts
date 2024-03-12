@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
 import { Card } from "../models/card.model";
+import { environment } from "../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -12,18 +13,18 @@ export class CardsService {
 
 
     getCards(): Observable<Card[]> {
-        return this.http.get<Card[]>('http://localhost:8080/api/card/all');
+        return this.http.get<Card[]>(`${environment.backendUrl}/card/all`);
     }
     postCard(card: Card): Observable<Card> {
-        return this.http.post<Card>('http://localhost:8080/api/card/add', card);
+        return this.http.post<Card>(`${environment.backendUrl}/card/add`, card);
     }
     deleteTask(taskId: number, cardId: number): Observable<any> {
-        return this.http.delete(`http://localhost:8080/api/card/${cardId}/task/${taskId}`);
+        return this.http.delete(`${environment.backendUrl}/card/${cardId}/task/${taskId}`);
     }
     putTask(name: string, cardId: number): Observable<any> {
-        return this.http.put(`http://localhost:8080/api/card/addtask/${cardId}`, name);
+        return this.http.put(`${environment.backendUrl}/card/addtask/${cardId}`, name);
     }
     deleteCard(cardId: number): Observable<any> {
-        return this.http.delete(`http://localhost:8080/api/cards/${cardId}`);
+        return this.http.delete(`${environment.backendUrl}/cards/${cardId}`);
     }
 }
