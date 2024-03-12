@@ -54,9 +54,9 @@ body {
 }
 
 .btn-warning{
-    position: fixed; 
+    position: fixed;
     left: 40px;
-    bottom: 20px; 
+    bottom: 20px;
     padding: 10px;
     font-size: 30px;
     width: 60px;
@@ -70,13 +70,13 @@ body {
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
-    
+
 }
 .btn-success {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
     margin-left: 5px;
-    
+
 }
 .input-text {
     border: none;
@@ -88,14 +88,14 @@ body {
     border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
     border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
     margin-bottom: 10px; /* Dodaj margines na dole dla odstępu między polem tekstowym a przyciskiem */
-    
+
   }
-  
+
   .input-text:focus {
     border-bottom-color: #2ca611;
     border-bottom-width: 2px;
   }
-  
+
   .wip{
     margin-left: 10px;
   }
@@ -109,21 +109,21 @@ body {
     border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
     border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
     //width: calc(100% - 16px); /* Ustaw szerokość pola tekstowego na 100% minus marginesy */
-    
 
-   
+
+
   }
   .input-textv2:focus {
     border-bottom-color: #f1e509;
     border-bottom-width: 2px;
   }
-  
+
   .dropdown-menu li {
     display: flex; /* Używa Flexboxa do wyrównania elementów w linii */
     align-items: center; /* Wyrównuje elementy pionowo do środka */
     margin-right: 10px;
     margin-left: 10px;
-    
+
 }
 .bi-plus-circle{
     font-size: 20px;
@@ -150,7 +150,7 @@ body {
 .btn-primary{
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
+
 }
 .naglowek{
     margin: 0 0 0 0;
@@ -168,7 +168,7 @@ body {
 }
 
 .btn-warning {
-    z-index: 9999; 
+    z-index: 9999;
 }
 .column .naglowek h2 {
     white-space: nowrap; /* Zapobiega zawijaniu tekstu na nowej linii */
@@ -196,8 +196,25 @@ body {
     flex-wrap: nowrap;
 }
 .wip-limit-number{
-    margin-right: 2px;
-    margin-top: 2px;
+  height: 20px;
+  width: 22px;
+  margin-left: 4px;
+  margin-right: 2px;
+  margin-top: 3.5px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  font-weight: normal;
+  border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
+  border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
+  margin-bottom: 10px; /* Dodaj margines na dole dla odstępu między polem tekstowym a przyciskiem */
+  transition: width 0.5s;
+}
+
+.wip-limit-number:focus {
+  border-bottom-color: #2ca611;
+  border-bottom-width: 2px;
+  width: 44px;
 }
 
 input::-webkit-outer-spin-button,
@@ -209,4 +226,11 @@ input::-webkit-inner-spin-button {
     display: flex;
     font-size: large;
     padding-left: 8px;
+}
+.input-do-wpisywania{
+  width: 100%;
+  transition: width 2s;
+}
+.input-do-wpisywania:active{
+  width: 100%;
 }
