@@ -30,4 +30,7 @@ export class CardsService {
     deleteCard(cardId: number): Observable<any> {
         return this.http.delete(`${environment.backendUrl}/cards/${cardId}`);
     }
+    changeLimit(cardId: number, limit: number): Observable<any> {
+        return this.http.put(`${environment.backendUrl}/card/${cardId}/maxTasksLimit`,limit);
+    }
 }
