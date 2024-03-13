@@ -24,13 +24,18 @@ export class Comp1Component {
     }
   textValue = '2';
   specificId: number = -1;
-  changeLimit(cardId: number, limit: string) {
+  changeLimit(cardId: number, limit: string, maxTasksLimit: number) {
     let limit2 = parseInt(limit);
     if (limit2 < 0) {
      this.specificId = cardId;
      setInterval(() => {
        this.specificId = -1;
      }, 3000);
+    }else if (limit2 < maxTasksLimit) {
+      this.specificId = cardId;
+      setInterval(() => {
+        this.specificId = -1;
+      }, 3000);
     }
   }
 
@@ -42,7 +47,7 @@ export class Comp1Component {
 
   cardName = '';
   dodajKarte(cardName: string) {
-    const card: Card = {id: -1, name: cardName, tasks: [] };
+    const card: Card = {id: -1, name: cardName, maxTasksLimit: 5, tasks: [] };
     this.cardService.postCard(card).subscribe((card: Card) => {
       console.log(card);
       this.fetchCards();

@@ -20,7 +20,7 @@
                     @if (card.name == "To do" || card.name == "Done") {
                         <div style="display: flex; justify-content: space-between; width: 100%;">
                             <div class="wip-limit-text" style="width: 100px;">
-                                <p>0</p>
+                                <p>{{ card.tasks.length }}</p>
                             </div>
                             <div class="button-group">
                                 <button (click)="usunKarte(card.id)" disabled type="button" class="btn btn-danger">
@@ -31,8 +31,8 @@
                     }@else {
                         <div style="display: flex; justify-content: space-between; width: 100%;">
                             <div class="wip-limit-text" style="width: 100px;padding-top: 10px">
-                                <p> 0 / </p>
-                                <input #limit (keyup.enter)="changeLimit(card.id, limit.value)" class="wip-limit-number" [value]="textValue" type="number" [placeholder]="textValue">
+                                <p> {{ card.tasks.length }} / </p>
+                                <input #limit (keyup.enter)="changeLimit(card.id, limit.value, card.maxTasksLimit)" class="wip-limit-number" [value]="card.maxTasksLimit" type="number" [placeholder]="card.maxTasksLimit">
                             </div>
                             <div class="button-group">
                                 <button (click)="usunKarte(card.id)" type="button" class="btn btn-danger">
