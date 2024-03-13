@@ -13,7 +13,7 @@
       </div>
       <div class="tablica-kolumn overflow-x-auto">
         @for (card of data; track card.id) {
-            <div class="column">
+            <div class="column" [ngStyle]="{ 'border': card.id === specificId ? '3px solid red' : 'none' }"  >
                 <div class="naglowek">
                     <h2 style="width: 100%;">{{ card.name }}</h2>
 
@@ -32,7 +32,7 @@
                         <div style="display: flex; justify-content: space-between; width: 100%;">
                             <div class="wip-limit-text" style="width: 100px;padding-top: 10px">
                                 <p> 0 / </p>
-                                <input style="" class="wip-limit-number" [value]="textValue" type="number" [placeholder]="textValue">
+                                <input #limit (keyup.enter)="changeLimit(card.id, limit.value)" class="wip-limit-number" [value]="textValue" type="number" [placeholder]="textValue">
                             </div>
                             <div class="button-group">
                                 <button (click)="usunKarte(card.id)" type="button" class="btn btn-danger">

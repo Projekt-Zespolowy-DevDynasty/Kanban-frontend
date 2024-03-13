@@ -2,11 +2,14 @@ import { Component, inject } from '@angular/core';
 import { Card } from '../models/card.model';
 import { CardsService } from '../service/cards.service';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
+import {NgStyle} from "@angular/common";
 
 @Component({
   selector: 'app-comp1',
   standalone: true,
-  imports: [],
+  imports: [
+    NgStyle
+  ],
   providers: [CardsService],
   templateUrl: './comp1.component.html',
   styleUrl: './comp1.component.scss'
@@ -19,7 +22,18 @@ export class Comp1Component {
       this.fetchCards();
     });
     }
-textValue = '2';
+  textValue = '2';
+  specificId: number = -1;
+  changeLimit(cardId: number, limit: string) {
+    let limit2 = parseInt(limit);
+    if (limit2 < 0) {
+     this.specificId = cardId;
+     setInterval(() => {
+       this.specificId = -1;
+     }, 3000);
+    }
+  }
+
   usunTask(taskId: number, cardId: number) {
     this.cardService.deleteTask(taskId, cardId).subscribe(() => {
       this.fetchCards();
@@ -32,9 +46,9 @@ textValue = '2';
     this.cardService.postCard(card).subscribe((card: Card) => {
       console.log(card);
       this.fetchCards();
-      
+
     });
-    
+
   }
 
 

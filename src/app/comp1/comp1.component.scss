@@ -133,9 +133,9 @@ body {
     margin-left: 10px;
 }
 .dodawanieTaska{
-    margin-bottom: 0px;
+    margin-bottom: 0;
     position: absolute;
-    bottom: 0px; /* Dostosuj odległość od dolnej krawędzi kolumny */
+    bottom: 0; /* Dostosuj odległość od dolnej krawędzi kolumny */
     left: 50%; /* Ustaw element na środku kolumny */
     transform: translateX(-50%); /* Skoryguj położenie w poziomie */
     width: calc(100% - 20px);
@@ -189,7 +189,6 @@ body {
     /* Rozwiązanie problemu zbyt długich pojedynczych słów */
     overflow-wrap: break-word;
     /* Ograniczenie dozwolonej szerokości */
-    max-width: 100%;
 }
 .tablica-kolumn{
     display: flex;
