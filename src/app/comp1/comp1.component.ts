@@ -25,11 +25,15 @@ export class Comp1Component {
   textValue = '2';
   specificId: number = -1;
   changeLimit(cardId: number, limit: string, maxTasksLimit: number) {
+    let kolumna = this.data.find((card: Card) => card.id === cardId);
     let limit2 = parseInt(limit);
+    if (kolumna) {
+      if (limit2 < kolumna?.tasks.length) {
+        this.specificId = cardId;
+      }
+    }
     if (limit2 < 0) {
      this.specificId = cardId;
-    }else if (limit2 < maxTasksLimit) {
-      this.specificId = cardId;
     }
     setInterval(() => {
       this.specificId = -1;
@@ -53,14 +57,12 @@ export class Comp1Component {
 
   }
 
-
   data!: Card[];
   //private cardService = inject(CardsService);
 
   value = '';
 
   onEnter(value: string, card_id: number) {
-
     this.cardService.getOneCard(card_id).subscribe((card: Card) => {
       if (card.tasks.length >= card.maxTasksLimit) {
         this.specificId = card_id;
