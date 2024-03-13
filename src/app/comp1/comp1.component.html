@@ -53,14 +53,14 @@
                                     <p>{{ task.name }}</p>
                                 </div>
                                 <div class="przycisk-do-edycji">
-                                        <button class="btn btn-info" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button class="btn btn-info" type="button"data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <ul class="dropdown-menu dropdown-menu-dark">
                                             <p class="naglowek-do-przycisku">Przenieś do:</p>
-                                            @for (card of data; track card.id) {
-                                                <li><a class="dropdown-item"  href="#">
-                                                    {{ card.name }}</a></li>
+                                            @for (cardy of data; track cardy.id) {
+                                                <li><a (click)="przesTask(card.id, task.id, cardy.id)" class="dropdown-item"  href="#">
+                                                    {{ cardy.name }}</a></li>
                                             }
                                         </ul>
 

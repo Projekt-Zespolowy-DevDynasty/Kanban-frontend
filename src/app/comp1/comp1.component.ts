@@ -16,6 +16,15 @@ import {NgStyle} from "@angular/common";
 })
 export class Comp1Component {
 
+przesTask(sourceCardId: number,taskId :number, destinationCardId: number) {
+
+  console.log(sourceCardId, taskId, destinationCardId);
+  this.cardService.moveTasks(sourceCardId, taskId, destinationCardId).subscribe(() => {
+    this.fetchCards();
+  });
+
+}
+
   constructor(private cardService: CardsService, private http: HttpClient) {}
     usunKarte(cardId: number) {
     this.cardService.deleteCard(cardId).subscribe(() => {
@@ -27,7 +36,6 @@ export class Comp1Component {
   changeLimit(cardId: number, limit: string, maxTasksLimit: number) {
     
     let kolumna = this.data.find((card: Card) => card.id === cardId);
-    console.log(kolumna);
     let limit2 = parseInt(limit);
     if (kolumna) {
       if (limit2 < kolumna?.tasks.length) {
@@ -43,11 +51,8 @@ export class Comp1Component {
       this.specificId = -1;
     }, 3000);
 
-    this.cardService.changeLimit(cardId, maxTasksLimit).subscribe(() => {
-      this.fetchCards();
+    this.cardService.changeLimit(cardId, limit2).subscribe(() => {
     });
-    console.log(kolumna);
-
   }
   
 
