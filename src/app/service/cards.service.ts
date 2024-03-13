@@ -15,6 +15,9 @@ export class CardsService {
     getCards(): Observable<Card[]> {
         return this.http.get<Card[]>(`${environment.backendUrl}/card/all`);
     }
+    getOneCard(cardId: number): Observable<Card> {
+      return this.http.get<Card>(`${environment.backendUrl}/card/${cardId}`);
+    }
     postCard(card: Card): Observable<Card> {
         return this.http.post<Card>(`${environment.backendUrl}/card/add`, card);
     }

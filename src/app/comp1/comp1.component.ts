@@ -28,15 +28,12 @@ export class Comp1Component {
     let limit2 = parseInt(limit);
     if (limit2 < 0) {
      this.specificId = cardId;
-     setInterval(() => {
-       this.specificId = -1;
-     }, 3000);
     }else if (limit2 < maxTasksLimit) {
       this.specificId = cardId;
-      setInterval(() => {
-        this.specificId = -1;
-      }, 3000);
     }
+    setInterval(() => {
+      this.specificId = -1;
+    }, 3000);
   }
 
   usunTask(taskId: number, cardId: number) {
@@ -63,11 +60,22 @@ export class Comp1Component {
   value = '';
 
   onEnter(value: string, card_id: number) {
-    this.cardService.putTask(value, card_id).subscribe(() => {
-      this.fetchCards();
+
+    this.cardService.getOneCard(card_id).subscribe((card: Card) => {
+      if (card.tasks.length >= card.maxTasksLimit) {
+        this.specificId = card_id;
+        setInterval(() => {
+          this.specificId = -1;
+        }, 3000);
+        return;
+      }else{
+        this.cardService.putTask(value, card_id).subscribe(() => {
+          this.fetchCards();
+        });
+        this.value = value;
+        console.log(this.value + " " + card_id);
+      }
     });
-    this.value = value;
-    console.log(this.value + " " + card_id);
   }
 
   ngOnInit(): void{
