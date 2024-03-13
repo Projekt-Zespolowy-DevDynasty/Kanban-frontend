@@ -34,7 +34,6 @@ przesTask(sourceCardId: number,taskId :number, destinationCardId: number) {
   textValue = '2';
   specificId: number = -1;
   changeLimit(cardId: number, limit: string, maxTasksLimit: number) {
-    
     let kolumna = this.data.find((card: Card) => card.id === cardId);
     let limit2 = parseInt(limit);
     if (kolumna) {
@@ -44,7 +43,6 @@ przesTask(sourceCardId: number,taskId :number, destinationCardId: number) {
     }
     if (limit2 < 0) {
      this.specificId = cardId;
-
     }
 
     setInterval(() => {
@@ -54,7 +52,7 @@ przesTask(sourceCardId: number,taskId :number, destinationCardId: number) {
     this.cardService.changeLimit(cardId, limit2).subscribe(() => {
     });
   }
-  
+
 
   usunTask(taskId: number, cardId: number) {
     this.cardService.deleteTask(taskId, cardId).subscribe(() => {
@@ -80,20 +78,19 @@ przesTask(sourceCardId: number,taskId :number, destinationCardId: number) {
 
   onEnter(value: string, card_id: number) {
     this.cardService.getOneCard(card_id).subscribe((card: Card) => {
+      if(card.name == "To do" || card.name == "Done"){
+        this.specificId = -1;
+        return;
+      }
       if (card.tasks.length >= card.maxTasksLimit) {
         this.specificId = card_id;
-        setInterval(() => {
-          this.specificId = -1;
-        }, 3000);
-        return;
-      }else{
-        this.cardService.putTask(value, card_id).subscribe(() => {
-          this.fetchCards();
-        });
-        this.value = value;
-        console.log(this.value + " " + card_id);
       }
     });
+
+    this.cardService.putTask(value, card_id).subscribe(() => {
+      this.fetchCards();
+    });
+    this.value = value;
   }
 
   ngOnInit(): void{
