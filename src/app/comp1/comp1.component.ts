@@ -16,14 +16,25 @@ import {NgStyle} from "@angular/common";
 })
 export class Comp1Component {
 
-przesTask(sourceCardId: number,taskId :number, destinationCardId: number) {
+  przesTask(sourceCardId: number,taskId :number, destinationCardId: number) {
 
-  console.log(sourceCardId, taskId, destinationCardId);
-  this.cardService.moveTasks(sourceCardId, taskId, destinationCardId).subscribe(() => {
-    this.fetchCards();
-  });
+    console.log(sourceCardId, taskId, destinationCardId);
+    let kolumna = this.data.find((card: Card) => card.id === sourceCardId);
+    let kolumna2 = this.data.find((card: Card) => card.id === destinationCardId);
+    if (!kolumna || !kolumna2){
+      return;
+    }
+    if (kolumna?.tasks.length <= kolumna?.maxTasksLimit+1) {
+      this.specificId = -1;
+    }
+    if(kolumna2?.tasks.length >= kolumna2?.maxTasksLimit){
+      this.specificId = destinationCardId;
+    }
+    this.cardService.moveTasks(sourceCardId, taskId, destinationCardId).subscribe(() => {
+      this.fetchCards();
+    });
 
-}
+  }
 
   constructor(private cardService: CardsService, private http: HttpClient) {}
     usunKarte(cardId: number) {
@@ -55,6 +66,13 @@ przesTask(sourceCardId: number,taskId :number, destinationCardId: number) {
 
 
   usunTask(taskId: number, cardId: number) {
+    let kolumna = this.data.find((card: Card) => card.id === cardId);
+    if (!kolumna){
+      return;
+    }
+    if (kolumna?.tasks.length <= kolumna?.maxTasksLimit+1) {
+      this.specificId = -1;
+    }
     this.cardService.deleteTask(taskId, cardId).subscribe(() => {
       this.fetchCards();
     });
