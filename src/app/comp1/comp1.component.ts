@@ -27,10 +27,12 @@ export class Comp1Component {
   }
 
   constructor(private cardService: CardsService, private http: HttpClient, private toastr: ToastrService) {}
+
     usunKarte(cardId: number) {
-    this.toastr.error("Usunięto Karte");
-    this.cardService.deleteCard(cardId).subscribe(() => {
-      this.fetchCards();
+      
+      this.toastr.error("Usunięto Karte");
+      this.cardService.deleteCard(cardId).subscribe(() => {
+        this.fetchCards();
     });
     }
   textValue = '2';
@@ -50,9 +52,11 @@ export class Comp1Component {
 
   cardName = '';
   dodajKarte(cardName: string) {
-  
+    if(cardName!= ""){
+      this.toastr.success("Dodano Karte");
+    }
     const card: Card = {id: -1, name: cardName, maxTasksLimit: 5, tasks: [] };
-    this.toastr.success("Dodano Karte");
+    
     this.cardService.postCard(card).subscribe((card: Card) => {
       console.log(card);
       this.fetchCards();
