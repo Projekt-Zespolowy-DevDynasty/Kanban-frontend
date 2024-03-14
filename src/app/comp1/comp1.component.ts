@@ -52,6 +52,12 @@ export class Comp1Component {
   dodajKarte(cardName: string) {
 
     const card: Card = {id: -1, name: cardName, maxTasksLimit: 5, tasks: [] };
+
+    if(cardName.trim() == ''){
+      this.toastr.info('Nie można dodać karty bez nazwy');
+      return;
+    }
+
     this.cardService.postCard(card).subscribe({
       next: (card: Card) => {
         this.toastr.success('Dodano karte');
