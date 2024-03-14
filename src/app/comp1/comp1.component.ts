@@ -3,6 +3,8 @@ import { Card } from '../models/card.model';
 import { CardsService } from '../service/cards.service';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 import {NgStyle} from "@angular/common";
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-comp1',
@@ -24,8 +26,9 @@ export class Comp1Component {
 
   }
 
-  constructor(private cardService: CardsService, private http: HttpClient) {}
+  constructor(private cardService: CardsService, private http: HttpClient, private toastr: ToastrService) {}
     usunKarte(cardId: number) {
+    this.toastr.error("Usunięto Karte");
     this.cardService.deleteCard(cardId).subscribe(() => {
       this.fetchCards();
     });
@@ -47,7 +50,9 @@ export class Comp1Component {
 
   cardName = '';
   dodajKarte(cardName: string) {
+  
     const card: Card = {id: -1, name: cardName, maxTasksLimit: 5, tasks: [] };
+    this.toastr.success("Dodano Karte");
     this.cardService.postCard(card).subscribe((card: Card) => {
       console.log(card);
       this.fetchCards();
@@ -56,8 +61,8 @@ export class Comp1Component {
 
   }
   zmainaNazwyKarty(cardName: string){
-    
 
+  
   }
 
   data!: Card[];
