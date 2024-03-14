@@ -39,12 +39,20 @@
                                 <input #limit (keyup.enter)="changeLimit(card.id, limit.value, card.maxTasksLimit)" class="wip-limit-number" [value]="card.maxTasksLimit" type="number" [placeholder]="card.maxTasksLimit">
                             </div>
                             <div class="button-group" style="margin-left: 80px;">
-                                <button type="button" class="btn btn-primary">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-pen-fill"></i>
+
                                 </button>
-                                <button class="btn btn-info" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-info" type="button" >
                                     <i class="bi bi-three-dots-vertical"></i>
                                 </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                    <input #zmianakarty (keyup.enter)="zmainaNazwyKarty(zmianakarty.value)" type="text" class="input-textv3" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
+                                    <button (click)="zmainaNazwyKarty(zmianakarty.value)" type="button" class="btn btn-light"><i class="bi bi-plus-circle"></i>
+                                    </button>
+                                    </li>
+                                </ul>
                                 <button (click)="usunKarte(card.id)" type="button" class="btn btn-danger">
                                     <i class="bi bi-trash-fill"></i>
                                 </button>

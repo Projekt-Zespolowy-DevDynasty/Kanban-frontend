@@ -55,6 +55,10 @@ export class Comp1Component {
     });
 
   }
+  zmainaNazwyKarty(cardName: string){
+    
+
+  }
 
   data!: Card[];
   //private cardService = inject(CardsService);

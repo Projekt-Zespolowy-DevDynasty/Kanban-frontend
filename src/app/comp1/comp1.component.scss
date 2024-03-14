@@ -108,15 +108,27 @@ body {
     font-weight: normal;
     border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
     border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
-    //width: calc(100% - 16px); /* Ustaw szerokość pola tekstowego na 100% minus marginesy */
-
-
 
   }
   .input-textv2:focus {
     border-bottom-color: #f1e509;
     border-bottom-width: 2px;
   }
+  .input-textv3{
+    border: none;
+    outline: none;
+    height: 36px;
+    width: 262px;
+    border-bottom: 2px solid #ccc;
+    font-weight: normal;
+    border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
+    border-top-right-radius: 5px;
+  }
+  .input-textv3:focus {
+    border-bottom-color: #0b1cd0;
+    border-bottom-width: 2px;
+  }
+
 
   .dropdown-menu li {
     display: flex; /* Używa Flexboxa do wyrównania elementów w linii */
