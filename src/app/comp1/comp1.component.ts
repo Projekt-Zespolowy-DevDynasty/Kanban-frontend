@@ -18,18 +18,6 @@ export class Comp1Component {
 
   przesTask(sourceCardId: number,taskId :number, destinationCardId: number) {
 
-    console.log(sourceCardId, taskId, destinationCardId);
-    let kolumna = this.data.find((card: Card) => card.id === sourceCardId);
-    let kolumna2 = this.data.find((card: Card) => card.id === destinationCardId);
-    if (!kolumna || !kolumna2){
-      return;
-    }
-    if (kolumna?.tasks.length <= kolumna?.maxTasksLimit+1) {
-      this.specificId = -1;
-    }
-    if(kolumna2?.tasks.length >= kolumna2?.maxTasksLimit){
-      this.specificId = destinationCardId;
-    }
     this.cardService.moveTasks(sourceCardId, taskId, destinationCardId).subscribe(() => {
       this.fetchCards();
     });
@@ -43,22 +31,8 @@ export class Comp1Component {
     });
     }
   textValue = '2';
-  specificId: number = -1;
   changeLimit(cardId: number, limit: string, maxTasksLimit: number) {
-    let kolumna = this.data.find((card: Card) => card.id === cardId);
     let limit2 = parseInt(limit);
-    if (kolumna) {
-      if (limit2 < kolumna?.tasks.length) {
-        this.specificId = cardId;
-      }
-    }
-    if (limit2 < 0) {
-     this.specificId = cardId;
-    }
-
-    setInterval(() => {
-      this.specificId = -1;
-    }, 3000);
 
     this.cardService.changeLimit(cardId, limit2).subscribe(() => {
     });
@@ -66,13 +40,6 @@ export class Comp1Component {
 
 
   usunTask(taskId: number, cardId: number) {
-    let kolumna = this.data.find((card: Card) => card.id === cardId);
-    if (!kolumna){
-      return;
-    }
-    if (kolumna?.tasks.length <= kolumna?.maxTasksLimit+1) {
-      this.specificId = -1;
-    }
     this.cardService.deleteTask(taskId, cardId).subscribe(() => {
       this.fetchCards();
     });
@@ -95,15 +62,6 @@ export class Comp1Component {
   value = '';
 
   onEnter(value: string, card_id: number) {
-    this.cardService.getOneCard(card_id).subscribe((card: Card) => {
-      if(card.name == "To do" || card.name == "Done"){
-        this.specificId = -1;
-        return;
-      }
-      if (card.tasks.length >= card.maxTasksLimit) {
-        this.specificId = card_id;
-      }
-    });
 
     this.cardService.putTask(value, card_id).subscribe(() => {
       this.fetchCards();

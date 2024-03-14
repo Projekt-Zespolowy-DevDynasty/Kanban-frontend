@@ -13,7 +13,7 @@
       </div>
       <div class="tablica-kolumn overflow-x-auto">
         @for (card of data; track card.id) {
-            <div class="column" [ngStyle]="{ 'border': card.id === specificId ? '3px solid red' : '3px solid transparent' }"  >
+            <div class="column" [ngStyle]="{ 'border': card.tasks.length > card.maxTasksLimit ? '3px solid red' : '3px solid transparent' }"  >
                 <div class="naglowek">
                     <h2 style="width: 100%;">{{ card.name }}</h2>
 
