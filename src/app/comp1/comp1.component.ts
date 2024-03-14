@@ -54,7 +54,7 @@ export class Comp1Component {
     const card: Card = {id: -1, name: cardName, maxTasksLimit: 5, tasks: [] };
 
     if(cardName.trim() == ''){
-      this.toastr.info('Nie można dodać karty bez nazwy');
+      this.toastr.warning('Nie można dodać karty bez nazwy');
       return;
     }
 
