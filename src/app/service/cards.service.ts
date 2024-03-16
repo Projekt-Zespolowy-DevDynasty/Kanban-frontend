@@ -12,6 +12,8 @@ export class CardsService {
     constructor(private http: HttpClient) { }
 
 
+    //backendUrl: 'http://localhost:8080/api/card'
+
     getCards(): Observable<Card[]> {
         return this.http.get<Card[]>(`${environment.backendUrl}/card/all`);
     }
