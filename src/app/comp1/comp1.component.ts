@@ -35,11 +35,12 @@ export class Comp1Component {
       this.fetchCards();
     });
     }
-  textValue = '2';
+
   changeLimit(cardId: number, limit: string, maxTasksLimit: number) {
     let limit2 = parseInt(limit);
 
     this.cardService.changeLimit(cardId, limit2).subscribe(() => {
+      this.fetchCards();
     });
   }
 
@@ -71,20 +72,22 @@ export class Comp1Component {
     })
   }
   zmainaNazwyKarty(cardId: number, newName: string){
-    
-    // this.cardService.zmainaNazwyKarty(cardId, newName).subscribe({
-    //   next: (newName: string) =>{
-    //     this.toastr.success("Zmieniono nazwę");
-    //     this.fetchCards();
-    //   },
-    //   error:  (error) => {
-    //     this.toastr.error('Nie udało się zmienić nazwy');
-    //   }
-    //   })
 
-    this.cardService.zmainaNazwyKarty(cardId, newName).subscribe(() => {
-      this.fetchCards();
-    });
+    if(newName.trim() == ''){
+      this.toastr.warning('Nie można zmienić nazwy');
+      return;
+    }
+    
+    this.cardService.zmainaNazwyKarty(cardId, newName).subscribe({
+      next: (newName: string) =>{
+        this.toastr.success("Zmieniono nazwę");
+        this.fetchCards();
+      },
+      error:  (error) => {
+        this.toastr.error('Nie udało się zmienić nazwy');
+      }
+      })
+
 
   }
 
