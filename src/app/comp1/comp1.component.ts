@@ -28,7 +28,9 @@ export class Comp1Component {
 
   constructor(private cardService: CardsService, private http: HttpClient, private toastr: ToastrService) {}
     usunKarte(cardId: number) {
+
     this.toastr.error("Usunięto Karte");
+
     this.cardService.deleteCard(cardId).subscribe(() => {
       this.fetchCards();
     });
@@ -54,7 +56,7 @@ export class Comp1Component {
     const card: Card = {id: -1, name: cardName, maxTasksLimit: 5, tasks: [] };
 
     if(cardName.trim() == ''){
-      this.toastr.info('Nie można dodać karty bez nazwy');
+      this.toastr.warning('Nie można dodać karty bez nazwy');
       return;
     }
 
@@ -68,8 +70,21 @@ export class Comp1Component {
       }
     })
   }
-  zmainaNazwyKarty(cardName: string){
+  zmainaNazwyKarty(cardId: number, newName: string){
+    
+    // this.cardService.zmainaNazwyKarty(cardId, newName).subscribe({
+    //   next: (newName: string) =>{
+    //     this.toastr.success("Zmieniono nazwę");
+    //     this.fetchCards();
+    //   },
+    //   error:  (error) => {
+    //     this.toastr.error('Nie udało się zmienić nazwy');
+    //   }
+    //   })
 
+    this.cardService.zmainaNazwyKarty(cardId, newName).subscribe(() => {
+      this.fetchCards();
+    });
 
   }
 

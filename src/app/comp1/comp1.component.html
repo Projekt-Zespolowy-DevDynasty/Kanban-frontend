@@ -48,8 +48,8 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
-                                    <input #zmianakarty (keyup.enter)="zmainaNazwyKarty(zmianakarty.value)" type="text" class="input-textv3" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
-                                    <button (click)="zmainaNazwyKarty(zmianakarty.value)" type="button" class="btn btn-light"><i class="bi bi-plus-circle"></i>
+                                    <input #zmianakarty (keyup.enter)="zmainaNazwyKarty(card.id, zmianakarty.value)" type="text" class="input-textv3" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
+                                    <button (click)="zmainaNazwyKarty(card.id,zmianakarty.value)" type="button" class="btn btn-light"><i class="bi bi-plus-circle"></i>
                                     </button>
                                     </li>
                                 </ul>
