@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Card } from '../models/card.model';
 import { CardsService } from '../service/cards.service';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, provideHttpClient} from '@angular/common/http';
 import {NgStyle} from "@angular/common";
 import { ToastrService } from 'ngx-toastr';
 
@@ -52,11 +52,9 @@ export class Comp1Component {
 
   cardName = '';
   dodajKarte(cardName: string) {
-    if(cardName!= ""){
-      this.toastr.success("Dodano Karte");
-    }
+  
     const card: Card = {id: -1, name: cardName, maxTasksLimit: 5, tasks: [] };
-    
+    this.toastr.success("Dodano Karte");
     this.cardService.postCard(card).subscribe((card: Card) => {
       console.log(card);
       this.fetchCards();
@@ -66,7 +64,7 @@ export class Comp1Component {
   }
   zmainaNazwyKarty(cardName: string){
 
-  
+
   }
 
   data!: Card[];
