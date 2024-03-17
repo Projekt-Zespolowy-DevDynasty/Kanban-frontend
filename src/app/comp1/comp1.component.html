@@ -6,7 +6,8 @@
         <ul class="dropdown-menu">
             <li>
             <input #dodawanieKarty (keyup.enter)="dodajKarte(dodawanieKarty.value)" type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
-            <button (click)="dodajKarte(dodawanieKarty.value)" type="button" class="btn btn-light"><i class="bi bi-plus-circle"></i>
+            <button (click)="dodajKarte(dodawanieKarty.value)" type="button" class="btn btn-light">
+                <i class="bi bi-plus-circle"></i>
             </button>
             </li>
         </ul>
@@ -27,7 +28,9 @@
                                 
                                 <button (click)="usunKarte(card.id)" disabled type="button" class="btn btn-danger" style="margin-left: 40px; margin-top: -10px;">
                                     <i class="bi bi-trash-fill"></i>
+
                                 </button>
+                                
                             </div>
                             </div>
                         </div>
@@ -43,9 +46,15 @@
                                     <i class="bi bi-pen-fill"></i>
 
                                 </button>
-                                <button class="btn btn-info" type="button" >
+                                    <div class= " przycisk-do-sortowania">
+                                <button class="btn btn-info" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
                                     <i class="bi bi-three-dots-vertical"></i>
                                 </button>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    <p class="naglowek-do-przyciskuv2" style="margin-left: 10px;">Przenieś do:</p>
+                                    
+                                </ul>
+                                     </div>
                                 <ul class="dropdown-menu">
                                     <li>
                                     <input #zmianakarty (keyup.enter)="zmainaNazwyKarty(card.id, zmianakarty.value)" type="text" class="input-textv3" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
@@ -53,15 +62,29 @@
                                     </button>
                                     </li>
                                 </ul>
-                                <button (click)="usunKarte(card.id)" type="button" class="btn btn-danger">
+                                
+                                <button  type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <i class="bi bi-trash-fill"></i>
+                                    
                                 </button>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h1 class="modal-title fs-5" id="exampleModalLabel">Czy chcesz usunąć kartę?</h1>
+                                          <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >NIE</button>
+                                          <button   (click)="usunKarte(card.id)" type="button"  class="btn btn-danger" data-bs-dismiss="modal">TAK</button >     
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>        
                             </div>
                         </div>
                         </div>
                     }
-
-
                 </div>
                     <hr>
                 <div style="height: 30vh;">

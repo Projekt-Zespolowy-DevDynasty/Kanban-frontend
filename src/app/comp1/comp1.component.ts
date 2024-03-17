@@ -27,13 +27,25 @@ export class Comp1Component {
   }
 
   constructor(private cardService: CardsService, private http: HttpClient, private toastr: ToastrService) {}
+
     usunKarte(cardId: number) {
 
-    this.toastr.error("Usunięto Karte");
+    // this.toastr.error("Usunięto Karte");
 
-    this.cardService.deleteCard(cardId).subscribe(() => {
-      this.fetchCards();
-    });
+    // this.cardService.deleteCard(cardId).subscribe(() => {
+    //   this.fetchCards();
+    // });
+
+
+    this.cardService.deleteCard(cardId).subscribe({
+      next: (cardId: number) => {
+        this.toastr.error('Usunięto karte');
+        this.fetchCards();
+      },
+      error: (error) => {
+        this.toastr.error('Nie udało się usunąć karty');
+      }
+    })
     }
 
   changeLimit(cardId: number, limit: string, maxTasksLimit: number) {
@@ -72,11 +84,6 @@ export class Comp1Component {
     })
   }
   zmainaNazwyKarty(cardId: number, newName: string){
-
-    if(newName.trim() == ''){
-      this.toastr.warning('Nie można zmienić nazwy');
-      return;
-    }
     
     this.cardService.zmainaNazwyKarty(cardId, newName).subscribe({
       next: (newName: string) =>{
@@ -112,5 +119,6 @@ export class Comp1Component {
       this.data = cards;
     });
   }
+  
 
 }
