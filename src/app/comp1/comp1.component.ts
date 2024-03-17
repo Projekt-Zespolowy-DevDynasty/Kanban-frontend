@@ -30,13 +30,6 @@ export class Comp1Component {
 
     usunKarte(cardId: number) {
 
-    // this.toastr.error("Usunięto Karte");
-
-    // this.cardService.deleteCard(cardId).subscribe(() => {
-    //   this.fetchCards();
-    // });
-
-
     this.cardService.deleteCard(cardId).subscribe({
       next: (cardId: number) => {
         this.toastr.error('Usunięto karte');
