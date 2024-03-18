@@ -30,13 +30,6 @@ export class Comp1Component {
 
     usunKarte(cardId: number) {
 
-    // this.toastr.error("Usunięto Karte");
-
-    // this.cardService.deleteCard(cardId).subscribe(() => {
-    //   this.fetchCards();
-    // });
-
-
     this.cardService.deleteCard(cardId).subscribe({
       next: (cardId: number) => {
         this.toastr.error('Usunięto karte');
@@ -94,6 +87,9 @@ export class Comp1Component {
         this.toastr.error('Nie udało się zmienić nazwy');
       }
       })
+  }
+  zmianaNazwyTaska(taskId: number, newNameTask :string){
+
   }
 
   data!: Card[];
