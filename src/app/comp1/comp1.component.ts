@@ -94,8 +94,6 @@ export class Comp1Component {
         this.toastr.error('Nie udało się zmienić nazwy');
       }
       })
-
-
   }
 
   data!: Card[];

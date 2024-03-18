@@ -51,7 +51,15 @@
                                     <i class="bi bi-three-dots-vertical"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <p class="naglowek-do-przyciskuv2" style="margin-left: 10px;">Przenieś do:</p>
+                                    <p class="naglowek-do-przyciskuv2" style="margin-left: 10px;">Przenieś między:</p>
+                                    @for(cardy of data; track $index){
+                                        @if($index !=0){
+                                            <div class="przeniesienie">
+                                                <li ><a class="dropdown-item"  href="#"> {{$index}}</a></li>
+                                            </div>
+                       
+                                        }
+                                    }
                                     
                                 </ul>
                                      </div>
