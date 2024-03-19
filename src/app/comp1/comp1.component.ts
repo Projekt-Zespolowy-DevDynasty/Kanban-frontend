@@ -89,6 +89,9 @@ export class Comp1Component {
       })
   }
   zmianaNazwyTaska(taskId: number, newNameTask :string){
+    this.cardService.zmianaNazwyTaska(taskId, newNameTask).subscribe(() => {
+      this.fetchCards();
+    });
 
   }
 
