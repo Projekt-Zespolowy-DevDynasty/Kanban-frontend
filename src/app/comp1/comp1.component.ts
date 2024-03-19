@@ -59,7 +59,7 @@ export class Comp1Component {
   cardName = '';
   dodajKarte(cardName: string) {
 
-    const card: Card = {id: -1, name: cardName, maxTasksLimit: 5, tasks: [] };
+    const card: Card = {id: -1, name: cardName, maxTasksLimit: 5,position: 0, tasks: [] };
 
     if(cardName.trim() == ''){
       this.toastr.warning('Nie można dodać karty bez nazwy');
