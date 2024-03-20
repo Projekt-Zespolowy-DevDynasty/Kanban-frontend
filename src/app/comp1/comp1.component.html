@@ -24,7 +24,7 @@
                                     <p>{{ card.tasks.length }}</p>
                                 </div>
                                 <div class="button-group">
-                                    <button (click)="usunKarte(card.id)" disabled type="button" class="btn btn-danger" style="margin-left: 40px; margin-top: -10px;">
+                                    <button (click)="usunKarte(card.id, card.name)" disabled type="button" class="btn btn-danger" style="margin-left: 40px; margin-top: -10px;">
                                         <i class="bi bi-trash-fill"></i>
                                     </button>
                                     
@@ -67,7 +67,7 @@
                                     </li>
                                 </ul>
                                 
-                                <button (click)="usunKarte(card.id)" type="button" class="btn btn-danger">
+                                <button (click)="usunKarte(card.id, card.name)" type="button" class="btn btn-danger">
                                     <i class="bi bi-trash-fill"></i>
                                 </button>
                             </div>

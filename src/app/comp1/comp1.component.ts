@@ -28,8 +28,8 @@ export class Comp1Component {
 
   constructor(private cardService: CardsService, private http: HttpClient, private toastr: ToastrService) {}
 
-    usunKarte(cardId: number) {
-      if(confirm("Are you sure to delete "+name)) {
+    usunKarte(cardId: number, name: string) {
+      if(confirm("Usunąć kolumne "+name + "?")) {
         this.cardService.deleteCard(cardId).subscribe({
           next: (cardId: number) => {
             this.toastr.success('Usunięto kolumne');
