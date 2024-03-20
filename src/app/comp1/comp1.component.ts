@@ -29,17 +29,21 @@ export class Comp1Component {
   constructor(private cardService: CardsService, private http: HttpClient, private toastr: ToastrService) {}
 
     usunKarte(cardId: number) {
+      if(confirm("Are you sure to delete "+name)) {
+        this.cardService.deleteCard(cardId).subscribe({
+          next: (cardId: number) => {
+            this.toastr.success('Usunięto kolumne');
+            this.fetchCards();
+          },
+          error: (error) => {
+            this.toastr.error('Nie udało się usunąć kolumny');
+          }
+        })
+        }
 
-    this.cardService.deleteCard(cardId).subscribe({
-      next: (cardId: number) => {
-        this.toastr.error('Usunięto karte');
-        this.fetchCards();
-      },
-      error: (error) => {
-        this.toastr.error('Nie udało się usunąć karty');
       }
-    })
-    }
+
+
 
   changeLimit(cardId: number, limit: string, maxTasksLimit: number) {
     let limit2 = parseInt(limit);
