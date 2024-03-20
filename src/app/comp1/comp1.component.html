@@ -49,10 +49,10 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-dark">
 
-                                    <p class="naglowek-do-przyciskuv2" style="margin-left: 10px;">Przenieś przed:</p>
+                                    <p class="naglowek-do-przyciskuv2" style="margin-left: 10px;">Przenieś za:</p>
                                     @for (cardy of data; track cardy.id) {
-                                        @if(cardy.name != "To do"){
-                                            <li><a  class="dropdown-item">
+                                        @if(cardy.name != "Done"){
+                                            <li><a (click)="przesunKarte(card.id, cardy.id)" class="dropdown-item">
                                                 {{ cardy.name }}</a></li>
                                         }
                                         

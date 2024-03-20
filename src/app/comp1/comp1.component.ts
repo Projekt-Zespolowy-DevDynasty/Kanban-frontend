@@ -43,7 +43,13 @@ export class Comp1Component {
 
       }
 
+      przesunKarte(sourceId: number, destinationId: number){
 
+        this.cardService.przesunKarte(sourceId, destinationId).subscribe(() => {
+          this.fetchCards();
+        });
+
+      }
 
   changeLimit(cardId: number, limit: string, maxTasksLimit: number) {
     let limit2 = parseInt(limit);

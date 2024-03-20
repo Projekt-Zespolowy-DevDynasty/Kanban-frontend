@@ -41,9 +41,12 @@ export class CardsService {
     zmainaNazwyKarty(cardId: number, newName: string): Observable<any> {
         return this.http.put(`${environment.backendUrl}/card/${cardId}/edit-name`, newName);
     }
-    zmianaNazwyTaska(taskId: number, newNameTask:string): Observable<any>{
+    zmianaNazwyTaska(taskId: number, newNameTask:string): Observable<any> {
         return this.http.put(`${environment.backendUrl}/task/${taskId}/rename`, newNameTask);
+    }
+    przesunKarte(sourceId: number, destinationId: number): Observable<any> {
+        return this.http.put(`${environment.backendUrl}/card/${destinationId}/position/${sourceId}`, sourceId);
+    }
     }
 
 
-}
