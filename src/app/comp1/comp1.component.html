@@ -13,9 +13,11 @@
         </ul>
       </div>
       <div class="tablica-kolumn overflow-x-auto">
+        
         @for (card of data; track card.id) {
             <div class="column" [ngStyle]="{ 'border': (card.tasks.length > card.maxTasksLimit && card.maxTasksLimit !== -1) ? '3px solid red' : '3px solid transparent' }"  >
                 <div class="naglowek">
+                
                     <h2 style="width: 100%; padding-bottom: 5px;">{{ card.name }}</h2>
                     @if (card.name == "To do" || card.name == "Done") {
                         <div style="display: flex; justify-content: space-between; width: 100%;">
@@ -33,6 +35,7 @@
                         </div>
                     }@else {
                         <div style="display: flex; justify-content: space-between; width: 100%;">
+                            
                             <div class="button-group-container">
                             <div class="wip-limit-text" style="width: 100px;padding-top: 10px">
                                 <p> {{ card.tasks.length }} / </p>
