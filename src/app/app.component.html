@@ -1,3 +1,39 @@
 
 <app-board></app-board>
 
+<div style="height: 1000px;"></div>
+
+<div cdkDropListGroup>
+    <div class="example-container" >
+        @for (list of Data; track $index) {
+                <h2>{{list.title}}</h2>
+                <div 
+                cdkDropList 
+                [id] = "list.id.toString()"
+                [cdkDropListData]="list.tasks"
+                 class="example-list" 
+                 (cdkDropListDropped)="drop($event)">
+                    @for (card of list.tasks; track card) {
+                        <div class="example-box" cdkDrag [cdkDragData]="[list, card]" >{{card.name}}</div>
+                    }
+                </div>
+          }
+    </div>
+  
+    <!-- <div class="example-container">
+      <h2>Done</h2>
+  
+      <div
+        cdkDropList
+        [cdkDropListData]="done"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+        >
+        @for (item of done; track item) {
+          <div class="example-box" cdkDrag>{{item}}</div>
+        }
+      </div>
+    </div> -->
+  </div>
+
+  <div style="height: 1000px;"></div>
