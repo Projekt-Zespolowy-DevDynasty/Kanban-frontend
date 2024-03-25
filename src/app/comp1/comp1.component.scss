@@ -19,7 +19,7 @@ body {
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 10px;
     margin: 10px 10px 10px 10px;
-    width: 350px;
+    width: 335px;
     position: relative;
    // padding-bottom: 20px;
 }
@@ -52,16 +52,17 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
+.newinfo{
+  
+    margin-left: 5px;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+
+}
 
 .btn-warning{
-    position: fixed;
-    left: 40px;
-    bottom: 20px;
-    padding: 10px;
-    font-size: 30px;
-    width: 60px;
-    height: 60px;
-    line-height: 40px;
+    margin-left: 5px;
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
@@ -188,16 +189,14 @@ body {
     margin-right: 10px;
 }
 
-.btn-warning {
-    z-index: 9999;
-}
+
 .column .naglowek h2 {
     white-space: nowrap; /* Zapobiega zawijaniu tekstu na nowej linii */
     overflow: hidden; /* Ukrywa nadmiarowy tekst, który nie mieści się w obszarze */
     text-overflow: ellipsis; /* Wyświetla trzy kropki, gdy tekst jest zbyt długi, aby się zmieścić */
 }
 .button-group  {
-    margin-left: 133px;
+    margin-left: 120px;
 
 }
 .btn-primary{
@@ -272,3 +271,11 @@ input::-webkit-inner-spin-button {
 a:hover{
   cursor: pointer;
 }
+.button-side {
+  padding-top: 200px; 
+  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+
+}
+

@@ -1,18 +1,35 @@
 <div class="kanban-board">
-    <div class="btn-group dropup">
-        <button type="button" class="btn btn-warning" style="border-radius: 15px;" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-file-earmark-plus-fill" ></i>
-        </button>
-        <ul class="dropdown-menu">
-            <li>
-            <input #dodawanieKarty (keyup.enter)="dodajKarte(dodawanieKarty.value)" type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px;">
-            <button (click)="dodajKarte(dodawanieKarty.value)" type="button" class="btn btn-light">
-                <i class="bi bi-plus-circle"></i>
-            </button>
-            </li>
-        </ul>
-      </div>
+   
       <div class="tablica-kolumn overflow-x-auto">
+
+        <div class="button-side"> 
+            <button  type="button" class="btn btn-danger" style="margin-bottom: 10px;">
+                <i class="bi bi-trash-fill"></i>
+            </button>
+            <button class="btn newinfo btn-info" type="button" style="margin-bottom: 10px;">
+                <i class="bi bi-arrow-up-circle-fill"></i>
+            </button>
+            <button class="btn newinfo btn-info" type="button" style="margin-bottom: 10px;" >
+                <i class="bi bi-arrow-down-circle-fill"></i>
+            </button>
+            <div class="btn-group dropup">
+                <button type="button" class="btn btn-warning" style="border-radius: 10px; margin-bottom: 10px;"  data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-file-earmark-plus-fill" ></i>
+                </button >
+                <ul  class="dropdown-menu">
+                    <li>
+                    <input #dodawanieKarty (keyup.enter)="dodajKarte(dodawanieKarty.value)" type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px; ">
+                    <button (click)="dodajKarte(dodawanieKarty.value)" type="button" class="btn btn-light">
+                        <i class="bi bi-plus-circle"></i>
+                    </button>
+                    </li>
+                </ul>
+            </div>
+            <button type="button"  class="btn btn-secondary" style="margin-bottom: 10px;">
+                <i class="bi bi-building-fill-add"></i>
+            </button>
+              
+        </div>
         
         @for (card of data; track card.id) {
             <div class="column" [ngStyle]="{ 'border': (card.tasks.length > card.maxTasksLimit && card.maxTasksLimit !== -1) ? '3px solid red' : '3px solid transparent' }"  >
@@ -40,7 +57,7 @@
                                 <p> {{ card.tasks.length }} / </p>
                                 <input #limit (keyup.enter)="changeLimit(card.id, limit.value, card.maxTasksLimit)" class="wip-limit-number" [value]="card.maxTasksLimit" type="number" [placeholder]="card.maxTasksLimit">
                             </div>
-                            <div class="button-group" style="margin-left: 80px;">
+                            <div class="button-group" style="margin-left: 70px;">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-pen-fill"></i>
 
