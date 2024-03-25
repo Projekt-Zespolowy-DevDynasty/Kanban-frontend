@@ -3,7 +3,7 @@
       <div class="tablica-kolumn overflow-x-auto">
 
         <div class="button-side"> 
-            <button  type="button" class="btn btn-danger" style="margin-bottom: 10px;">
+            <button  type="button" class="btn newdanger btn-danger" style="margin-bottom: 10px; margin-left: 5px;">
                 <i class="bi bi-trash-fill"></i>
             </button>
             <button class="btn newinfo btn-info" type="button" style="margin-bottom: 10px;">
@@ -34,15 +34,15 @@
         @for (card of data; track card.id) {
             <div class="column" [ngStyle]="{ 'border': (card.tasks.length > card.maxTasksLimit && card.maxTasksLimit !== -1) ? '3px solid red' : '3px solid transparent' }"  >
                 <div class="naglowek">
-                    <h2 style="width: 100%; padding-bottom: 5px;">{{ card.name }}</h2>
+                    <h2 style="width: 100%; padding-bottom: 10px; padding-right: 20px;">{{ card.name }}</h2>
                     @if (card.name == "To do" || card.name == "Done") {
                         <div style="display: flex; justify-content: space-between; width: 100%;">
-                            <div class="button-group-container" style="margin-top: 0px;">
+                            <div class="button-group-container">
                                 <div class="wip-limit-text" style="width: 100px;">
-                                    <p>{{ card.tasks.length }}</p>
+                                    <p style="padding-bottom: 10px; padding-top: 5px;">{{ card.tasks.length}}</p>
                                 </div>
                                 <div class="button-group">
-                                    <button (click)="usunKarte(card.id, card.name)" disabled type="button" class="btn btn-danger" style="margin-left: 40px; margin-top: -10px;">
+                                    <button (click)="usunKarte(card.id, card.name)" disabled type="button" class="btn btn-danger" style="margin-left: 40px; margin-top: -5px;">
                                         <i class="bi bi-trash-fill"></i>
                                     </button>
                                     
@@ -52,10 +52,10 @@
                     }@else {
                         <div style="display: flex; justify-content: space-between; width: 100%;">
                             
-                            <div class="button-group-container">
-                            <div class="wip-limit-text" style="width: 100px;padding-top: 10px">
-                                <p> {{ card.tasks.length }} / </p>
-                                <input #limit (keyup.enter)="changeLimit(card.id, limit.value, card.maxTasksLimit)" class="wip-limit-number" [value]="card.maxTasksLimit" type="number" [placeholder]="card.maxTasksLimit">
+                            <div class="button-group-container" >
+                            <div class="wip-limit-text" style="width: 100px;">
+                                <p>{{card.tasks.length}} /<input #limit (keyup.enter)="changeLimit(card.id, limit.value, card.maxTasksLimit)" class="wip-limit-number" [value]="card.maxTasksLimit" type="number" [placeholder]="card.maxTasksLimit">
+                                 </p>
                             </div>
                             <div class="button-group" style="margin-left: 70px;">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">
@@ -90,7 +90,7 @@
                                     </li>
                                 </ul>
                                 
-                                <button (click)="usunKarte(card.id, card.name)" type="button" class="btn btn-danger">
+                                <button (click)="usunKarte(card.id, card.name)" type="button" class="btn btn-danger" style="margin-left: 5px;">
                                     <i class="bi bi-trash-fill"></i>
                                 </button>
                             </div>
@@ -99,14 +99,14 @@
                     }
                 </div>
                     <hr>
-                <div style="height: 30vh;">
+                <div >
                     <div 
                     cdkDropList 
                     [id] = "card.id.toString()"
                     [cdkDropListData]="card.tasks"
                      class="example-list" 
                      (cdkDropListDropped)="drop($event)"
-                    class="overflow-auto" style="height: 370px;">
+                    class="overflow-auto" style="height: 340px;">
                         @for (task of card.tasks; track task.id) {
                             <div class="task" cdkDrag [cdkDragData]="[card, task]">
                                 <div class="tekst-zadan">
