@@ -35,7 +35,7 @@ export class CardsService {
     changeLimit(cardId: number, limit: number): Observable<any> {
         return this.http.put(`${environment.backendUrl}/card/${cardId}/maxTasksLimit`,limit);
     }
-    moveTasks(sourceCardId: number, taskId: number,destinationCardId: number ): Observable<any> {
+    moveTasks(sourceCardId: number, taskId: number,destinationCardId: number): Observable<any> {
         return this.http.put(`${environment.backendUrl}/card/${sourceCardId}/move-task/${taskId}/to-card/${destinationCardId}`,null);
     } 
     zmainaNazwyKarty(cardId: number, newName: string): Observable<any> {

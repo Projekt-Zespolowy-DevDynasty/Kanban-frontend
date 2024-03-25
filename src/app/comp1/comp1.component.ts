@@ -4,6 +4,8 @@ import { CardsService } from '../service/cards.service';
 import {HttpClient, HttpErrorResponse, provideHttpClient} from '@angular/common/http';
 import {NgStyle} from "@angular/common";
 import { ToastrService } from 'ngx-toastr';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CdkDragDrop, moveItemInArray, transferArrayItem,  CdkDrag, CdkDropList, CdkDropListGroup} from '@angular/cdk/drag-drop';
 
 
 
@@ -12,6 +14,10 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-comp1',
   standalone: true,
   imports: [
+    MatSlideToggleModule, 
+    CdkDropList, 
+    CdkDrag, 
+    CdkDropListGroup,
     NgStyle
   ],
   providers: [CardsService],
@@ -19,6 +25,37 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './comp1.component.scss'
 })
 export class Comp1Component {
+
+  drop(event: CdkDragDrop<{id: number, name: string}[]>) {
+    
+    // source id 
+    console.log( "destination id" + event.container.id);
+    // destination id
+    console.log("source id" + event.item.data[0].id)
+    // task id 
+    console.log("task id" + event.item.data[1].id)
+
+
+    if (event.previousContainer === event.container) {
+      console.log("moveItemInArray" + event)
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+    this.przesTask(event.item.data[0].id, event.item.data[1].id, Number(event.container.id));
+
+  }
+
+
+
+
+
+
 
   przesTask(sourceCardId: number,taskId :number, destinationCardId: number) {
 

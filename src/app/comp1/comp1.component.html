@@ -100,9 +100,15 @@
                 </div>
                     <hr>
                 <div style="height: 30vh;">
-                    <div class="overflow-auto" style="height: 370px;">
+                    <div 
+                    cdkDropList 
+                    [id] = "card.id.toString()"
+                    [cdkDropListData]="card.tasks"
+                     class="example-list" 
+                     (cdkDropListDropped)="drop($event)"
+                    class="overflow-auto" style="height: 370px;">
                         @for (task of card.tasks; track task.id) {
-                            <div class="task">
+                            <div class="task" cdkDrag [cdkDragData]="[card, task]">
                                 <div class="tekst-zadan">
                                     <p>{{ task.name }}</p>
                                 </div>
@@ -118,17 +124,6 @@
                                             <button (click)="zmianaNazwyTaska(task.id,zmianataska.value)" type="button" class="btn btn-light"><i class="bi bi-plus-circle"></i>
                                             </button>
                                             </li>
-                                        </ul>
-                                    
-                                        <button class="btn btn-info" type="button"data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-three-dots-vertical"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-dark">
-                                            <p class="naglowek-do-przycisku">Przenieś do:</p>
-                                            @for (cardy of data; track cardy.id) {
-                                                <li><a (click)="przesTask(card.id, task.id, cardy.id)" class="dropdown-item">
-                                                    {{ cardy.name }}</a></li>
-                                            }
                                         </ul>
 
                                     <button (click)="usunTask(task.id, card.id)" type="button" class="btn btn-danger">
