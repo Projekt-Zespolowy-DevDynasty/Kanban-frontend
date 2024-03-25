@@ -83,9 +83,15 @@
                 </div>
                     <hr>
                 <div style="height: 30vh;">
-                    <div class="overflow-auto" style="height: 370px;">
+                    <div 
+                    cdkDropList 
+                    [id] = "card.id.toString()"
+                    [cdkDropListData]="card.tasks"
+                     class="example-list" 
+                     (cdkDropListDropped)="drop($event)"
+                    class="overflow-auto" style="height: 370px;">
                         @for (task of card.tasks; track task.id) {
-                            <div class="task">
+                            <div class="task" cdkDrag [cdkDragData]="[card, task]">
                                 <div class="tekst-zadan">
                                     <p>{{ task.name }}</p>
                                 </div>
