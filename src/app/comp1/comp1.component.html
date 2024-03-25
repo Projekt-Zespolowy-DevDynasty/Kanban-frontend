@@ -108,17 +108,6 @@
                                             </button>
                                             </li>
                                         </ul>
-                                    
-                                        <button class="btn btn-info" type="button"data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-three-dots-vertical"></i>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-dark">
-                                            <p class="naglowek-do-przycisku">Przenieś do:</p>
-                                            @for (cardy of data; track cardy.id) {
-                                                <li><a (click)="przesTask(card.id, task.id, cardy.id)" class="dropdown-item">
-                                                    {{ cardy.name }}</a></li>
-                                            }
-                                        </ul>
 
                                     <button (click)="usunTask(task.id, card.id)" type="button" class="btn btn-danger">
                                         <i class="bi bi-trash-fill"></i>
