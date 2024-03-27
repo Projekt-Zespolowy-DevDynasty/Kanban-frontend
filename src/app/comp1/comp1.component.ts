@@ -6,25 +6,34 @@ import {NgStyle} from "@angular/common";
 import { ToastrService } from 'ngx-toastr';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CdkDragDrop, moveItemInArray, transferArrayItem,  CdkDrag, CdkDropList, CdkDropListGroup} from '@angular/cdk/drag-drop';
+import { BoardComponent } from "../board/board.component";
+import { Row } from '../models/row.model';
+import { RowService } from '../service/row.service';
 
 
 
 
 @Component({
-  selector: 'app-comp1',
-  standalone: true,
-  imports: [
-    MatSlideToggleModule, 
-    CdkDropList, 
-    CdkDrag, 
-    CdkDropListGroup,
-    NgStyle
-  ],
-  providers: [CardsService],
-  templateUrl: './comp1.component.html',
-  styleUrl: './comp1.component.scss'
+    selector: 'app-comp1',
+    standalone: true,
+    providers: [CardsService, RowService],
+    templateUrl: './comp1.component.html',
+    styleUrl: './comp1.component.scss',
+    imports: [
+        MatSlideToggleModule,
+        CdkDropList,
+        CdkDrag,
+        CdkDropListGroup,
+        NgStyle,
+        BoardComponent
+    ]
 })
 export class Comp1Component {
+
+  allRows!: Row[];
+
+
+  
 
   drop(event: CdkDragDrop<{id: number, name: string}[]>) {
     
@@ -65,12 +74,12 @@ export class Comp1Component {
 
   }
 
-  constructor(private cardService: CardsService, private http: HttpClient, private toastr: ToastrService) {}
+  constructor(private cardService: CardsService, private rowService: RowService, private http: HttpClient, private toastr: ToastrService) {}
 
-    usunKarte(cardId: number, name: string) {
+    usunKarte(positionNumber: number, name: string) {
       if(confirm("Usunąć kolumne "+name + "?")) {
-        this.cardService.deleteCard(cardId).subscribe({
-          next: (cardId: number) => {
+        this.rowService.deleteColumnInRow(positionNumber).subscribe({
+          next: (positionNumber: Row) => {
             this.toastr.success('Usunięto kolumne');
             this.fetchCards();
           },
@@ -108,15 +117,13 @@ export class Comp1Component {
   cardName = '';
   dodajKarte(cardName: string) {
 
-    const card: Card = {id: -1, name: cardName, maxTasksLimit: 5,position: 0, tasks: [] };
-
     if(cardName.trim() == ''){
       this.toastr.warning('Nie można dodać karty bez nazwy');
       return;
     }
 
-    this.cardService.postCard(card).subscribe({
-      next: (card: Card) => {
+    this.rowService.addColumnInRow(cardName).subscribe({
+      next: (myRow: Row) => {
         this.toastr.success('Dodano karte');
         this.fetchCards();
       },
@@ -160,11 +167,21 @@ export class Comp1Component {
   ngOnInit(): void{
     this.fetchCards();
   }
-  fetchCards(){
-    this.cardService.getCards().subscribe((cards: Card[])=>{
-      this.data = cards;
-    });
-  }
-  
 
-}
+  fetchCards(){
+    this.rowService.getAll().subscribe({
+      next: (rows: Row[])=>{
+    this.allRows = rows;
+    console.log(rows);
+    this.data = rows[0].cardinrow;
+    console.log(this.data);
+      },
+      error: (error)=> {
+
+      }
+    })
+    console.log(this.allRows);
+  }
+  }
+
+ 

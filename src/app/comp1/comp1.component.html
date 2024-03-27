@@ -1,36 +1,8 @@
 <div class="kanban-board">
-   
-      <div class="tablica-kolumn overflow-x-auto">
-
-        <div class="button-side"> 
-            <button  type="button" class="btn newdanger btn-danger" style="margin-bottom: 10px; margin-left: 5px;">
-                <i class="bi bi-trash-fill"></i>
-            </button>
-            <button class="btn newinfo btn-info" type="button" style="margin-bottom: 10px;">
-                <i class="bi bi-arrow-up-circle-fill"></i>
-            </button>
-            <button class="btn newinfo btn-info" type="button" style="margin-bottom: 10px;" >
-                <i class="bi bi-arrow-down-circle-fill"></i>
-            </button>
-            <div class="btn-group dropup">
-                <button type="button" class="btn btn-warning" style="border-radius: 10px; margin-bottom: 10px;"  data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-file-earmark-plus-fill" ></i>
-                </button >
-                <ul  class="dropdown-menu">
-                    <li>
-                    <input #dodawanieKarty (keyup.enter)="dodajKarte(dodawanieKarty.value)" type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px; ">
-                    <button (click)="dodajKarte(dodawanieKarty.value)" type="button" class="btn btn-light">
-                        <i class="bi bi-plus-circle"></i>
-                    </button>
-                    </li>
-                </ul>
-            </div>
-            <button type="button"  class="btn btn-secondary" style="margin-bottom: 10px;">
-                <i class="bi bi-building-fill-add"></i>
-            </button>
-              
-        </div>
-        
+    
+      
+        <div class="part-board overflow-x-auto">
+        <div class="tablica-kolumn ">
         @for (card of data; track card.id) {
             <div class="column" [ngStyle]="{ 'border': (card.tasks.length > card.maxTasksLimit && card.maxTasksLimit !== -1) ? '3px solid red' : '3px solid transparent' }"  >
                 <div class="naglowek">
@@ -42,7 +14,7 @@
                                     <p style="padding-bottom: 10px; padding-top: 5px;">{{ card.tasks.length}}</p>
                                 </div>
                                 <div class="button-group">
-                                    <button (click)="usunKarte(card.id, card.name)" disabled type="button" class="btn btn-danger" style="margin-left: 40px; margin-top: -5px;">
+                                    <button (click)="usunKarte(card.position, card.name)" disabled type="button" class="btn btn-danger" style="margin-left: 40px; margin-top: -5px;">
                                         <i class="bi bi-trash-fill"></i>
                                     </button>
                                     
@@ -90,7 +62,7 @@
                                     </li>
                                 </ul>
                                 
-                                <button (click)="usunKarte(card.id, card.name)" type="button" class="btn btn-danger" style="margin-left: 5px;">
+                                <button (click)="usunKarte(card.position, card.name)" type="button" class="btn btn-danger" style="margin-left: 5px;">
                                     <i class="bi bi-trash-fill"></i>
                                 </button>
                             </div>
@@ -142,10 +114,27 @@
                     </div>
                     
                 </div>
-
+                
             </div>
         }
+        
+        
+    </div>
+
+    <div>
+
+        HUJJJJJJJJJJJJJJj
+        <!-- @if(allRows.length > 1){
+            @for(row of allRows; track $index){
+                @if(row.position != 0 ){
+                <app-board [rowId] = "row.id"></app-board>
+            }
+            }
+        } -->
+        
+    </div>
       </div>
+      
       
 
 </div>
