@@ -18,8 +18,8 @@ export class RowService{
     getAll(): Observable<Row[]> {
         return this.http.get<Row[]>(`${environment.backendUrl}/row/all`);
     }
-    addRow(): Observable<Row> {
-        return this.http.post<Row>(`${environment.backendUrl}/row/add`, null);
+    addRow(rowName: string): Observable<Row> {
+        return this.http.post<Row>(`${environment.backendUrl}/row/add`, rowName);
     }
     deleteRow(rowId: number): Observable<Row>{
         return this.http.delete<Row>(`${environment.backendUrl}/row/${rowId}`);
@@ -38,6 +38,9 @@ export class RowService{
     }
     getRowById(rowId: number): Observable<Row>{
         return this.http.get<Row>(`${environment.backendUrl}/row/getrowbyid/${rowId}`);
+    }
+    moveColumn(sourceColumnPosition: number, targetColumnPosition: number): Observable<any> {
+        return this.http.put<Row>(`${environment.backendUrl}/row/move-column/${sourceColumnPosition}/${targetColumnPosition}`, null);
     }
  
 

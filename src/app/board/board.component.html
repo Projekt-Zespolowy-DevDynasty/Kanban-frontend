@@ -1,13 +1,32 @@
+
+
 <div class="kanban-board">
+
+        
+        
+        
+        
    
     <div class="tablica-kolumn">
+        
       
       @for (card of data; track card.id) {
           <div class="column" [ngStyle]="{ 'border': (card.tasks.length > card.maxTasksLimit && card.maxTasksLimit !== -1) ? '3px solid red' : '3px solid transparent' }"  >
               <div class="naglowek">
-                {{card.position}}
+               
+
                 @if (card.name == "To do") {
-                    fgh
+                    <h2 style="width: 100%; padding-bottom: 10px; padding-right: 20px;">{{newRow.name}}</h2>
+                    
+                    <button (click)="usunWiersz(rowId)" type="button" class="btn newdanger btn-danger" style="margin-bottom: 10px; margin-left: 5px;">
+                        <i class="bi bi-trash-fill"></i>
+                    </button>
+                    <button (click)="przeniesGora(rowId)" class="btn newinfo btn-info" type="button" style="margin-bottom: 10px;">
+                        <i class="bi bi-arrow-up-circle-fill"></i>
+                    </button>
+                    <button (click)="przeniesDol(rowId)"class="btn newinfo btn-info" type="button" style="margin-bottom: 10px;" >
+                        <i class="bi bi-arrow-down-circle-fill"></i>
+                    </button>
                 }
               </div>
                   <hr>

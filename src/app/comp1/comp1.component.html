@@ -1,12 +1,46 @@
 <div class="kanban-board">
+    <div class="button-two">
+        
+        <button type="button" class="btn btn-warning" style="border-radius: 10px; margin-bottom: 10px;"  data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-file-earmark-plus-fill" ></i>
+        </button >
+        <ul  class="dropdown-menu">
+            <li>
+            <input #dodawanieKarty (keyup.enter)="dodajKarte(dodawanieKarty.value)" type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px; ">
+            <button (click)="dodajKarte(dodawanieKarty.value)" type="button" class="btn btn-light">
+                <i class="bi bi-plus-circle"></i>
+            </button>
+            </li>
+        </ul>
+       
+        
+        <button type="button"  class="btn btn-secondary" style="margin-bottom: 10px;" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-building-fill-add"></i>
+        </button>
+        <ul  class="dropdown-menu">
+            <li>
+            <input #dodawanieWiersza (keyup.enter)="dodajWiersz(dodawanieWiersza.value)" type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px; ">
+            <button (click)="dodajWiersz(dodawanieWiersza.value)" type="button" class="btn btn-light">
+                <i class="bi bi-plus-circle"></i>
+            </button>
+            </li>
+        </ul>
     
+       
+    </div>
+    
+  
 
         <div class="part-board overflow-x-auto">
+            
+            
         <div class="tablica-kolumn ">
         @for (card of data; track card.id) {
             <div class="column" [ngStyle]="{ 'border': (card.tasks.length > card.maxTasksLimit && card.maxTasksLimit !== -1) ? '3px solid red' : '3px solid transparent' }"  >
                 <div class="naglowek">
+                    
                     <h2 style="width: 100%; padding-bottom: 10px; padding-right: 20px;">{{ card.name }}</h2>
+                    
                     @if (card.name == "To do" || card.name == "Done") {
                         <div style="display: flex; justify-content: space-between; width: 100%;">
                             <div class="button-group-container">
@@ -45,9 +79,14 @@
                                         
                                         @if(cardy.name != "Done"){
                                             @if(cardy.id!= card.id){
-                                            
-                                            <li><a (click)="przesunKarte(card.id, cardy.id)" class="dropdown-item">
-                                                {{ cardy.name }}</a></li>
+                                            @if(cardy.name == "To do"){
+                                                <li><a (click)="przesunKarte(card.position, cardy.position+1)" class="dropdown-item">
+                                                    {{ cardy.name }}</a></li>
+                                            }@else {
+                                                <li><a (click)="przesunKarte(card.position, cardy.position)" class="dropdown-item">
+                                                    {{ cardy.name }}</a></li>
+                                            }
+                                           
                                             }
                                         }
                                         
@@ -68,6 +107,7 @@
                             </div>
                         </div>
                         </div>
+
                     }{{card.position}}
                 </div>
                     <hr>
@@ -122,10 +162,13 @@
     </div>
 
     <div>
+        
+        
         @if(dlugoscListyRows > 1){
             @for(row of allRows; track $index){
                 @if(row.position != 0 ){
                 <app-board [rowId] = "row.id"></app-board>
+
             }
             }
         }
@@ -134,5 +177,6 @@
       </div>
       
       
-
+      
+      
 </div>

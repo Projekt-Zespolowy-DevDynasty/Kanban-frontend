@@ -93,9 +93,9 @@ export class Comp1Component {
 
       }
 
-      przesunKarte(sourceId: number, destinationId: number){
+      przesunKarte(sourceColumnPosition: number, targetColumnPosition: number){
 
-        this.cardService.przesunKarte(sourceId, destinationId).subscribe(() => {
+        this.rowService.moveColumn(sourceColumnPosition, targetColumnPosition).subscribe(() => {
           this.fetchCards();
         });
 
@@ -182,6 +182,18 @@ export class Comp1Component {
       }
     })
   }
+  dodajWiersz(rowName: string){
+    this.rowService.addRow(rowName).subscribe({
+      next: (addRow: Row) => {
+        this.toastr.success('Dodano wiersz');
+        this.fetchCards();
+      },
+      error: (error) => {
+        this.toastr.error('Nie udało się dodać wiersza');
+      }
+    })
   }
-
+  
+  }
+  
  

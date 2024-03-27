@@ -29,6 +29,8 @@ export class BoardComponent {
 
     @Input() rowId!: number;
 
+    newRow!: Row;
+
     drop(event: CdkDragDrop<{id: number, name: string}[]>) {
     
         // source id 
@@ -98,6 +100,38 @@ export class BoardComponent {
       fetchCards(){
         this.rowService.getRowById(this.rowId).subscribe((row: Row) => {
             this.data = row.cardsinrow;
+            this.newRow = row;
+
+
         });
+        
       }
+
+      usunWiersz(rowId: number){
+     //if(confirm("Usunąć kolumne "+name + "?")) {
+        this.rowService.deleteRow(rowId).subscribe ({
+          next: (rowId: Row) => {
+            this.toastr.success('Usunięto wiersz');
+            this.fetchCards();
+          },
+          error: (error) => {
+            this.toastr.error('Nie udało się usunąć wiersza');
+          }
+        })
+      //  }
+
+      }
+      przeniesGora(rowId: number){
+        this.rowService.moveUpRow(rowId).subscribe (() =>{
+            this.fetchCards();
+        });
+
+      }
+      przeniesDol(rowId: number){
+        this.rowService.moveDownRow(rowId).subscribe (() =>{
+            this.fetchCards();
+        });
+
+      }
+      
 }
