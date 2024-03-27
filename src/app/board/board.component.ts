@@ -8,13 +8,14 @@ import { ToastrService } from 'ngx-toastr';
 import { Card } from '../models/card.model';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgStyle } from '@angular/common';
+import { RowService } from '../service/row.service';
 
 @Component({
     selector: 'app-board',
     standalone: true,
     templateUrl: './board.component.html',
     styleUrl: './board.component.scss',
-    providers: [CardsService],
+    providers: [CardsService, RowService],
     imports: [
         MatSlideToggleModule,
         CdkDropList,
@@ -27,8 +28,6 @@ export class BoardComponent {
 
 
     @Input() rowId!: number;
-
-
 
     drop(event: CdkDragDrop<{id: number, name: string}[]>) {
     
@@ -55,12 +54,6 @@ export class BoardComponent {
     
       }
     
-    
-    
-    
-    
-    
-    
       przesTask(sourceCardId: number,taskId :number, destinationCardId: number) {
     
         this.cardService.moveTasks(sourceCardId, taskId, destinationCardId).subscribe(() => {
@@ -69,38 +62,8 @@ export class BoardComponent {
     
       }
     
-      constructor(private cardService: CardsService, private http: HttpClient, private toastr: ToastrService) {}
-    
-        usunKarte(cardId: number, name: string) {
-          if(confirm("Usunąć kolumne "+name + "?")) {
-            this.cardService.deleteCard(cardId).subscribe({
-              next: (cardId: number) => {
-                this.toastr.success('Usunięto kolumne');
-                this.fetchCards();
-              },
-              error: (error) => {
-                this.toastr.error('Nie udało się usunąć kolumny');
-              }
-            })
-            }
-    
-          }
-    
-          przesunKarte(sourceId: number, destinationId: number){
-    
-            this.cardService.przesunKarte(sourceId, destinationId).subscribe(() => {
-              this.fetchCards();
-            });
-    
-          }
-    
-      changeLimit(cardId: number, limit: string, maxTasksLimit: number) {
-        let limit2 = parseInt(limit);
-    
-        this.cardService.changeLimit(cardId, limit2).subscribe(() => {
-          this.fetchCards();
-        });
-      }
+      constructor(private rowService: RowService, private cardService: CardsService, private http: HttpClient, private toastr: ToastrService) {}
+
     
     
       usunTask(taskId: number, cardId: number) {
@@ -109,38 +72,6 @@ export class BoardComponent {
         });
       }
     
-      cardName = '';
-      dodajKarte(cardName: string) {
-    
-        const card: Card = {id: -1, name: cardName, maxTasksLimit: 5,position: 0, tasks: [] };
-    
-        if(cardName.trim() == ''){
-          this.toastr.warning('Nie można dodać karty bez nazwy');
-          return;
-        }
-    
-        this.cardService.postCard(card).subscribe({
-          next: (card: Card) => {
-            this.toastr.success('Dodano karte');
-            this.fetchCards();
-          },
-          error: (error) => {
-            this.toastr.error('Nie udało się dodać karty');
-          }
-        })
-      }
-      zmainaNazwyKarty(cardId: number, newName: string){
-        
-        this.cardService.zmainaNazwyKarty(cardId, newName).subscribe({
-          next: (newName: string) =>{
-            this.toastr.success("Zmieniono nazwę");
-            this.fetchCards();
-          },
-          error:  (error) => {
-            this.toastr.error('Nie udało się zmienić nazwy');
-          }
-          })
-      }
       zmianaNazwyTaska(taskId: number, newNameTask :string){
         this.cardService.zmianaNazwyTaska(taskId, newNameTask).subscribe(() => {
           this.fetchCards();
@@ -165,8 +96,8 @@ export class BoardComponent {
         this.fetchCards();
       }
       fetchCards(){
-        this.cardService.getCards().subscribe((cards: Card[])=>{
-          this.data = cards;
+        this.rowService.getRowById(this.rowId).subscribe((row: Row) => {
+            this.data = row.cardsinrow;
         });
       }
 }

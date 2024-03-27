@@ -36,6 +36,9 @@ export class RowService{
     getByPosition(rowPosition: number): Observable<Row>{
         return this.http.get<Row>(`${environment.backendUrl}/row/${rowPosition}`);
     }
+    getRowById(rowId: number): Observable<Row>{
+        return this.http.get<Row>(`${environment.backendUrl}/row/getrowbyid/${rowId}`);
+    }
  
 
 }

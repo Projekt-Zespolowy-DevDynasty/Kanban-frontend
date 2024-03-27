@@ -4,6 +4,6 @@ export interface Row{
     id: number,
     name: string,
     position: number,
-    cardinrow: Card[]
+    cardsinrow: Card[]
    
 }

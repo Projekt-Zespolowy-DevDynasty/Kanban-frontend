@@ -1,6 +1,6 @@
 <div class="kanban-board">
     
-      
+
         <div class="part-board overflow-x-auto">
         <div class="tablica-kolumn ">
         @for (card of data; track card.id) {
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         </div>
-                    }
+                    }{{card.position}}
                 </div>
                     <hr>
                 <div >
@@ -122,15 +122,13 @@
     </div>
 
     <div>
-
-        HUJJJJJJJJJJJJJJj
-        <!-- @if(allRows.length > 1){
+        @if(dlugoscListyRows > 1){
             @for(row of allRows; track $index){
                 @if(row.position != 0 ){
                 <app-board [rowId] = "row.id"></app-board>
             }
             }
-        } -->
+        }
         
     </div>
       </div>

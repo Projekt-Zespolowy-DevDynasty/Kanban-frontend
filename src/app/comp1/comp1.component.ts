@@ -31,6 +31,7 @@ import { RowService } from '../service/row.service';
 export class Comp1Component {
 
   allRows!: Row[];
+  dlugoscListyRows!: number;
 
 
   
@@ -77,6 +78,7 @@ export class Comp1Component {
   constructor(private cardService: CardsService, private rowService: RowService, private http: HttpClient, private toastr: ToastrService) {}
 
     usunKarte(positionNumber: number, name: string) {
+      console.log(positionNumber + " " + name + " " + this.data);
       if(confirm("Usunąć kolumne "+name + "?")) {
         this.rowService.deleteColumnInRow(positionNumber).subscribe({
           next: (positionNumber: Row) => {
@@ -171,16 +173,14 @@ export class Comp1Component {
   fetchCards(){
     this.rowService.getAll().subscribe({
       next: (rows: Row[])=>{
-    this.allRows = rows;
-    console.log(rows);
-    this.data = rows[0].cardinrow;
-    console.log(this.data);
+        this.allRows = rows;
+        this.data = rows[0].cardsinrow;
+        this.dlugoscListyRows = rows.length;
       },
       error: (error)=> {
 
       }
     })
-    console.log(this.allRows);
   }
   }
 
