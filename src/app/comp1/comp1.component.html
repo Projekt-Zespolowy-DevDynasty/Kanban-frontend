@@ -2,7 +2,7 @@
     <div class="part-board overflow-x-auto">
     <div class="tablica-kolumn ">
 
-        <div class="button-two" style="margin-right: 58px;">
+        <div class="button-two">
             <button type="button" class="btn btn-warning" style="border-radius: 10px; margin-bottom: 10px;"  data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-file-earmark-plus-fill" ></i>
             </button >
@@ -162,9 +162,9 @@
         @for(row of allRows; track $index){
             @if(row.position != 0 ){
                 
-                <div class="caly-wiersz">
-                    <div class="button-option" >
-                        <button (click)="przeniesGora(row.id)" class="btn newinfo btn-info" type="button" style="margin-bottom: 10px; margin-top: 0px;">
+                <div class="caly-wiersz" >
+                    <div class="button-option" style="margin-right: 0px;">
+                        <button (click)="przeniesGora(row.id)" class="btn newinfo btn-info" type="button" style="margin-bottom: 10px; margin-top: 10px;">
                             <i class="bi bi-arrow-up-circle-fill"></i>
                         </button>
                         <button (click)="przeniesDol(row.id)"class="btn newinfo btn-info" type="button" style="margin-bottom: 10px; " >

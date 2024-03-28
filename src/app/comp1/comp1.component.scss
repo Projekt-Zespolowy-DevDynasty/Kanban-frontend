@@ -10,6 +10,8 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
+
+    
 }
 
 .column {
@@ -297,17 +299,17 @@ a:hover{
   align-items: flex-start; // Wyrównuje przyciski do lewej strony kontenera
   margin-left: 5px; // Dodaje margines z lewej strony, aby oddzielić od krawędzi strony
   margin-right: 5px;
+  
 
-
-  //height: 0vh;
   
 }
 
 .caly-wiersz{
   display: flex;
 flex-direction: row;
-flex-wrap: wrap;
+flex-wrap: nowwrap;
 justify-content: flex-start;
 align-items: flex-start;
 align-content: flex-start;
+
 }
