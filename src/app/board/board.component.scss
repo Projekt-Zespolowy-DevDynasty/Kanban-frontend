@@ -165,15 +165,31 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
-.naglowek{
-    width: 330px;
-   // height: 50px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    align-content: flex-start;
+// .naglowek{
+//     width: 330px;
+//    // height: 50px;
+//     display: flex;
+//     flex-direction: column;
+//     flex-wrap: wrap;
+//     justify-content: flex-start;
+//     align-items: flex-start;
+//     align-content: flex-start;
+// }
+.naglowek {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  h2 {
+    margin: 0;
+    padding-top: 10px;
+    padding-right: 20px; // Możesz dostosować padding, aby lepiej pasował do twojego układu
+  }
+
+  span { // Załóżmy, że {{card.tasks.length}} umieszczone jest wewnątrz elementu <span>
+    padding-top: 10px; // Aby wyrównać do góry, jeśli jest taka potrzeba
+  }
 }
 .button-group {
     display: flex;

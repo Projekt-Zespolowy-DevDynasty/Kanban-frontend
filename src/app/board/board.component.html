@@ -7,11 +7,11 @@
         
       @for (card of data; track card.id) {
           <div class="column" [ngStyle]="{ 'border': (card.tasks.length > card.maxTasksLimit && card.maxTasksLimit !== -1) ? '3px solid red' : '3px solid transparent' }"  >
-              <div class="naglowek">
+            <div class="naglowek" style="display: flex; justify-content: space-between; align-items: center;">
                 @if (card.name == "To do") {
                     
-                    <h2 style="width: 100%; padding-top: 10px; padding-right: 20px;">{{newRow.name}}</h2>
-                     <!-- {{card.tasks.length}} -->
+                    <h2 style=" margin: 0; padding-top: 10px; padding-bottom: 8px;">{{newRow.name}}</h2>
+    <span style="padding-top: 5px; padding-bottom: 20px ">{{card.tasks.length}}</span>
                   
                 }@else if(card.name != "Done") {
                     <div class="wip-limit-text" style="width: 100px; padding-bottom: 20px;">
