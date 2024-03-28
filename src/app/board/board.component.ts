@@ -70,9 +70,11 @@ export class BoardComponent implements OnInit, OnChanges {
     
     
       usunTask(taskId: number, cardId: number) {
-        this.cardService.deleteTask(taskId, cardId).subscribe(() => {
-          this.fetchCards();
-        });
+        if(confirm("Usunąć zadanie?")) {
+          this.cardService.deleteTask(taskId, cardId).subscribe(() => {
+            this.fetchCards();
+          });
+        }
       }
     
       zmianaNazwyTaska(taskId: number, newNameTask :string){
