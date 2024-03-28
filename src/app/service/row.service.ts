@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { Row } from "../models/row.model";
 import { environment } from "../../environments/environment";
 import { Injectable } from "@angular/core";
@@ -41,6 +41,9 @@ export class RowService{
     }
     moveColumn(sourceColumnPosition: number, targetColumnPosition: number): Observable<any> {
         return this.http.put<Row>(`${environment.backendUrl}/row/move-column/${sourceColumnPosition}/${targetColumnPosition}`, null);
+    }
+    renameRow(rowId: number, newName: string): Observable<any> {
+        return this.http.put(`${environment.backendUrl}/row/rename-row/${rowId}`, newName);
     }
  
 

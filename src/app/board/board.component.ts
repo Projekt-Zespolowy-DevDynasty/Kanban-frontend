@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Comp1Component } from "../comp1/comp1.component";
 import {Row} from "../models/row.model";
 import { CdkDrag, CdkDragDrop, CdkDropList, CdkDropListGroup, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
@@ -24,12 +24,14 @@ import { RowService } from '../service/row.service';
         NgStyle
     ]
 })
-export class BoardComponent {
+export class BoardComponent implements OnInit, OnChanges {
 
+    constructor(private rowService: RowService, private cardService: CardsService, private http: HttpClient, private toastr: ToastrService) {}
 
     @Input() rowId!: number;
-
+    @Input() allRows!: Row[];
     newRow!: Row;
+    data!: Card[];
 
     drop(event: CdkDragDrop<{id: number, name: string}[]>) {
     
@@ -64,7 +66,6 @@ export class BoardComponent {
     
       }
     
-      constructor(private rowService: RowService, private cardService: CardsService, private http: HttpClient, private toastr: ToastrService) {}
 
     
     
@@ -81,7 +82,7 @@ export class BoardComponent {
     
       }
     
-      data!: Card[];
+      
       //private cardService = inject(CardsService);
     
       value = '';
@@ -97,14 +98,15 @@ export class BoardComponent {
       ngOnInit(): void{
         this.fetchCards();
       }
+      ngOnChanges() {
+        /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES **************/
+        this.fetchCards();
+        }
       fetchCards(){
         this.rowService.getRowById(this.rowId).subscribe((row: Row) => {
             this.data = row.cardsinrow;
             this.newRow = row;
-
-
         });
-        
       }
 
       usunWiersz(rowId: number){

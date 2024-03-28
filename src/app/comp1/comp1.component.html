@@ -108,7 +108,7 @@
                         </div>
                         </div>
 
-                    }{{card.position}}
+                    }
                 </div>
                     <hr>
                 <div >
@@ -167,8 +167,30 @@
         @if(dlugoscListyRows > 1){
             @for(row of allRows; track $index){
                 @if(row.position != 0 ){
-                <app-board [rowId] = "row.id"></app-board>
 
+
+
+                
+                <button (click)="przeniesGora(row.id)" class="btn newinfo btn-info" type="button" style="margin-bottom: 10px;">
+                    <i class="bi bi-arrow-up-circle-fill"></i>
+                </button>
+                <button type="button"  class="btn btn-secondary" style="margin-bottom: 10px;" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-pen-fill"></i>
+                </button>
+                <ul  class="dropdown-menu">
+                    <li>
+                    <input #renameRowText (keyup.enter)="renameRow(row.id, renameRowText.value)" type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px; ">
+                    <button (click)="renameRow(row.id, renameRowText.value)" type="button" class="btn btn-light">
+                        <i class="bi bi-plus-circle"></i>
+                    </button>
+                    </li>
+                </ul>
+
+
+
+
+
+                <app-board [rowId] = "row.id" [allRows]="allRows"></app-board>
             }
             }
         }

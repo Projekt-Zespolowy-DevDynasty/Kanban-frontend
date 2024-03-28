@@ -30,6 +30,7 @@ import { RowService } from '../service/row.service';
 })
 export class Comp1Component {
 
+
   allRows!: Row[];
   dlugoscListyRows!: number;
 
@@ -60,12 +61,6 @@ export class Comp1Component {
     this.przesTask(event.item.data[0].id, event.item.data[1].id, Number(event.container.id));
 
   }
-
-
-
-
-
-
 
   przesTask(sourceCardId: number,taskId :number, destinationCardId: number) {
 
@@ -111,9 +106,12 @@ export class Comp1Component {
 
 
   usunTask(taskId: number, cardId: number) {
-    this.cardService.deleteTask(taskId, cardId).subscribe(() => {
-      this.fetchCards();
-    });
+    if(confirm("Usunąć zadanie " + "?")) {
+      this.cardService.deleteTask(taskId, cardId).subscribe(() => {
+        this.fetchCards();
+      });
+    }
+
   }
 
   cardName = '';
@@ -170,6 +168,7 @@ export class Comp1Component {
     this.fetchCards();
   }
 
+
   fetchCards(){
     this.rowService.getAll().subscribe({
       next: (rows: Row[])=>{
@@ -194,6 +193,18 @@ export class Comp1Component {
     })
   }
   
+  przeniesGora(rowId: number){
+    this.rowService.moveUpRow(rowId).subscribe (() =>{
+        this.fetchCards();
+    });
+
   }
-  
+  renameRow(rowId: number, newName: string){
+    this.rowService.renameRow(rowId, newName).subscribe(() =>{
+      this.fetchCards();
+    });
+  }
+
+
+}
  
