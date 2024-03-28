@@ -283,10 +283,23 @@ a:hover{
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.button-side {
-  padding-top: 170px; 
+.button-two {
+  padding-top: 10px; 
   padding-left: 5px;
   display: flex;
   flex-direction: column;
 
 }
+.button-option{
+
+  display: flex; // Ustawia Flexbox
+  flex-direction: column; // Układa elementy w kolumnie (pionowo)
+  align-items: flex-start; // Wyrównuje przyciski do lewej strony kontenera
+  margin-left: 5px; // Dodaje margines z lewej strony, aby oddzielić od krawędzi strony
+  margin-right: 5px;
+
+
+  //height: 0vh;
+  
+}
+

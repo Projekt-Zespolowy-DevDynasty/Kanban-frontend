@@ -204,7 +204,26 @@ export class Comp1Component {
       this.fetchCards();
     });
   }
+  usunWiersz(rowId: number){
+    //if(confirm("Usunąć kolumne "+name + "?")) {
+       this.rowService.deleteRow(rowId).subscribe ({
+         next: (rowId: Row) => {
+           this.toastr.success('Usunięto wiersz');
+           this.fetchCards();
+         },
+         error: (error) => {
+           this.toastr.error('Nie udało się usunąć wiersza');
+         }
+       })
+     //  }
 
+     }
 
+       przeniesDol(rowId: number){
+        this.rowService.moveDownRow(rowId).subscribe (() =>{
+            this.fetchCards();
+        });
+      }
 }
+
  
