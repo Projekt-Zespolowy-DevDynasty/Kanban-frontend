@@ -205,7 +205,7 @@ export class Comp1Component {
     });
   }
   usunWiersz(rowId: number){
-    //if(confirm("Usunąć kolumne "+name + "?")) {
+    if(confirm("Usunąć wiersz "+"?")) {
        this.rowService.deleteRow(rowId).subscribe ({
          next: (rowId: Row) => {
            this.toastr.success('Usunięto wiersz');
@@ -215,7 +215,7 @@ export class Comp1Component {
            this.toastr.error('Nie udało się usunąć wiersza');
          }
        })
-     //  }
+       }
 
      }
 

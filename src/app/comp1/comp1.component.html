@@ -2,7 +2,7 @@
     <div class="part-board overflow-x-auto">
     <div class="tablica-kolumn ">
 
-        <div class="button-two">
+        <div class="button-two" style="margin-right: 58px;">
             <button type="button" class="btn btn-warning" style="border-radius: 10px; margin-bottom: 10px;"  data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-file-earmark-plus-fill" ></i>
             </button >
@@ -162,46 +162,42 @@
         @for(row of allRows; track $index){
             @if(row.position != 0 ){
                 
-            <div class="button-option" >
-            <button (click)="przeniesGora(row.id)" class="btn newinfo btn-info" type="button" style="margin-bottom: 10px; margin-top: 0px;">
-                <i class="bi bi-arrow-up-circle-fill"></i>
-            </button>
-            <button (click)="przeniesDol(row.id)"class="btn newinfo btn-info" type="button" style="margin-bottom: 10px; " >
-                <i class="bi bi-arrow-down-circle-fill"></i>
-            </button>
-            <button (click)="usunWiersz(row.id)" type="button" class="btn newdanger btn-danger" style="margin-bottom: 10px; margin-left: 5px;">
-                <i class="bi bi-trash-fill"></i>
-            </button>
-            <button type="button"  class="btn btn-secondary" style="margin-bottom: 10px;" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-pen-fill"></i>
-            </button>
-            <ul  class="dropdown-menu">
-                <li>
-                <input #renameRowText (keyup.enter)="renameRow(row.id, renameRowText.value)" type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px; ">
-                <button (click)="renameRow(row.id, renameRowText.value)" type="button" class="btn btn-light">
-                    <i class="bi bi-plus-circle"></i>
-                </button>
-                </li>
-            </ul>
-        </div>
+                <div class="caly-wiersz">
+                    <div class="button-option" >
+                        <button (click)="przeniesGora(row.id)" class="btn newinfo btn-info" type="button" style="margin-bottom: 10px; margin-top: 0px;">
+                            <i class="bi bi-arrow-up-circle-fill"></i>
+                        </button>
+                        <button (click)="przeniesDol(row.id)"class="btn newinfo btn-info" type="button" style="margin-bottom: 10px; " >
+                            <i class="bi bi-arrow-down-circle-fill"></i>
+                        </button>
+                        <button (click)="usunWiersz(row.id)" type="button" class="btn newdanger btn-danger" style="margin-bottom: 10px; margin-left: 5px;">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                        <button type="button"  class="btn btn-secondary" style="margin-bottom: 10px;" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-pen-fill"></i>
+                        </button>
+                        <ul  class="dropdown-menu">
+                            <li>
+                            <input #renameRowText (keyup.enter)="renameRow(row.id, renameRowText.value)" type="text" class="input-textv2" placeholder="Wpisz nazwe" style="padding-left: 7px; margin-right: 5px; ">
+                            <button (click)="renameRow(row.id, renameRowText.value)" type="button" class="btn btn-light">
+                                <i class="bi bi-plus-circle"></i>
+                            </button>
+                            </li>
+                        </ul>
+                    </div>
+            
+            
+            
+                    <div class="row">
+                            
+                        <app-board [rowId] = "row.id" [allRows]="allRows">
+            
+                        </app-board>
+                      </div>
+                </div>
 
-
-
-            <div class="row">
-                
-            <app-board [rowId] = "row.id" [allRows]="allRows">
-
-            </app-board>
-          </div>
         }
         }
     }
-    
-</div>
-  </div>
-  
-  
-  
-  
-</div>
+
 
