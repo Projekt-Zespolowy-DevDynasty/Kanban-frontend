@@ -136,15 +136,9 @@
                     <i class="bi bi-three-dots-vertical"></i>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-dark">
-                    <p
-                      class="naglowek-do-przyciskuv2"
-                      style="margin-left: 10px"
-                    >
-                      Przenieś za:
-                    </p>
+                    <p class="naglowek-do-przyciskuv2">Przenieś za:</p>
                     @for (cardy of data; track cardy.id) { @if(cardy.name !=
-                    "Done"){ @if(cardy.id!= card.id){ @if(cardy.name == "To
-                    do"){
+                    "Done" || cardy.id!= card.id){ @if(cardy.name == "To do"){
                     <li>
                       <a
                         (click)="
@@ -164,7 +158,7 @@
                         {{ cardy.name }}</a
                       >
                     </li>
-                    } } } }
+                    } } }
                   </ul>
                 </div>
                 <ul class="dropdown-menu">
@@ -211,8 +205,7 @@
             [cdkDropListData]="card.tasks"
             class="example-list"
             (cdkDropListDropped)="drop($event)"
-            class="overflow-auto"
-            style="height: 340px"
+            class="overflow-auto task-container"
           >
             @for (task of card.tasks; track task.id) {
             <div class="task" cdkDrag [cdkDragData]="[card, task]">
