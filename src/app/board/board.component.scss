@@ -1,169 +1,159 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f6f6f6;
+  font-family: Arial, sans-serif;
+  background-color: #f6f6f6;
 }
 
 .kanban-board {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    align-content: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
 }
 
 .column {
-    height: 500px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding: 10px;
-    margin: 10px 10px 10px 10px;
-    width: 335px;
-    position: relative;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 10px;
+  margin: 10px 10px 10px 10px;
+  width: 335px;
+  position: relative;
 }
 
 .column h2 {
-    font-size: 30px;
-    margin-bottom: 10px;
-    margin-left: 5px;
+  font-size: 30px;
+  margin-bottom: 10px;
+  margin-left: 5px;
 }
 
 .task {
-    background-color: #f0f0f0;
-    padding: 8px;
-    margin-bottom: 12px;
-    border-radius: 10px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    align-content: flex-start;
-    position: relative;
+  background-color: #f0f0f0;
+  padding: 8px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: flex-start;
+  position: relative;
 }
 .btn-danger {
-    color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 }
-.newinfo{
-    margin-left: 5px;
-    color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
+.newinfo {
+  margin-left: 5px;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 }
-.btn-warning{
-    margin-left: 5px;
-    color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
+.btn-warning {
+  margin-left: 5px;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 }
-.btn-info{
-    color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
-
+.btn-info {
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 }
 .btn-success {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
-    margin-left: 5px;
-
-}
-.btn-secondary{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
   margin-left: 5px;
-
-
+}
+.btn-secondary {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  margin-left: 5px;
 }
 .input-text {
-    border: none;
-    border-bottom: 2px solid #ccc;
-    outline: none;
-    height: 36px;
-    width: 50%;
-    font-weight: normal;
-    border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
-    border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
-    margin-bottom: 10px; /* Dodaj margines na dole dla odstępu między polem tekstowym a przyciskiem */
-
-  }
-
-  .input-text:focus {
-    border-bottom-color: #2ca611;
-    border-bottom-width: 2px;
-  }
-
-  .wip{
-    margin-left: 10px;
-  }
-  .input-textv2{
-    border: none;
-    outline: none;
-    height: 36px;
-    width: 262px;
-    border-bottom: 2px solid #ccc;
-    font-weight: normal;
-    border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
-    border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
-
-  }
-  .input-textv2:focus {
-    border-bottom-color: #f1e509;
-    border-bottom-width: 2px;
-  }
-  .input-textv3{
-    border: none;
-    outline: none;
-    height: 36px;
-    width: 262px;
-    border-bottom: 2px solid #ccc;
-    font-weight: normal;
-    border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
-    border-top-right-radius: 5px;
-  }
-  .input-textv3:focus {
-    border-bottom-color: #0b1cd0;
-    border-bottom-width: 2px;
-  }
-
-
-  .dropdown-menu li {
-    display: flex; /* Używa Flexboxa do wyrównania elementów w linii */
-    align-items: center; /* Wyrównuje elementy pionowo do środka */
-    margin-right: 10px;
-    margin-left: 10px;
-
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  height: 36px;
+  width: 50%;
+  font-weight: normal;
+  border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
+  border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
+  margin-bottom: 10px; /* Dodaj margines na dole dla odstępu między polem tekstowym a przyciskiem */
 }
 
-.bi-plus-circle{
-    font-size: 20px;
+.input-text:focus {
+  border-bottom-color: #2ca611;
+  border-bottom-width: 2px;
 }
-.naglowek-do-przycisku{
-    font-size: 18px;
-    margin-left: 10px;
-}
-.dodawanieTaska{
-    margin-bottom: 0;
-    position: absolute;
-    bottom: 0; /* Dostosuj odległość od dolnej krawędzi kolumny */
-    left: 50%; /* Ustaw element na środku kolumny */
-    transform: translateX(-50%); /* Skoryguj położenie w poziomie */
-    width: calc(100% - 20px);
 
+.wip {
+  margin-left: 10px;
+}
+.input-textv2 {
+  border: none;
+  outline: none;
+  height: 36px;
+  width: 262px;
+  border-bottom: 2px solid #ccc;
+  font-weight: normal;
+  border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
+  border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
+}
+.input-textv2:focus {
+  border-bottom-color: #f1e509;
+  border-bottom-width: 2px;
+}
+.input-textv3 {
+  border: none;
+  outline: none;
+  height: 36px;
+  width: 262px;
+  border-bottom: 2px solid #ccc;
+  font-weight: normal;
+  border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
+  border-top-right-radius: 5px;
+}
+.input-textv3:focus {
+  border-bottom-color: #0b1cd0;
+  border-bottom-width: 2px;
+}
+
+.dropdown-menu li {
+  display: flex; /* Używa Flexboxa do wyrównania elementów w linii */
+  align-items: center; /* Wyrównuje elementy pionowo do środka */
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.bi-plus-circle {
+  font-size: 20px;
+}
+.naglowek-do-przycisku {
+  font-size: 18px;
+  margin-left: 10px;
+}
+.dodawanieTaska {
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 0; /* Dostosuj odległość od dolnej krawędzi kolumny */
+  left: 50%; /* Ustaw element na środku kolumny */
+  transform: translateX(-50%); /* Skoryguj położenie w poziomie */
+  width: calc(100% - 20px);
 }
 .column .naglowek {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
-.btn-primary{
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+.btn-primary {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 // .naglowek{
 //     width: 330px;
@@ -187,53 +177,52 @@ body {
     padding-right: 20px; // Możesz dostosować padding, aby lepiej pasował do twojego układu
   }
 
-  span { // Załóżmy, że {{card.tasks.length}} umieszczone jest wewnątrz elementu <span>
+  span {
+    // Załóżmy, że {{card.tasks.length}} umieszczone jest wewnątrz elementu <span>
     padding-top: 10px; // Aby wyrównać do góry, jeśli jest taka potrzeba
   }
 }
 .button-group {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
 }
 
 .column .naglowek h2 {
-    white-space: nowrap; /* Zapobiega zawijaniu tekstu na nowej linii */
-    overflow: hidden; /* Ukrywa nadmiarowy tekst, który nie mieści się w obszarze */
-    text-overflow: ellipsis; /* Wyświetla trzy kropki, gdy tekst jest zbyt długi, aby się zmieścić */
+  white-space: nowrap; /* Zapobiega zawijaniu tekstu na nowej linii */
+  overflow: hidden; /* Ukrywa nadmiarowy tekst, który nie mieści się w obszarze */
+  text-overflow: ellipsis; /* Wyświetla trzy kropki, gdy tekst jest zbyt długi, aby się zmieścić */
 }
-.button-group  {
-    margin-left: 120px;
+.button-group {
+  margin-left: 120px;
 }
-.btn-primary{
-    margin-right: 5px;
+.btn-primary {
+  margin-right: 5px;
 }
 .button-group-container {
-  
   margin-top: -20px;
-    display: flex;
+  display: flex;
 }
-.przycisk-do-edycji{
-    margin-top: -11px;    
+.przycisk-do-edycji {
+  margin-top: -11px;
 }
 .tekst-zadan {
-    /* Ustawienie automatycznej wysokości */
-    height: auto;
-    /* Maksymalna szerokość, aby uniknąć zbyt szerokich kontenerów */
-    max-width: 100%;
-    /* Zawijanie tekstu tylko w granicach słów */
-    word-wrap: break-word;
-    /* Rozwiązanie problemu zbyt długich pojedynczych słów */
-    overflow-wrap: break-word;
-    /* Ograniczenie dozwolonej szerokości */
+  /* Ustawienie automatycznej wysokości */
+  height: auto;
+  /* Maksymalna szerokość, aby uniknąć zbyt szerokich kontenerów */
+  max-width: 100%;
+  /* Zawijanie tekstu tylko w granicach słów */
+  word-wrap: break-word;
+  /* Rozwiązanie problemu zbyt długich pojedynczych słów */
+  overflow-wrap: break-word;
+  /* Ograniczenie dozwolonej szerokości */
 }
-.tablica-kolumn{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+.tablica-kolumn {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
-.wip-limit-number{
+.wip-limit-number {
   height: 20px;
   width: 26px;
   margin-left: 4px;
@@ -258,20 +247,20 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.wip-limit-text{
-    display: flex;
-    font-size: large;
-    padding-left: 8px;
-    padding-top: 10px;
+.wip-limit-text {
+  display: flex;
+  font-size: large;
+  padding-left: 8px;
+  padding-top: 10px;
 }
-.input-do-wpisywania{
+.input-do-wpisywania {
   width: 100%;
   transition: width 2s;
 }
-.input-do-wpisywania:active{
+.input-do-wpisywania:active {
   width: 100%;
 }
-a:hover{
+a:hover {
   cursor: pointer;
 }
 
@@ -279,8 +268,7 @@ a:hover{
   box-sizing: border-box;
   border-radius: 10px;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-              0 8px 10px 1px rgba(0, 0, 0, 0.14),
-              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .cdk-drag-placeholder {
@@ -300,10 +288,8 @@ a:hover{
 }
 
 .button-side {
-  padding-top: 170px; 
+  padding-top: 170px;
   padding-left: 5px;
   display: flex;
   flex-direction: column;
-
 }
-
