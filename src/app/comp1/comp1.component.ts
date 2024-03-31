@@ -173,6 +173,9 @@ export class Comp1Component {
   ngOnInit(): void {
     this.fetchCards();
   }
+  ngAfterViewInit() {
+    this.fetchCards();
+  }
 
   fetchCards() {
     this.rowService.getAll().subscribe({
