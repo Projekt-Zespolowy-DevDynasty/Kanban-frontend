@@ -20,6 +20,7 @@ import {
 import { BoardComponent } from '../board/board.component';
 import { Row } from '../models/row.model';
 import { RowService } from '../service/row.service';
+import { TaskComponent } from '../task/task.component';
 
 @Component({
   selector: 'app-comp1',
@@ -34,49 +35,16 @@ import { RowService } from '../service/row.service';
     CdkDropListGroup,
     NgStyle,
     BoardComponent,
+    TaskComponent,
   ],
 })
 export class Comp1Component {
   allRows!: Row[];
   dlugoscListyRows!: number;
 
-  drop(event: CdkDragDrop<{ id: number; name: string }[]>) {
-    // source id
-    console.log('destination id' + event.container.id);
-    // destination id
-    console.log('source id' + event.item.data[0].id);
-    // task id
-    console.log('task id' + event.item.data[1].id);
 
-    if (event.previousContainer === event.container) {
-      console.log('moveItemInArray' + event);
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-    this.przesTask(
-      event.item.data[0].id,
-      event.item.data[1].id,
-      Number(event.container.id)
-    );
-  }
 
-  przesTask(sourceCardId: number, taskId: number, destinationCardId: number) {
-    this.cardService
-      .moveTasks(sourceCardId, taskId, destinationCardId)
-      .subscribe(() => {
-        this.fetchCards();
-      });
-  }
+
 
   constructor(
     private cardService: CardsService,
@@ -116,13 +84,7 @@ export class Comp1Component {
     });
   }
 
-  usunTask(taskId: number, cardId: number) {
-    if (confirm('Usunąć zadanie ' + '?')) {
-      this.cardService.deleteTask(taskId, cardId).subscribe(() => {
-        this.fetchCards();
-      });
-    }
-  }
+
 
   cardName = '';
   dodajKarte(cardName: string) {
@@ -152,11 +114,7 @@ export class Comp1Component {
       },
     });
   }
-  zmianaNazwyTaska(taskId: number, newNameTask: string) {
-    this.cardService.zmianaNazwyTaska(taskId, newNameTask).subscribe(() => {
-      this.fetchCards();
-    });
-  }
+
 
   data!: Card[];
   //private cardService = inject(CardsService);

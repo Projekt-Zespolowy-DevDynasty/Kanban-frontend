@@ -39,64 +39,7 @@
       </div>
       <hr />
       <div>
-        <div
-          cdkDropList
-          [id]="card.id.toString()"
-          [cdkDropListData]="card.tasks"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-          class="overflow-auto"
-          style="height: 340px"
-        >
-          @for (task of card.tasks; track task.id) {
-          <div class="task" cdkDrag [cdkDragData]="[card, task]">
-            <div class="tekst-zadan">
-              <p>{{ task.name }}</p>
-            </div>
-            <div class="przycisk-do-edycji">
-              <div class="button-groupv2">
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="bi bi-pen-fill"></i>
-                </button>
-                <ul class="dropdown-menu" style="width: 280px">
-                  <li>
-                    <input
-                      #zmianataska
-                      (keyup.enter)="
-                        zmianaNazwyTaska(task.id, zmianataska.value)
-                      "
-                      type="text"
-                      class="input-textv3"
-                      placeholder="Wpisz nazwe"
-                      style="padding-left: 7px; margin-right: 5px"
-                    />
-                    <button
-                      (click)="zmianaNazwyTaska(task.id, zmianataska.value)"
-                      type="button"
-                      class="btn btn-light"
-                    >
-                      <i class="bi bi-plus-circle"></i>
-                    </button>
-                  </li>
-                </ul>
-
-                <button
-                  (click)="usunTask(task.id, card.id)"
-                  type="button"
-                  class="btn btn-danger"
-                >
-                  <i class="bi bi-trash-fill"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-          }
-        </div>
+        <app-task [card]="card" (refreshParent)="fetchCards()"></app-task>
         <div class="dodawanieTaska">
           <input
             type="text"

@@ -16,6 +16,7 @@ import { Card } from '../models/card.model';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgStyle } from '@angular/common';
 import { RowService } from '../service/row.service';
+import { TaskComponent } from '../task/task.component';
 
 @Component({
   selector: 'app-board',
@@ -29,6 +30,7 @@ import { RowService } from '../service/row.service';
     CdkDrag,
     CdkDropListGroup,
     NgStyle,
+    TaskComponent,
   ],
 })
 export class BoardComponent implements OnInit, OnChanges {

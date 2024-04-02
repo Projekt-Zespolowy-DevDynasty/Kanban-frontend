@@ -29,51 +29,7 @@ body {
   margin-left: 5px;
 }
 
-.task {
-  background-color: #f0f0f0;
-  padding: 8px;
-  margin-bottom: 12px;
-  border-radius: 10px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  align-content: flex-start;
-  position: relative;
-}
-.btn-danger {
-  color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 10px;
-}
-.newinfo {
-  margin-left: 5px;
-  color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 10px;
-}
-.btn-warning {
-  margin-left: 5px;
-  color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 10px;
-}
-.btn-info {
-  color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 10px;
-}
-.btn-success {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 10px;
-  margin-left: 5px;
-}
-.btn-secondary {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 10px;
-  margin-left: 5px;
-}
+
 .input-text {
   border: none;
   border-bottom: 2px solid #ccc;
@@ -123,7 +79,7 @@ body {
   border-bottom-width: 2px;
 }
 
-.dropdown-menu li {
+li {
   display: flex; /* Używa Flexboxa do wyrównania elementów w linii */
   align-items: center; /* Wyrównuje elementy pionowo do środka */
   margin-right: 10px;
@@ -151,10 +107,7 @@ body {
   align-items: center;
   position: relative;
 }
-.btn-primary {
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+
 .naglowek {
   width: 330px;
   margin: 0 0 0 0;
@@ -179,27 +132,12 @@ body {
 .button-group {
   margin-left: 120px;
 }
-.btn-primary {
-  margin-right: 5px;
-}
+
 .button-group-container {
   margin-top: -20px;
   display: flex;
 }
-.przycisk-do-edycji {
-  margin-top: -11px;
-}
-.tekst-zadan {
-  /* Ustawienie automatycznej wysokości */
-  height: auto;
-  /* Maksymalna szerokość, aby uniknąć zbyt szerokich kontenerów */
-  max-width: 100%;
-  /* Zawijanie tekstu tylko w granicach słów */
-  word-wrap: break-word;
-  /* Rozwiązanie problemu zbyt długich pojedynczych słów */
-  overflow-wrap: break-word;
-  /* Ograniczenie dozwolonej szerokości */
-}
+
 .tablica-kolumn {
   display: flex;
   flex-direction: row;
@@ -246,27 +184,8 @@ a:hover {
   cursor: pointer;
 }
 
-.cdk-drag-preview {
-  box-sizing: border-box;
-  border-radius: 10px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
-}
-
-.cdk-drag-placeholder {
-  opacity: 0;
-}
-
-.cdk-drag-animating {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-
 .example-box:last-child {
   border: none;
-}
-
-.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 .button-two {
@@ -293,7 +212,4 @@ a:hover {
 }
 .naglowek-do-przyciskuv2{
   margin-left: 10px
-}
-.task-container{
-  height: 340px;
 }

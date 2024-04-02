@@ -1,0 +1,70 @@
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.task-container{
+    height: 340px;
+}
+.task {
+    background-color: #f0f0f0;
+    padding: 8px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+  }
+
+.tekst-zadan {
+    /* Ustawienie automatycznej wysokości */
+        height: auto;
+    /* Maksymalna szerokość, aby uniknąć zbyt szerokich kontenerów */
+    max-width: 100%;
+    /* Zawijanie tekstu tylko w granicach słów */
+    word-wrap: break-word;
+    /* Rozwiązanie problemu zbyt długich pojedynczych słów */
+    overflow-wrap: break-word;
+    /* Ograniczenie dozwolonej szerokości */
+  }
+.przycisk-do-edycji {
+    margin-top: -11px;
+}
+.dropdown-menu li {
+    display: flex; /* Używa Flexboxa do wyrównania elementów w linii */
+    align-items: center; /* Wyrównuje elementy pionowo do środka */
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+.input-textv3 {
+    border: none;
+    outline: none;
+    height: 36px;
+    width: 262px;
+    border-bottom: 2px solid #ccc;
+    font-weight: normal;
+    border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
+    border-top-right-radius: 5px;
+  }
+.input-textv3:focus {
+    border-bottom-color: #0b1cd0;
+    border-bottom-width: 2px;
+  }
+
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
+  
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
