@@ -12,6 +12,7 @@ import {
   CdkDropListGroup,
 } from '@angular/cdk/drag-drop';
 import { BoardComponent } from '../board/board.component';
+import { Task } from '../models/task.model';
 
 @Component({
   selector: 'app-task',
@@ -34,7 +35,7 @@ export class TaskComponent {
   cardService = inject(CardsService);
 
   
-  drop(event: CdkDragDrop<{ id: number; name: string }[]>) {
+  drop(event: CdkDragDrop<Task[]>) {
     // source id
     console.log('destination id' + event.container.id);
     // destination id
