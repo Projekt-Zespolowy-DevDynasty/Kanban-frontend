@@ -51,6 +51,22 @@ class="overflow-auto task-container"
       >
         <i class="bi bi-trash-fill"></i>
       </button>
+
+      @if (Users.length > 3) {
+        @for (item of Users; track $index) {
+          @if ($index == 3) {
+            <div style="padding-left: 5px; background-color: aquamarine; width: 15px; border-radius: 15px;">{{Users.length - 3}}+</div>
+          }@else if ($index < 3) {
+            <div style="padding-left: 5px; background-color: aquamarine; width: 15px; border-radius: 15px;">{{item.name[0]}}</div>
+          }
+        }
+      }@else {
+        @for (item of Users; track $index) {
+          <div style="padding-left: 5px; background-color: aquamarine; width: 15px; border-radius: 15px;">{{item.name[0]}}</div>
+        }
+      }
+
+      
     </div>
   </div>
 </div>

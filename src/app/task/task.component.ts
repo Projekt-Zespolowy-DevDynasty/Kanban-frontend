@@ -34,7 +34,36 @@ export class TaskComponent {
 
   cardService = inject(CardsService);
 
-  
+
+  // ===========  EXAMPLE DATA ===========
+  Users = [
+    { id: 1, name: 'Jan Kowalski' },
+    { id: 2, name: 'Adam Nowak' },
+    { id: 3, name: 'Piotr Nowak' },
+    { id: 4, name: 'Paweł Kowalski' },
+  ]
+  tasks: Task[] = [
+    {
+      id: 1,
+      name: 'Task 1',
+      users: [
+        { id: 1, firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com' },
+        { id: 2, firstName: 'Jane', lastName: 'Doe', email: 'jane.doe@example.com' },
+      ],
+    },
+    {
+      id: 2,
+      name: 'Task 2',
+      users: [
+        { id: 3, firstName: 'Alice', lastName: 'Smith', email: 'alice.smith@example.com' },
+      ],
+    },
+    // ... more tasks
+  ];
+
+
+
+
   drop(event: CdkDragDrop<Task[]>) {
     // source id
     console.log('destination id' + event.container.id);
