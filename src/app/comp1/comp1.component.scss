@@ -28,8 +28,10 @@ body {
   margin-bottom: 18px;
   margin-left: 5px;
 }
-
-
+.newinfo{
+  margin-left:5px; 
+  margin-bottom: 10px;
+}
 .input-text {
   border: none;
   border-bottom: 2px solid #ccc;
@@ -200,6 +202,7 @@ a:hover {
   align-items: flex-start; // Wyrównuje przyciski do lewej strony kontenera
   margin-left: 5px; // Dodaje margines z lewej strony, aby oddzielić od krawędzi strony
   margin-right: 5px;
+  margin-top: 10px;
 }
 
 .caly-wiersz {
