@@ -12,8 +12,10 @@ class="overflow-auto task-container"
   <div class="tekst-zadan">
     <p>{{ task.name }}</p>
   </div>
+  
   <div class="przycisk-do-edycji">
-    <div>
+    
+  
       <button
         type="button"
         class="btn btn-primary"
@@ -51,24 +53,55 @@ class="overflow-auto task-container"
       >
         <i class="bi bi-trash-fill"></i>
       </button>
-
+    
+    
+      <button type="button"  class="btn btn-success"data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+        <i class="bi bi-people-fill"></i>
+      </button>
+      <form class="dropdown-menu p-4">
+        
+        <div class="user-trash">
+          @for (item of Users; track $index){
+          <div class="list-user">
+              <p style="padding-right: 10px;">{{item.name}}</p>
+          <div class="lonly-trash">
+              <button
+              type="button"
+              class="btn btn-success"
+            >
+            <i class="bi bi-plus-circle-fill"></i>
+            </button>
+        <button
+        type="button"
+        class="dangernew btn btn-danger">
+        <i class="bi bi-trash-fill"></i>
+      </button>
+      </div>
+       </div>
+       }
+      </div>
+      </form>
+        
+      <div class="circle-name" >
       @if (Users.length > 3) {
         @for (item of Users; track $index) {
           @if ($index == 3) {
-            <div style="padding-left: 5px; background-color: aquamarine; width: 15px; border-radius: 15px;">{{Users.length - 3}}+</div>
+            <div class="small-circle">{{Users.length - 3}}+</div>
           }@else if ($index < 3) {
-            <div style="padding-left: 5px; background-color: aquamarine; width: 15px; border-radius: 15px;">{{item.name[0]}}</div>
+            <div class="small-circle">{{item.name[0]}}</div>
           }
         }
       }@else {
         @for (item of Users; track $index) {
-          <div style="padding-left: 5px; background-color: aquamarine; width: 15px; border-radius: 15px;">{{item.name[0]}}</div>
+          <div class="small-circle">{{item.name[0]}}</div>
         }
       }
+    </div>
 
       
-    </div>
+    
   </div>
-</div>
+  </div>
+
 }
 </div>

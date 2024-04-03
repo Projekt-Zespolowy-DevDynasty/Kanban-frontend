@@ -21,6 +21,7 @@ import { BoardComponent } from '../board/board.component';
 import { Row } from '../models/row.model';
 import { RowService } from '../service/row.service';
 import { TaskComponent } from '../task/task.component';
+import { Task } from '../models/task.model';
 
 @Component({
   selector: 'app-comp1',
@@ -41,6 +42,31 @@ import { TaskComponent } from '../task/task.component';
 export class Comp1Component {
   allRows!: Row[];
   dlugoscListyRows!: number;
+
+  Users = [
+    { id: 1, name: 'Jan Kowalski' },
+    { id: 2, name: 'Adam Nowak' },
+    { id: 3, name: 'Piotr Nowak' },
+    { id: 4, name: 'Krzysztof Gołębiewski' },
+  ]
+  tasks: Task[] = [
+    {
+      id: 1,
+      name: 'Task 1',
+      users: [
+        { id: 1, firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com' },
+        { id: 2, firstName: 'Jane', lastName: 'Doe', email: 'jane.doe@example.com' },
+      ],
+    },
+    {
+      id: 2,
+      name: 'Task 2',
+      users: [
+        { id: 3, firstName: 'Alice', lastName: 'Smith', email: 'alice.smith@example.com' },
+      ],
+    },
+    // ... more tasks
+  ];
 
 
 

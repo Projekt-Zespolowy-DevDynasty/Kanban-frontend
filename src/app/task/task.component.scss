@@ -31,7 +31,15 @@
   }
 .przycisk-do-edycji {
     margin-top: -11px;
+    display: flex; 
+
+   // justify-content: space-between; 
+   // align-items: center;
+    
+    
+
 }
+
 .dropdown-menu li {
     display: flex; /* Używa Flexboxa do wyrównania elementów w linii */
     align-items: center; /* Wyrównuje elementy pionowo do środka */
@@ -68,3 +76,39 @@
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
 
+  .list-user{
+    display: flex; 
+     justify-content: space-between; 
+     align-items: center; 
+     padding-bottom: 5px;
+   }
+   
+   .lonly-trash {
+     display: flex; 
+     flex-direction: row; 
+     align-items: flex-end;
+     padding-bottom: 5px;
+     
+   }
+   .dangernew {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    margin-left: 5px;
+  }
+  .small-circle{
+    padding: 5px; 
+    background-color: aquamarine; 
+    width: 30px; 
+    height: 30px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 50%;
+  }
+  .circle-name {
+    display: flex; 
+    align-items: center; 
+    gap: 1px;
+    padding-left: 18px;
+
+  }
