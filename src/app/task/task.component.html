@@ -65,12 +65,7 @@ class="overflow-auto task-container"
           <div class="list-user">
               <p style="padding-right: 10px;">{{item.name}}</p>
           <div class="lonly-trash">
-              <button
-              type="button"
-              class="btn btn-success"
-            >
-            <i class="bi bi-plus-circle-fill"></i>
-            </button>
+             
         <button
         type="button"
         class="dangernew btn btn-danger">
@@ -80,6 +75,20 @@ class="overflow-auto task-container"
        </div>
        }
       </div>
+      <div class="dropdown-divider" ></div>
+      
+      @for (item of Users; track $index){
+        <div class="list-user">
+        <p style="padding-right: 10px; padding-top: 10px;">{{item.name}}</p>
+        <button
+        type="button" 
+        class="btn btn-success"
+      >
+      <i class="bi bi-plus-circle-fill"></i>
+      </button>
+    </div>
+      }
+
       </form>
         
       <div class="circle-name" >
