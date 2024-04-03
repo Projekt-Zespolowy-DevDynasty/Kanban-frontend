@@ -24,7 +24,7 @@ import { TaskComponent } from '../task/task.component';
 import { Task } from '../models/task.model';
 import { User } from '../models/user.model';
 import { UserService } from '../service/user.service';
-import { FormControl, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-comp1',
@@ -81,7 +81,13 @@ export class Comp1Component {
   
   // ];
 
-
+  ngOnInit(): void {
+    this.fetchCards();
+    this.fetchUsers();
+  }
+  ngAfterViewInit() {
+    this.fetchCards();
+  }
 
 
 
@@ -170,12 +176,7 @@ export class Comp1Component {
     this.value = value;
   }
 
-  ngOnInit(): void {
-    this.fetchCards();
-  }
-  ngAfterViewInit() {
-    this.fetchCards();
-  }
+
 
   fetchCards() {
     this.rowService.getAll().subscribe({
@@ -238,17 +239,30 @@ export class Comp1Component {
       error: (error) => {},
     });
 }
-dodajUsera(users: User) {
-  this.userService.addUser(users).subscribe({
-    next: (users: User) => {
-      this.toastr.success('Dodano Użytkownika');
-      this.fetchUsers();
-    },
-    error: (error) => {
-      this.toastr.error('Nie udało się dodać Użytkownika');
-    },
-  });
-}
+  dodajUsera() {
+    const user: User = this.addUserForm.value as User;
+    if(user.firstName.trim() == '' || user.lastName.trim() == '' || user.email.trim() == '') {
+      this.toastr.warning('Nie można dodać użytkownika bez imienia, nazwiska lub emaila');
+      return;
+    }
+    // validate email
+    const email = user.email;
+    const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+    if (!emailPattern.test(email)) {
+      this.toastr.warning('Niepoprawny email');
+      return;
+    }
+    
+    this.userService.addUser(user).subscribe({
+      next: (users: User) => {
+        this.toastr.success('Dodano Użytkownika');
+        this.fetchUsers();
+      },
+      error: (error) => {
+        this.toastr.error('Nie udało się dodać Użytkownika');
+      },
+    });
+  }
 
 usunUsera(userId: number) {
   

@@ -5,7 +5,7 @@ export interface User {
     firstName: string;
     lastName: string;
     email: string;
-    colour: string;
+    color: string;
     tasks: Task[];
   }
   

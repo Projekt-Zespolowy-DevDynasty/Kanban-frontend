@@ -95,7 +95,7 @@ class="overflow-auto task-container"
       @if (Users.length > 3) {
         @for (item of Users; track $index) {
           @if ($index == 3) {
-            <div class="small-circle">{{Users.length - 3}}+</div>
+            <div  class="small-circle">{{Users.length - 3}}+</div>
           }@else if ($index < 3) {
             <div class="small-circle">{{item.name[0]}}</div>
           }
