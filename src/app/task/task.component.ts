@@ -105,7 +105,7 @@ export class TaskComponent {
     this.userService.addUserToTask(userId, taskId).subscribe({
       next: (users: User) => {
         this.toastr.success('Dodano Użytkownika do Taska');
-        this.fetchUsers();
+        this.updateTask();
       },
       error: (error) => {
         this.toastr.error('Nie udało się dodać Użytkownika do Taska');
@@ -116,11 +116,17 @@ export class TaskComponent {
     this.userService.deleteUserFromTask(userId, taskId).subscribe({
       next: (users: User) => {
         this.toastr.success('Usunięto Uzytkownika z Taska');
-        this.fetchUsers();
+        this.updateTask();
       },
       error: (error) => {
         this.toastr.error('Nie udało się usunąć Użytkownika z Taska');
       },
+    });
+  }
+
+  updateTask() {
+    this.cardService.getOneCard(this.card.id).subscribe((card: Card) => {
+      this.card = card;
     });
   }
 }
