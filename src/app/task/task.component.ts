@@ -129,4 +129,13 @@ export class TaskComponent {
       this.card = card;
     });
   }
+  getAllUserFromTask(taskId: number) {
+    this.userService.AllUserInTask(taskId).subscribe((users: User[]) => {
+      this.usersInTask = users;
+    });
+
+}
+ngOnInit(): void {
+  this.getAllUserFromTask();
+}
 }

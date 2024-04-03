@@ -61,9 +61,9 @@ class="overflow-auto task-container"
       <form class="dropdown-menu p-4">
         
         <div class="user-trash">
-          @for (item of Users; track $index){
+          @for (item of usersNotInTask; track $index){
           <div class="list-user">
-              <p style="padding-right: 10px;">{{item.name}}</p>
+              <p style="padding-right: 10px;">{{item.firstName}} {{item.lastName}}</p>
           <div class="lonly-trash">
              
         <button
@@ -77,9 +77,9 @@ class="overflow-auto task-container"
       </div>
       <div class="dropdown-divider" ></div>
       
-      @for (item of Users; track $index){
+      @for (item of allUsers; track $index){
         <div class="list-user">
-        <p style="padding-right: 10px; padding-top: 10px;">{{item.name}}</p>
+        <p style="padding-right: 10px; padding-top: 10px;">{{item.firstName}} {{item.lastName}}</p>
         <button
         type="button" 
         class="btn btn-success"
@@ -92,17 +92,17 @@ class="overflow-auto task-container"
       </form>
         
       <div class="circle-name" >
-      @if (Users.length > 3) {
-        @for (item of Users; track $index) {
+      @if (usersInTask.length > 3) {
+        @for (item of usersInTask; track $index) {
           @if ($index == 3) {
-            <div  class="small-circle">{{Users.length - 3}}+</div>
+            <div  class="small-circle">{{usersInTask.length - 3}}+</div>
           }@else if ($index < 3) {
-            <div class="small-circle">{{item.name[0]}}</div>
+            <div class="small-circle">{{item.firstName[0]}}</div>
           }
         }
       }@else {
-        @for (item of Users; track $index) {
-          <div class="small-circle">{{item.name[0]}}</div>
+        @for (item of usersInTask; track $index) {
+          <div class="small-circle">{{item.firstName[0]}}</div>
         }
       }
     </div>

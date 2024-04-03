@@ -29,11 +29,11 @@ export class UserService {
     return this.http.delete<void>(`${environment.backendUrl}/users/${userId}`);
 
   }
-  AllUserInTask(taskId: number): Observable<User> {
-    return this.http.get<User>(`${environment.backendUrl}/users/${taskId}/usersAssigned/`);
+  AllUserInTask(taskId: number): Observable<User[]> {
+    return this.http.get<User[]>(`${environment.backendUrl}/users/${taskId}/usersAssigned/`);
   }
-  AllUserNotInTAsk(taskId: number): Observable<User> {
-    return this.http.get<User>(`${environment.backendUrl}/users/${taskId}/usersNotAssigned/`);
+  AllUserNotInTAsk(taskId: number): Observable<User[]> {
+    return this.http.get<User[]>(`${environment.backendUrl}/users/${taskId}/usersNotAssigned/`);
   }
 
 }
