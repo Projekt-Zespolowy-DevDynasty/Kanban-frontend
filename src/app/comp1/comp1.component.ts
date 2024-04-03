@@ -22,12 +22,14 @@ import { Row } from '../models/row.model';
 import { RowService } from '../service/row.service';
 import { TaskComponent } from '../task/task.component';
 import { Task } from '../models/task.model';
-
+import { User } from '../models/user.model';
+import { UserService } from '../service/user.service';
+import { FormControl, ReactiveFormsModule, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-comp1',
   standalone: true,
-  providers: [CardsService, RowService],
+  providers: [CardsService, RowService, UserService],
   templateUrl: './comp1.component.html',
   styleUrl: './comp1.component.scss',
   imports: [
@@ -38,36 +40,46 @@ import { Task } from '../models/task.model';
     NgStyle,
     BoardComponent,
     TaskComponent,
+    ReactiveFormsModule,
   ],
 })
 export class Comp1Component {
   allRows!: Row[];
   dlugoscListyRows!: number;
 
-  Users = [
-    { id: 1, name: 'Jan Kowalski' },
-    { id: 2, name: 'Adam Nowak' },
-    { id: 3, name: 'Piotr Nowak' },
-    { id: 4, name: 'Krzysztof Gołębiewski' },
-  ]
-  tasks: Task[] = [
-    {
-      id: 1,
-      name: 'Task 1',
-      users: [
-        { id: 1, firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com' },
-        { id: 2, firstName: 'Jane', lastName: 'Doe', email: 'jane.doe@example.com' },
-      ],
-    },
-    {
-      id: 2,
-      name: 'Task 2',
-      users: [
-        { id: 3, firstName: 'Alice', lastName: 'Smith', email: 'alice.smith@example.com' },
-      ],
-    },
-    // ... more tasks
-  ];
+  allUsers!: User[];
+
+  addUserForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl(''),
+  });
+
+
+  // Users = [
+  //   { id: 1, name: 'Jan Kowalski' },
+  //   { id: 2, name: 'Adam Nowak' },
+  //   { id: 3, name: 'Piotr Nowak' },
+  //   { id: 4, name: 'Krzysztof Gołębiewski' },
+  // ]
+  // tasks: Task[] = [
+  //   {
+  //     id: 1,
+  //     name: 'Task 1',
+  //     users: [
+  //       { id: 1, firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com' },
+  //       { id: 2, firstName: 'Jane', lastName: 'Doe', email: 'jane.doe@example.com' },
+  //     ],
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Task 2',
+  //     users: [
+  //       { id: 3, firstName: 'Alice', lastName: 'Smith', email: 'alice.smith@example.com' },
+  //     ],
+  //   },
+  
+  // ];
 
 
 
@@ -76,9 +88,12 @@ export class Comp1Component {
   constructor(
     private cardService: CardsService,
     private rowService: RowService,
+    private userService: UserService,
     private http: HttpClient,
     private toastr: ToastrService
   ) {}
+
+
 
   usunKarte(positionNumber: number, name: string) {
     console.log(positionNumber + ' ' + name + ' ' + this.data);
@@ -213,4 +228,62 @@ export class Comp1Component {
       this.fetchCards();
     });
   }
+
+
+  fetchUsers() {
+    this.userService.getAllUser().subscribe({
+      next: (users: User[]) => {
+        this.allUsers = users;
+      },
+      error: (error) => {},
+    });
+}
+dodajUsera(users: User) {
+  this.userService.addUser(users).subscribe({
+    next: (users: User) => {
+      this.toastr.success('Dodano Użytkownika');
+      this.fetchUsers();
+    },
+    error: (error) => {
+      this.toastr.error('Nie udało się dodać Użytkownika');
+    },
+  });
+}
+
+usunUsera(userId: number) {
+  
+    this.userService.deleteUser(userId).subscribe({
+      next: (userId: User) => {
+        this.toastr.success('Usunięto Użytkownika');
+        this.fetchUsers();
+      },
+      error: (error) => {
+        this.toastr.error('Nie udało się usunąć Użytkownika');
+      },
+    });
+  
+}
+dodajUseraDoTaska(userId: number, taskId: number) {
+  this.userService.addUserToTask(userId, taskId).subscribe({
+    next: (users: User) => {
+      this.toastr.success('Dodano Użytkownika do Taska');
+      this.fetchUsers();
+    },
+    error: (error) => {
+      this.toastr.error('Nie udało się dodać Użytkownika do Taska');
+    },
+  });
+}
+usunUseraZTaska(userId: number, taskId: number) {
+  this.userService.deleteUserFromTask(userId, taskId).subscribe({
+    next: (users: User) => {
+      this.toastr.success('Usunięto Uzytkownika z Taska');
+      this.fetchUsers();
+    },
+    error: (error) => {
+      this.toastr.error('Nie udało się usunąć Użytkownika z Taska');
+    },
+  });
+}
+
 }
