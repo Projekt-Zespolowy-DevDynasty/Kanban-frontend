@@ -25,10 +25,15 @@ export class UserService {
     return this.http.delete<User>(`${environment.backendUrl}/users/${userId}/removeFromTask/${taskId}`);
   }
 
-  deleteUser(userId: number): Observable<User> {
-    return this.http.delete<User>(`${environment.backendUrl}/users/${userId}`);
+  deleteUser(userId: number): Observable<void> {
+    return this.http.delete<void>(`${environment.backendUrl}/users/${userId}`);
 
   }
-
+  AllUserInTask(taskId: number): Observable<User> {
+    return this.http.get<User>(`${environment.backendUrl}/users/${taskId}/usersAssigned/`);
+  }
+  AllUserNotInTAsk(taskId: number): Observable<User> {
+    return this.http.get<User>(`${environment.backendUrl}/users/${taskId}/usersNotAssigned/`);
+  }
 
 }

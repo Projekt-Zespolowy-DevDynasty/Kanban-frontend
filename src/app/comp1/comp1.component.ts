@@ -256,6 +256,7 @@ export class Comp1Component {
     this.userService.addUser(user).subscribe({
       next: (users: User) => {
         this.toastr.success('Dodano Użytkownika');
+        this.addUserForm.reset();
         this.fetchUsers();
       },
       error: (error) => {
@@ -267,11 +268,12 @@ export class Comp1Component {
 usunUsera(userId: number) {
   
     this.userService.deleteUser(userId).subscribe({
-      next: (userId: User) => {
+      next: () => {
         this.toastr.success('Usunięto Użytkownika');
         this.fetchUsers();
       },
       error: (error) => {
+        console.log(error);
         this.toastr.error('Nie udało się usunąć Użytkownika');
       },
     });
