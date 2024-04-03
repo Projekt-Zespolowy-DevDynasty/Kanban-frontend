@@ -66,10 +66,12 @@
         <form class="dropdown-menu p-4">
             <form class="px-4 py-3">
            
-            <div class="mb-3">
-              <label for="name" class="form-label">Imię</label>
-              <input  class="form-control" id="name" placeholder="name">
-            </div>
+            <!-- <div class="mb-3"> -->
+                <mat-form-field class="example-full-width">
+              <mat-label for="name" class="form-label">Imię</mat-label>
+              <input  matInput [formControl]="nameFormControl" class="form-control" id="name" placeholder="name">
+            <!-- </div> -->
+        </mat-form-field>
             <div class="mb-3">
                 <label for="last-name" class="form-label">Nazwisko</label>
                 <input  class="form-control" id="last-name" placeholder="last name">
