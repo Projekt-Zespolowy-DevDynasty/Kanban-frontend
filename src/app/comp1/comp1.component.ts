@@ -55,32 +55,6 @@ export class Comp1Component {
     email: new FormControl(''),
   });
 
-
-  // Users = [
-  //   { id: 1, name: 'Jan Kowalski' },
-  //   { id: 2, name: 'Adam Nowak' },
-  //   { id: 3, name: 'Piotr Nowak' },
-  //   { id: 4, name: 'Krzysztof Gołębiewski' },
-  // ]
-  // tasks: Task[] = [
-  //   {
-  //     id: 1,
-  //     name: 'Task 1',
-  //     users: [
-  //       { id: 1, firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com' },
-  //       { id: 2, firstName: 'Jane', lastName: 'Doe', email: 'jane.doe@example.com' },
-  //     ],
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Task 2',
-  //     users: [
-  //       { id: 3, firstName: 'Alice', lastName: 'Smith', email: 'alice.smith@example.com' },
-  //     ],
-  //   },
-  
-  // ];
-
   ngOnInit(): void {
     this.fetchCards();
     this.fetchUsers();
