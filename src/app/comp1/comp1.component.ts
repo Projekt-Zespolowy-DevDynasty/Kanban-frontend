@@ -22,9 +22,7 @@ import { Row } from '../models/row.model';
 import { RowService } from '../service/row.service';
 import { TaskComponent } from '../task/task.component';
 import { Task } from '../models/task.model';
-import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 @Component({
   selector: 'app-comp1',
@@ -40,16 +38,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     NgStyle,
     BoardComponent,
     TaskComponent,
-    FormsModule,
-    MatFormFieldModule, 
-    MatInputModule,
-    ReactiveFormsModule
   ],
 })
 export class Comp1Component {
   allRows!: Row[];
   dlugoscListyRows!: number;
-   nameFormControl = new FormControl('', [Validators.required]);
+
   Users = [
     { id: 1, name: 'Jan Kowalski' },
     { id: 2, name: 'Adam Nowak' },
