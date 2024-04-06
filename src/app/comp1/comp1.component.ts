@@ -266,7 +266,7 @@ dodajUseraDoTaska(userId: number, taskId: number) {
 }
 usunUseraZTaska(userId: number, taskId: number) {
   this.userService.deleteUserFromTask(userId, taskId).subscribe({
-    next: (users: User) => {
+    next: () => {
       this.toastr.success('Usunięto Uzytkownika z Taska');
       this.fetchUsers();
     },

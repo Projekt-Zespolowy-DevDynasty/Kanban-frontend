@@ -58,51 +58,28 @@ class="overflow-auto task-container"
       <button type="button"  class="btn btn-success"data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
         <i class="bi bi-people-fill"></i>
       </button>
-      <form class="dropdown-menu p-4">
-        
-        <div class="user-trash">
-          @for (item of usersNotInTask; track $index){
-          <div class="list-user">
-              <p style="padding-right: 10px;">{{item.firstName}} {{item.lastName}}</p>
-          <div class="lonly-trash">
-             
-        <button
-        type="button"
-        class="dangernew btn btn-danger">
-        <i class="bi bi-trash-fill"></i>
-      </button>
+      <div class="dropdown-menu p-4">
+        <app-list-of-users-not-in-task 
+          [allUsers]="allUsers" 
+          (refreshParent)="fetchCard()" 
+          [taskId]="task.id"
+          [task]="task"
+          >
+        </app-list-of-users-not-in-task>
       </div>
-       </div>
-       }
-      </div>
-      <div class="dropdown-divider" ></div>
-      
-      @for (item of allUsers; track $index){
-        <div class="list-user">
-        <p style="padding-right: 10px; padding-top: 10px;">{{item.firstName}} {{item.lastName}}</p>
-        <button
-        type="button" 
-        class="btn btn-success"
-      >
-      <i class="bi bi-plus-circle-fill"></i>
-      </button>
-    </div>
-      }
-
-      </form>
         
       <div class="circle-name" >
-      @if (usersInTask.length > 3) {
-        @for (item of usersInTask; track $index) {
+      @if (task.useers.length > 3) {
+        @for (item of task.useers; track $index) {
           @if ($index == 3) {
-            <div  class="small-circle">{{usersInTask.length - 3}}+</div>
+            <div  class="small-circle">{{task.useers.length - 3}}+</div>
           }@else if ($index < 3) {
-            <div class="small-circle">{{item.firstName[0]}}</div>
+            <div [style.background-color]="item.color" class="small-circle">{{item.firstName[0]}}</div>
           }
         }
       }@else {
-        @for (item of usersInTask; track $index) {
-          <div class="small-circle">{{item.firstName[0]}}</div>
+        @for (item of task.useers; track $index) {
+          <div [style.background-color]="item.color" class="small-circle">{{item.firstName[0]}}</div>
         }
       }
     </div>

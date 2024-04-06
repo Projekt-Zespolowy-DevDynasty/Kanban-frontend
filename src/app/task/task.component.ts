@@ -16,6 +16,7 @@ import { Task } from '../models/task.model';
 import { User } from '../models/user.model';
 import { UserService } from '../service/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { ListOfUsersNotInTaskComponent } from '../list-of-users-not-in-task/list-of-users-not-in-task.component';
 
 @Component({
   selector: 'app-task',
@@ -26,7 +27,8 @@ import { ToastrService } from 'ngx-toastr';
     CdkDrag,
     CdkDropListGroup,
     NgStyle,
-    BoardComponent
+    BoardComponent,
+    ListOfUsersNotInTaskComponent,
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
@@ -34,13 +36,12 @@ import { ToastrService } from 'ngx-toastr';
 export class TaskComponent {
   @Input() card!: Card;
   @Output() refreshParent: EventEmitter<any> = new EventEmitter();
+  @Input() allUsers!: User[];
 
   cardService = inject(CardsService);
   userService = inject(UserService);
   toastr = inject(ToastrService);
 
-
-  allUsers!: User[];
   usersNotInTask!: User[];
   usersInTask!: User[];
 
@@ -114,7 +115,7 @@ export class TaskComponent {
   }
   usunUseraZTaska(userId: number, taskId: number) {
     this.userService.deleteUserFromTask(userId, taskId).subscribe({
-      next: (users: User) => {
+      next: () => {
         this.toastr.success('Usunięto Uzytkownika z Taska');
         this.updateTask();
       },
@@ -129,13 +130,22 @@ export class TaskComponent {
       this.card = card;
     });
   }
-  getAllUserFromTask(taskId: number) {
-    this.userService.AllUserInTask(taskId).subscribe((users: User[]) => {
-      this.usersInTask = users;
+  getAllUsers() {
+    this.userService.getAllUser().subscribe((users: User[]) => {
+      this.allUsers = users;
     });
 
-}
-ngOnInit(): void {
-  this.getAllUserFromTask();
-}
+  }
+  ngOnInit(): void {
+    this.getAllUsers();
+  }
+  ngOnChanges() {
+    /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES **************/
+    this.fetchCard();
+  }
+  fetchCard(){
+    this.cardService.getOneCard(this.card.id).subscribe((card: Card) => {
+      this.card = card;
+    });
+  }
 }

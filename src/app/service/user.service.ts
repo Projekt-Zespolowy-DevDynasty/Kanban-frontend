@@ -21,19 +21,24 @@ export class UserService {
     return this.http.post<User>(`${environment.backendUrl}/users/add/${userId}/assignToTask/${taskId}`, null);
 
   }
-  deleteUserFromTask(userId: number, taskId: number): Observable<User> {
-    return this.http.delete<User>(`${environment.backendUrl}/users/${userId}/removeFromTask/${taskId}`);
+  deleteUserFromTask(userId: number, taskId: number): Observable<void> {
+    return this.http.delete<void>(`${environment.backendUrl}/users/${userId}/removeFromTask/${taskId}`, {responseType: 'text' as 'json'});
   }
 
   deleteUser(userId: number): Observable<void> {
     return this.http.delete<void>(`${environment.backendUrl}/users/${userId}`);
-
   }
   AllUserInTask(taskId: number): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.backendUrl}/users/${taskId}/usersAssigned/`);
+    return this.http.get<User[]>(`${environment.backendUrl}/users/${taskId}/usersAssigned`);
   }
   AllUserNotInTAsk(taskId: number): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.backendUrl}/users/${taskId}/usersNotAssigned/`);
+    return this.http.get<User[]>(`${environment.backendUrl}/users/${taskId}/usersNotAssigned`);
+  }
+
+  assignUserToTask(userId: number, taskId: number): Observable<string> {
+    return this.http.post<string>(`${environment.backendUrl}/users/${userId}/assignToTask/${taskId}`, 
+    null, 
+    {responseType: 'text' as 'json'});
   }
 
 }
