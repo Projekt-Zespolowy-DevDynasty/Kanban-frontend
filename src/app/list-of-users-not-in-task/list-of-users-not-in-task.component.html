@@ -1,5 +1,5 @@
 
-Nieprzypisani użytkownicy:
+<p>Nieprzypisani użytkownicy:</p>
 <div class="user-trash">
     @for (item of usersNotInTask; track $index){
     <div class="list-user">
@@ -16,13 +16,13 @@ Nieprzypisani użytkownicy:
     }
 </div>
 <div class="dropdown-divider" ></div>  
-Przypisani użytkownicy:
+<p>Przypisani użytkownicy:</p>
 @for (item of usersInTask; track $index) {
   <div class="list-user">
   <p style="padding-right: 10px; padding-top: 10px;">{{item.firstName}} {{item.lastName}}</p>
   <button
   (click)="usunUsera(item.id, taskId)"
-   type="button" 
+   type="button" style="width: 35px;"
    class="btn btn-warning">
     -
   </button>

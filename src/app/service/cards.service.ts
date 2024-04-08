@@ -29,9 +29,8 @@ export class CardsService {
   }
   putTask(name: string, cardId: number): Observable<any> {
     return this.http.put(
-      `${environment.backendUrl}/card/addtask/${cardId}`,
-      name
-    );
+      `${environment.backendUrl}/addtask/${cardId}`,
+      name);
   }
   deleteCard(cardId: number): Observable<any> {
     return this.http.delete(`${environment.backendUrl}/card/${cardId}`);
