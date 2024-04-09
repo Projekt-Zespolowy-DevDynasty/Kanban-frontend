@@ -5,7 +5,7 @@
     height: 340px;
 }
 .task {
-    background-color: #f0f0f0;
+  //  background-color: #f0f0f0;
     padding: 8px;
     margin-bottom: 12px;
     border-radius: 10px;
@@ -112,3 +112,32 @@
     padding-left: 18px;
 
   }
+  // .color-task{
+  //  // padding: 5px; 
+  //   width: 30px; 
+  //   height: 30px; 
+  //   display: flex; 
+  //   justify-content: center; 
+  //   align-items: center; 
+  //   border-radius: 50%;
+  //   border: none;
+    
+  // }
+  .color-task {
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: none;
+    width: 20px; 
+    height: 20px; 
+  }
+  
+  .color-task::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  
+  .color-task::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+  }
+  

@@ -17,6 +17,7 @@ import { User } from '../models/user.model';
 import { UserService } from '../service/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { ListOfUsersNotInTaskComponent } from '../list-of-users-not-in-task/list-of-users-not-in-task.component';
+import { TaskService } from '../service/tasks.service';
 
 @Component({
   selector: 'app-task',
@@ -41,6 +42,7 @@ export class TaskComponent {
   cardService = inject(CardsService);
   userService = inject(UserService);
   toastr = inject(ToastrService);
+  taskService = inject(TaskService);
 
   usersNotInTask!: User[];
   usersInTask!: User[];
@@ -147,5 +149,13 @@ export class TaskComponent {
     this.cardService.getOneCard(this.card.id).subscribe((card: Card) => {
       this.card = card;
     });
+  }
+
+  zmianaKolorTaska(taskId: number, color: string) {
+    this.taskService
+      .changeColorTask(taskId, color)
+      .subscribe(() => {
+        this.fetchCard();
+      });
   }
 }

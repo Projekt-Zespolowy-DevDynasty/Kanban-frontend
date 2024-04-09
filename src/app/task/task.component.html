@@ -8,8 +8,11 @@ class="overflow-auto task-container"
 >
 
 @for (task of card.tasks; track task.id) {
-<div class="task" cdkDrag [cdkDragData]="[card, task]">
+<div class="task" [ngStyle]="{'background-color': task.color}"  cdkDrag [cdkDragData]="[card, task]">
   <div class="tekst-zadan">
+    
+    <input [ngStyle]="{'background-color': task.color}" class="color-task" #colorValue type="color" (change)="zmianaKolorTaska(task.id, colorValue.value)">
+
     <p>{{ task.name }}</p>
   </div>
   
