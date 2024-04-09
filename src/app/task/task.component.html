@@ -71,18 +71,18 @@ class="overflow-auto task-container"
         </app-list-of-users-not-in-task>
       </div>
         
-      <div class="circle-name" >
+      <div class="circle-name" style="font-weight: 500;">
       @if (task.useers.length > 3) {
         @for (item of task.useers; track $index) {
           @if ($index == 3) {
             <div  class="small-circle">{{task.useers.length - 3}}+</div>
           }@else if ($index < 3) {
-            <div [style.background-color]="item.color" class="small-circle">{{item.firstName[0]}}</div>
+            <div [style.background-color]="item.color" class="small-circle">{{item.firstName[0].toUpperCase()}}{{item.lastName[0].toUpperCase()}}</div>
           }
         }
       }@else {
         @for (item of task.useers; track $index) {
-          <div [style.background-color]="item.color" class="small-circle">{{item.firstName[0]}}</div>
+          <div [style.background-color]="item.color" class="small-circle">{{item.firstName[0].toUpperCase()}}{{item.lastName[0].toUpperCase()}}</div>
         }
       }
     </div>
