@@ -55,6 +55,7 @@ export class BoardComponent implements OnInit, OnChanges {
         event.previousIndex,
         event.currentIndex
       );
+      console.log(event.container.data + ' ' + event.previousIndex + ' ' + event.currentIndex);
     } else {
       transferArrayItem(
         event.previousContainer.data,
