@@ -5,7 +5,7 @@ export interface User {
     firstName: string;
     lastName: string;
     email: string;
-    maxUserLimit: number;
+    maxUserTasksLimit: number;
     color: string;
     tasks: Task[];
   }
