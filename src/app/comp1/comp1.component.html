@@ -92,9 +92,8 @@
                 <p>
                    <input
                     #limit
-                    (keyup.enter)="
-                      changeLimitUser(item.id, limit.value, item.maxUserTasksLimit)
-                    "
+                    (change)="changeLimitUser(item.id, limit.value, item.maxUserTasksLimit)"
+                    (keyup.enter)="changeLimitUser(item.id, limit.value, item.maxUserTasksLimit)"
                     class="wip-limit-number"
                     [value]="item.maxUserTasksLimit"
                     type="number"
