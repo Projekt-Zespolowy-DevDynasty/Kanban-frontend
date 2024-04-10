@@ -88,15 +88,20 @@
                 <p style="padding-right: 10px;">{{item.firstName}}</p>
                 <p style="padding-right: 10px;">{{item.lastName}}</p>
             <div class="lonly-trash">
-                <button
-                type="button"
-                class="btn btn-primary"
-                disabled
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i class="bi bi-pen-fill"></i>
-              </button>
+              <div class="wip-limit-text" style="width: 100px">
+                <p>
+                   <input
+                    #limit
+                    (keyup.enter)="
+                      changeLimitUser(item.id, limit.value, item.maxUserLimit)
+                    "
+                    class="wip-limit-number"
+                    [value]="item.maxUserLimit"
+                    type="number"
+                    [placeholder]="item.maxUserLimit"
+                  />
+                </p>
+              </div>
               <ul class="dropdown-menu" style="width: 280px">
                 <li>
                   <input 

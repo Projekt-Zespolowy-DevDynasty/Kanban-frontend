@@ -275,5 +275,13 @@ usunUseraZTaska(userId: number, taskId: number) {
     },
   });
 }
+changeLimitUser(userId: number, limit: string, maxUserLimit: number) {
+  let limit3 = parseInt(limit);
+
+  this.userService.setLimitUser(userId, limit3).subscribe(() => {
+    this.fetchUsers();
+  });
+}
+
 
 }
