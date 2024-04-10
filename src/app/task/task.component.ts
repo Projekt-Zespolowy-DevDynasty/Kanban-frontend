@@ -52,14 +52,7 @@ export class TaskComponent {
 
   drop(event: CdkDragDrop<Task[]>) {
     // source id
-    console.log('destination id' + event.container.id);
-    // destination id
-    console.log('source id' + event.item.data[0].id);
-    // task id
-    console.log('task id' + event.item.data[1].id);
-
     if (event.previousContainer === event.container) {
-      console.log('moveItemInArray' + event);
       moveItemInArray(
         event.container.data,
         event.previousIndex,
@@ -78,11 +71,13 @@ export class TaskComponent {
       event.item.data[1].id,
       Number(event.container.id)
     );
+    
   }
   przesTask(sourceCardId: number, taskId: number, destinationCardId: number) {
     this.cardService
       .moveTasks(sourceCardId, taskId, destinationCardId)
       .subscribe(() => {
+        this.refreshParent.emit();
         //this.fetchCards();
       });
   }

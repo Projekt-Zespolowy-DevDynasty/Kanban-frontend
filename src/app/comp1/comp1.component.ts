@@ -46,7 +46,7 @@ import { FormControl, ReactiveFormsModule, FormGroup, Validators } from '@angula
 export class Comp1Component {
   allRows!: Row[];
   dlugoscListyRows!: number;
-
+  data!: Card[];
   allUsers!: User[];
 
   addUserForm = new FormGroup({
@@ -69,14 +69,12 @@ export class Comp1Component {
     private cardService: CardsService,
     private rowService: RowService,
     private userService: UserService,
-    private http: HttpClient,
     private toastr: ToastrService
   ) {}
 
 
 
   usunKarte(positionNumber: number, name: string) {
-    console.log(positionNumber + ' ' + name + ' ' + this.data);
     if (confirm('Usunąć kolumne ' + name + '?')) {
       this.rowService.deleteColumnInRow(positionNumber).subscribe({
         next: (positionNumber: Row) => {
@@ -138,7 +136,7 @@ export class Comp1Component {
   }
 
 
-  data!: Card[];
+  
   //private cardService = inject(CardsService);
 
   value = '';
@@ -247,7 +245,6 @@ usunUsera(userId: number) {
         this.fetchUsers();
       },
       error: (error) => {
-        console.log(error);
         this.toastr.error('Nie udało się usunąć Użytkownika');
       },
     });

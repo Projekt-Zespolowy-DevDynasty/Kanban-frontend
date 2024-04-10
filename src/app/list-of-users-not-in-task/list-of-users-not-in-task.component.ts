@@ -45,7 +45,6 @@ export class ListOfUsersNotInTaskComponent {
 
   getAllUsersInTask(taskId: number){
     this.userService.AllUserInTask(taskId).subscribe((users) => {
-      console.log(users);
       this.usersInTask = users;
     });
   }
@@ -57,7 +56,6 @@ export class ListOfUsersNotInTaskComponent {
         this.reloadComponent();
       },
       error: (err) => {
-        console.log(err);
       },
     });
     }
@@ -68,7 +66,6 @@ export class ListOfUsersNotInTaskComponent {
         this.reloadComponent();
       },
       error: (err) => {
-        console.log(err);
       },
     });
   }

@@ -48,14 +48,8 @@ export class BoardComponent implements OnInit, OnChanges {
 
   drop(event: CdkDragDrop<{ id: number; name: string }[]>) {
     // source id
-    console.log('destination id' + event.container.id);
-    // destination id
-    console.log('source id' + event.item.data[0].id);
-    // task id
-    console.log('task id' + event.item.data[1].id);
 
     if (event.previousContainer === event.container) {
-      console.log('moveItemInArray' + event);
       moveItemInArray(
         event.container.data,
         event.previousIndex,
