@@ -78,7 +78,6 @@ export class TaskComponent {
       .moveTasks(sourceCardId, taskId, destinationCardId)
       .subscribe(() => {
         this.refreshParent.emit();
-        //this.fetchCards();
       });
   }
 

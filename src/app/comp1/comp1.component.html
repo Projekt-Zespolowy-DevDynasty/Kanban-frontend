@@ -354,7 +354,7 @@
         </div>
 
         <div class="row">
-          <app-board [rowId]="row.id" [allRows]="allRows"> </app-board>
+          <app-board (refreshParent)="fetchCards()" [rowId]="row.id" [allRows]="allRows"> </app-board>
         </div>
       </div>
 

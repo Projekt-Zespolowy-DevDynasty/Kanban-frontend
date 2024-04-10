@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { Comp1Component } from '../comp1/comp1.component';
 import { Row } from '../models/row.model';
 import {
@@ -43,55 +43,9 @@ export class BoardComponent implements OnInit, OnChanges {
 
   @Input() rowId!: number;
   @Input() allRows!: Row[];
+  @Output() refreshParent: EventEmitter<any> = new EventEmitter();
   newRow!: Row;
   data!: Card[];
-
-  drop(event: CdkDragDrop<{ id: number; name: string }[]>) {
-    // source id
-
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-      console.log(event.container.data + ' ' + event.previousIndex + ' ' + event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-    this.przesTask(
-      event.item.data[0].id,
-      event.item.data[1].id,
-      Number(event.container.id)
-    );
-  }
-
-  przesTask(sourceCardId: number, taskId: number, destinationCardId: number) {
-    this.cardService
-      .moveTasks(sourceCardId, taskId, destinationCardId)
-      .subscribe(() => {
-        this.fetchCards();
-      });
-  }
-
-  usunTask(taskId: number, cardId: number) {
-    if (confirm('Usunąć zadanie?')) {
-      this.cardService.deleteTask(taskId, cardId).subscribe(() => {
-        this.fetchCards();
-      });
-    }
-  }
-
-  zmianaNazwyTaska(taskId: number, newNameTask: string) {
-    this.cardService.zmianaNazwyTaska(taskId, newNameTask).subscribe(() => {
-      this.fetchCards();
-    });
-  }
 
   //private cardService = inject(CardsService);
 
