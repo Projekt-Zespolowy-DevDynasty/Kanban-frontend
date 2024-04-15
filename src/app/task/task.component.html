@@ -6,12 +6,12 @@ cdkDropList
 class="overflow-auto task-container example-list overflow-x-hidden"
 >
 
-@for (task of card.tasks; track task.id) {
+@for (task of sortedListOfTasks; track task.id) {
 <div class="task" style="display: flex;" [ngStyle]="{'background-color': task.color}"  cdkDrag [cdkDragData]="[card, task]">
   <div class="task-context-container">
     <div class="tekst-zadan">
       <input class="color-task" [value]="task.color" #colorValue type="color" (change)="zmianaKolorTaska(task.id, colorValue.value)">
-      <p>{{ task.name }}</p>
+      <p>{{ task.name }} {{task.position}}</p> 
     </div>
     
     <div class="przycisk-do-edycji">
@@ -70,11 +70,11 @@ class="overflow-auto task-container example-list overflow-x-hidden"
         </div>
           
         <div class="circle-name" style="font-weight: 500;">
-        @if (task.useers.length > 3) {
+        @if (task.useers.length > 2) {
           @for (item of task.useers; track $index) {
-            @if ($index == 3) {
-              <div  class="small-circle">{{task.useers.length - 3}}+</div>
-            }@else if ($index < 3) {
+            @if ($index == 2) {
+              <div  class="small-circle">{{task.useers.length - 2}}+</div>
+            }@else if ($index < 2) {
               <div [style.background-color]="item.color" class="small-circle">{{item.firstName[0].toUpperCase()}}{{item.lastName[0].toUpperCase()}}</div>
             }
           }

@@ -41,13 +41,9 @@ export class CardsService {
       limit
     );
   }
-  moveTasks(
-    sourceCardId: number,
-    taskId: number,
-    destinationCardId: number
-  ): Observable<any> {
+  moveTasks( sourceCardId: number, taskId: number, destinationCardId: number, index: number): Observable<any> {
     return this.http.put(
-      `${environment.backendUrl}/card/${sourceCardId}/move-task/${taskId}/to-card/${destinationCardId}`,
+      `${environment.backendUrl}/card/${sourceCardId}/move-task/${taskId}/to-card/${destinationCardId}/at-index/${index}`,
       null
     );
   }

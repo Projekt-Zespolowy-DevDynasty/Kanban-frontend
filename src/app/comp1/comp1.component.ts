@@ -153,6 +153,7 @@ export class Comp1Component {
   fetchCards() {
     this.rowService.getAll().subscribe({
       next: (rows: Row[]) => {
+        //console.log(rows[0].cardsInRow);
         this.allRows = rows;
         this.data = rows[0].cardsinrow;
         this.dlugoscListyRows = rows.length;

@@ -46,8 +46,7 @@ export class TaskComponent {
 
   usersNotInTask!: User[];
   usersInTask!: User[];
-
-
+  sortedListOfTasks!: Task[];
 
 
   drop(event: CdkDragDrop<Task[]>) {
@@ -66,17 +65,11 @@ export class TaskComponent {
         event.currentIndex
       );
     }
-    this.przesTask(
-      event.item.data[0].id,
-      event.item.data[1].id,
-      Number(event.container.id)
-    );
-    
+    console.log('New index of the moved item:', event.currentIndex);
+    this.przesTask(event.item.data[0].id,event.item.data[1].id,Number(event.container.id),event.currentIndex);
   }
-  przesTask(sourceCardId: number, taskId: number, destinationCardId: number) {
-    this.cardService
-      .moveTasks(sourceCardId, taskId, destinationCardId)
-      .subscribe(() => {
+  przesTask(sourceCardId: number, taskId: number, destinationCardId: number, index: number) {
+    this.cardService.moveTasks(sourceCardId, taskId, destinationCardId, index).subscribe(() => {
         this.refreshParent.emit();
       });
   }
@@ -124,6 +117,7 @@ export class TaskComponent {
   updateTask() {
     this.cardService.getOneCard(this.card.id).subscribe((card: Card) => {
       this.card = card;
+      this.sortedListOfTasks = this.card.tasks.sort((a, b) => a.position - b.position);
     });
   }
   getAllUsers() {
@@ -142,6 +136,7 @@ export class TaskComponent {
   fetchCard(){
     this.cardService.getOneCard(this.card.id).subscribe((card: Card) => {
       this.card = card;
+      this.sortedListOfTasks = this.card.tasks.sort((a, b) => a.position - b.position);
     });
   }
 
