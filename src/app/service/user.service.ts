@@ -40,8 +40,8 @@ export class UserService {
     null, 
     {responseType: 'text' as 'json'});
   }
-  setLimitUser(userId: number , limit: number): Observable<User> {
-    return this.http.put<User>(`${environment.backendUrl}/users/${userId}/setMaxTasksLimit`,limit,
+  setLimitUser(userId: number , limit: number): Observable<String> {
+    return this.http.put<String>(`${environment.backendUrl}/users/${userId}/setMaxTasksLimit`,limit,
     {responseType: 'text' as 'json'}
      );
   }

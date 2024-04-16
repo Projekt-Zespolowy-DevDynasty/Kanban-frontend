@@ -251,33 +251,18 @@ usunUsera(userId: number) {
     });
   
 }
-dodajUseraDoTaska(userId: number, taskId: number) {
-  this.userService.addUserToTask(userId, taskId).subscribe({
-    next: (users: User) => {
-      this.toastr.success('Dodano Użytkownika do Taska');
-      this.fetchUsers();
-    },
-    error: (error) => {
-      this.toastr.error('Nie udało się dodać Użytkownika do Taska');
-    },
-  });
-}
-usunUseraZTaska(userId: number, taskId: number) {
-  this.userService.deleteUserFromTask(userId, taskId).subscribe({
-    next: () => {
-      this.toastr.success('Usunięto Uzytkownika z Taska');
-      this.fetchUsers();
-    },
-    error: (error) => {
-      this.toastr.error('Nie udało się usunąć Użytkownika z Taska');
-    },
-  });
-}
-changeLimitUser(userId: number, limit: string, maxUserLimit: number) {
+
+changeLimitUser(userId: number, limit: string) {
   let limit3 = parseInt(limit);
 
-  this.userService.setLimitUser(userId, limit3).subscribe(() => {
-    this.fetchUsers();
+  this.userService.setLimitUser(userId, limit3).subscribe({
+    next: () => {
+      this.toastr.success('Zmieniono limit Usera');
+      this.fetchUsers();
+    },
+    error: (error) => {
+      this.toastr.error('Nie udało się zmienić limitu Usera');
+    },
   });
 }
 

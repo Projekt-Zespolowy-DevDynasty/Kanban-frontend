@@ -89,11 +89,11 @@
                 <p style="padding-right: 10px;">{{item.lastName}}</p>
             <div class="lonly-trash">
               <div class="wip-limit-text" style="width: 100px">
+
                 <p>
                    <input
                     #limit
-                    (change)="changeLimitUser(item.id, limit.value, item.maxUserTasksLimit)"
-                    (keyup.enter)="changeLimitUser(item.id, limit.value, item.maxUserTasksLimit)"
+                    (keyup.enter)="changeLimitUser(item.id, limit.value)"
                     class="wip-limit-number"
                     [value]="item.maxUserTasksLimit"
                     type="number"

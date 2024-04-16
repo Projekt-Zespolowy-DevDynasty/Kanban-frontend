@@ -3,7 +3,8 @@ import { UserService } from '../service/user.service';
 import { TaskService } from '../service/tasks.service';
 import { Task } from '../models/task.model';
 import { User } from '../models/user.model';
-import { InvokeFunctionExpr } from '@angular/compiler';
+import { InvokeFunctionExpr, LiteralPrimitive } from '@angular/compiler';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-of-users-not-in-task',
@@ -21,7 +22,7 @@ export class ListOfUsersNotInTaskComponent {
   @Input() task!: Task;
   usersInTask!: User[];
 
-  constructor(private userService: UserService, private taskService: TaskService) { }
+  constructor(private userService: UserService, private taskService: TaskService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getAllUsersNotInTask(this.taskId);
@@ -54,8 +55,15 @@ export class ListOfUsersNotInTaskComponent {
       next: () => {
         this.refreshParent.emit();
         this.reloadComponent();
+        this.toastr.success("Dodano Usera do zadania")
       },
       error: (err) => {
+        console.log(err.status)
+        // if err.status 410
+        // //max limit
+        // else 
+        //blad na serwerze
+        this.toastr.error('nie udało się dodać Usera do zadania')
       },
     });
     }
@@ -64,8 +72,11 @@ export class ListOfUsersNotInTaskComponent {
       next: () => {
         this.refreshParent.emit();
         this.reloadComponent();
+        this.toastr.success("Usunięto Usera z zadania")
       },
       error: (err) => {
+ 
+        this.toastr.error('Nie udało się usunąć usera z zadania')
       },
     });
   }
