@@ -31,3 +31,27 @@
         align-content: center;
     }
 }
+.check-only{
+    display: flex; 
+     justify-content: space-between; 
+     align-items: center; 
+     padding-bottom: 5px;
+   }
+   .lonly-trashv2 {
+    display: flex; 
+    flex-direction: row; 
+    align-items: flex-end;
+    padding-bottom: 5px;
+    
+  }
+  .mat-expansion-panel-header {
+    max-height: 20px;
+    padding-left: 5px;
+  }
+  .tekst-zadan p {
+    margin-bottom: 0;
+  }
+
+ .podzadanie{
+   width: 260px; 
+ }

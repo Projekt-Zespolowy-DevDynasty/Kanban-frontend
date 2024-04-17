@@ -23,10 +23,16 @@
     </div>
     <div class="example-section" >
         @for (subTask of subTasks; track $index) {
+            <div class="check-only">
             <mat-checkbox class="example-margin">
                 {{subTask.name}}
             </mat-checkbox>
+        
+            <div class="lonly-trashv2">
             <button (click)="deleteSubTask(subTask.id)" class="btn btn-danger">-</button>
+        </div>
+    </div>
+         
         }
     </div>
     
