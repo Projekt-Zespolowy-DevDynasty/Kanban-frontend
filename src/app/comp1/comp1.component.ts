@@ -211,7 +211,8 @@ export class Comp1Component {
       },
       error: (error) => {},
     });
-}
+}   
+
   dodajUsera() {
     const user: User = this.addUserForm.value as User;
     if(user.firstName.trim() == '' || user.lastName.trim() == '' || user.email.trim() == '') {

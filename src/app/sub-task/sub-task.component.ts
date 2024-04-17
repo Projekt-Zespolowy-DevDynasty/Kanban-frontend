@@ -33,6 +33,9 @@ export class SubTaskComponent {
   ngOnInit(): void {
     this.calculatePercentDone();
   }
+  ngAfterViewInit(): void {
+    this.calculatePercentDone();
+  }
 
   calculatePercentDone() {
     const total = this.subTasks.length;

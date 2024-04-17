@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, inject } from '@angular/core';
 import { Comp1Component } from '../comp1/comp1.component';
 import { Row } from '../models/row.model';
 import {
@@ -17,6 +17,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgStyle } from '@angular/common';
 import { RowService } from '../service/row.service';
 import { TaskComponent } from '../task/task.component';
+import { UserService } from '../service/user.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-board',
@@ -41,11 +43,16 @@ export class BoardComponent implements OnInit, OnChanges {
     private toastr: ToastrService
   ) {}
 
+  userService = inject(UserService);
+
   @Input() rowId!: number;
   @Input() allRows!: Row[];
   @Output() refreshParent: EventEmitter<any> = new EventEmitter();
+  @Input() allUsers!: User[];
   newRow!: Row;
   data!: Card[];
+
+
 
   //private cardService = inject(CardsService);
 
@@ -60,6 +67,7 @@ export class BoardComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.fetchCards();
+    this.fetchUsers();
   }
   ngOnChanges() {
     /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES **************/
@@ -69,6 +77,15 @@ export class BoardComponent implements OnInit, OnChanges {
     this.rowService.getRowById(this.rowId).subscribe((row: Row) => {
       this.data = row.cardsinrow;
       this.newRow = row;
+    });
+  }
+
+  fetchUsers() {
+    this.userService.getAllUser().subscribe({
+      next: (users: User[]) => {
+        this.allUsers = users;
+      },
+      error: (error) => {},
     });
   }
 
