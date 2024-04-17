@@ -84,10 +84,11 @@
           <div class="dropdown-divider" ></div>
           <div class="user-trash">
             @for (item of allUsers; track $index){
-            <div class="list-user">
+            
+            <div class="name-user-limit">
                 <p style="padding-right: 10px;">{{item.firstName}}</p>
                 <p style="padding-right: 10px;">{{item.lastName}}</p>
-            <div class="lonly-trash">
+            
               <div class="wip-limit-text" style="width: 100px">
 
                 <p>
@@ -117,6 +118,8 @@
                   </button>
                 </li>
               </ul>
+            
+            <div class="lonly-trash">
           <button
           (click)="usunUsera(item.id)"
           type="button"
@@ -124,7 +127,8 @@
           <i class="bi bi-trash-fill"></i>
         </button>
         </div>
-         </div>
+      </div>
+         
          }
         </div>
     </div>
