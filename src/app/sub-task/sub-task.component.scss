@@ -1,0 +1,33 @@
+.dodawaniePodTaska {
+    margin-bottom: 0;
+
+}
+.input-text_podZadanie {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    height: 36px;
+    width: 75%;
+    font-weight: normal;
+    border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
+    border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
+    margin-bottom: 10px; /* Dodaj margines na dole dla odstępu między polem tekstowym a przyciskiem */
+}
+  
+.input-text_podZadanie:focus {
+    border-bottom-color: #2ca611;
+    border-bottom-width: 2px;
+}
+
+.pasek-progresu{
+    padding-top: 50px;
+  
+}
+.procent{
+    align-content: center;
+    p{
+        padding-right: 3px;
+        padding-top: 11px;
+        align-content: center;
+    }
+}

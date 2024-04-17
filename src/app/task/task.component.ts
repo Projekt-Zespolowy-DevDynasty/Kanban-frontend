@@ -18,9 +18,8 @@ import { UserService } from '../service/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { ListOfUsersNotInTaskComponent } from '../list-of-users-not-in-task/list-of-users-not-in-task.component';
 import { TaskService } from '../service/tasks.service';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { SubTaskComponent } from '../sub-task/sub-task.component';
+
 @Component({
   selector: 'app-task',
   standalone: true,
@@ -32,10 +31,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     NgStyle,
     BoardComponent,
     ListOfUsersNotInTaskComponent,
-    MatExpansionModule,
-    MatCheckboxModule,
-    MatProgressBarModule,
-
+    SubTaskComponent
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'

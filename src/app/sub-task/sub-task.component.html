@@ -1,1 +1,33 @@
-<p>sub-task works!</p>
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header >
+      <mat-panel-title >
+        Podzadania
+      </mat-panel-title>
+      <div class="procent">
+        <p>40%</p>
+      </div>
+      <mat-progress-bar  class="pasek-progresu" mode="determinate" value="40">
+      </mat-progress-bar>
+    
+    </mat-expansion-panel-header>
+    <div class="dodawaniePodTaska">
+      <input
+        #subTaskName
+        type="text"
+        class="input-text_podZadanie"
+        placeholder="Wpisz nazwe"
+        style="padding-left: 7px; margin-right: 5px"/>
+      <button (click)="addSubTask(subTaskName.value)" type="button" class="btn btn-success" >
+        <i class="bi bi-plus-circle-fill"></i>
+      </button>
+    </div>
+    <div class="example-section" >
+        @for (subTask of subTasks; track $index) {
+            <mat-checkbox class="example-margin">
+                {{subTask.name}}
+            </mat-checkbox>
+            <button (click)="deleteSubTask(subTask.id)" class="btn btn-danger">-</button>
+        }
+    </div>
+    
+  </mat-expansion-panel>
