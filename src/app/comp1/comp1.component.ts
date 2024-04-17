@@ -253,19 +253,28 @@ usunUsera(userId: number) {
   
 }
 
-changeLimitUser(userId: number, limit: string) {
-  let limit3 = parseInt(limit);
+  changeLimitUser(userId: number, limit: string) {
+    let limit3 = parseInt(limit);
 
-  this.userService.setLimitUser(userId, limit3).subscribe({
-    next: () => {
-      this.toastr.success('Zmieniono limit Usera');
-      this.fetchUsers();
-    },
-    error: (error) => {
-      this.toastr.error('Nie udało się zmienić limitu Usera');
-    },
-  });
-}
+    this.userService.setLimitUser(userId, limit3).subscribe({
+      next: () => {
+        this.toastr.success('Zmieniono limit Usera');
+        this.fetchUsers();
+      },
+      error: (error) => {
+        if(limit3 < 0){
+          this.toastr.error('Limit nie może być mniejszy niż 0');
+          
+          return;
+        }
+        if(error.status == 415){
+          this.toastr.error('User aktualnie ma więcej zadań niż nowy limit');
+          return;
+        }
+        this.toastr.error('Nie udało się zmienić limitu Usera');
+      },
+    });
+  }
 
 
 }
