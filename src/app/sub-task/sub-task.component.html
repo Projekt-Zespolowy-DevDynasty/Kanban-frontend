@@ -1,12 +1,12 @@
-<mat-expansion-panel hideToggle>
+<mat-expansion-panel class="expansion-container">
     <mat-expansion-panel-header >
       <mat-panel-title >
         Podzadania
       </mat-panel-title>
       <div class="procent">
-        <p>40%</p>
+        <p>{{percentDone}}%</p>
       </div>
-      <mat-progress-bar  class="pasek-progresu" mode="determinate" value="40">
+      <mat-progress-bar  class="pasek-progresu" mode="determinate" [value]="percentDone">
       </mat-progress-bar>
     
     </mat-expansion-panel-header>
@@ -21,17 +21,17 @@
         <i class="bi bi-plus-circle-fill"></i>
       </button>
     </div>
-    <div class="example-section" >
+    <div class="example-section">
         @for (subTask of subTasks; track $index) {
             <div class="check-only">
-            <mat-checkbox class="example-margin">
-                {{subTask.name}}
-            </mat-checkbox>
+                <mat-checkbox [(ngModel)]="subTask.finished" class="example-margin" (change)="onCheckboxChange(subTask.id, $event)">
+                    {{ subTask.name }}
+                </mat-checkbox>
         
-            <div class="lonly-trashv2">
-            <button (click)="deleteSubTask(subTask.id)" class="btn btn-danger">-</button>
-        </div>
-    </div>
+                <div class="lonly-trashv2">
+                    <button (click)="deleteSubTask(subTask.id)" class="btn btn-danger">-</button>
+                </div>
+            </div>
          
         }
     </div>

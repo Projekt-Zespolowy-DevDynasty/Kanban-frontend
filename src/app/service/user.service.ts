@@ -26,7 +26,7 @@ export class UserService {
   }
 
   deleteUser(userId: number): Observable<void> {
-    return this.http.delete<void>(`${environment.backendUrl}/users/${userId}`);
+    return this.http.delete<void>(`${environment.backendUrl}/users/${userId}`, {responseType: 'text' as 'json'});
   }
   AllUserInTask(taskId: number): Observable<User[]> {
     return this.http.get<User[]>(`${environment.backendUrl}/users/${taskId}/usersAssigned`);

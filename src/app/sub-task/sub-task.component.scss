@@ -21,6 +21,7 @@
 
 .pasek-progresu{
     padding-top: 50px;
+    margin-right: 9px;
   
 }
 .procent{
@@ -45,7 +46,7 @@
     
   }
   .mat-expansion-panel-header {
-    max-height: 20px;
+    max-height: 40px;
     padding-left: 5px;
   }
   .tekst-zadan p {
@@ -54,4 +55,7 @@
 
  .podzadanie{
    width: 260px; 
+ }
+ .expansion-container{
+    margin-bottom: 5px;
  }

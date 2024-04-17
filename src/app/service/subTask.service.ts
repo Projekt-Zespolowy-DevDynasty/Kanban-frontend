@@ -28,7 +28,7 @@ export class SubTaskService {
     return this.http.delete<void>(`${environment.backendUrl}/subtasks/${subTaskId}`);
   }
   changeSubTaskStatus(subTaskId: number, status: boolean): Observable<void> {
-    return this.http.put<void>(`${environment.backendUrl}/subtasks/${subTaskId}/finished?finshed=${status}`, null);
+    return this.http.put<void>(`${environment.backendUrl}/subtasks/${subTaskId}/finished?finished=${status}`, null);
   }
 
 }
