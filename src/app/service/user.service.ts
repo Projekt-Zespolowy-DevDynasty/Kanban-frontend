@@ -19,8 +19,8 @@ export class UserService {
   }
   addUserToTask( userId: number, taskId: number): Observable<User> {
     return this.http.post<User>(`${environment.backendUrl}/users/add/${userId}/assignToTask/${taskId}`, null);
-
   }
+  
   deleteUserFromTask(userId: number, taskId: number): Observable<void> {
     return this.http.delete<void>(`${environment.backendUrl}/users/${userId}/removeFromTask/${taskId}`, {responseType: 'text' as 'json'});
   }
@@ -45,5 +45,6 @@ export class UserService {
     {responseType: 'text' as 'json'}
      );
   }
+
 
 }
