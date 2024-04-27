@@ -1,0 +1,57 @@
+.name-user-limit{
+    display: flex; 
+       justify-content: space-between; 
+       align-items: center; 
+       padding-bottom: 5px; 
+  }
+  .wip-limit-number {
+    height: 20px;
+    width: 26px;
+    margin-left: 4px;
+    margin-right: 2px;
+    margin-top: 4.2px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    font-weight: normal;
+    border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
+    border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
+    margin-bottom: 10px; /* Dodaj margines na dole dla odstępu między polem tekstowym a przyciskiem */
+  }
+  
+  .wip-limit-number:focus {
+    border-bottom-color: #2ca611;
+    border-bottom-width: 2px;
+  }
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .wip-limit-text {
+    display: flex;
+    font-size: large;
+    padding-left: 8px;
+    p{
+      padding-top: 6px;
+    }
+  }
+
+
+.lonly-trash {
+  display: flex; 
+  flex-direction: row; 
+  align-items: flex-end;
+  padding-bottom: 5px;
+}
+
+.dangernew {
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    display: flex; 
+      flex-direction: row; 
+      align-items: flex-end;
+      padding-bottom: 5px;
+  }

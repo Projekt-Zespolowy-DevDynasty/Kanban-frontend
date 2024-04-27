@@ -192,13 +192,6 @@ a:hover {
 .example-box:last-child {
   border: none;
 }
-
-.button-two {
-  padding-top: 10px;
-  padding-left: 5px;
-  display: flex;
-  flex-direction: column;
-}
 .button-option {
   display: flex; // Ustawia Flexbox
   flex-direction: column; // Układa elementy w kolumnie (pionowo)
@@ -218,41 +211,4 @@ a:hover {
 }
 .naglowek-do-przyciskuv2{
   margin-left: 10px
-}
-// .user-trash{
-//   padding-top: 10px;
-  
-  
-// }
-.dangernew {
-  color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 10px;
-  display: flex; 
-    flex-direction: row; 
-    align-items: flex-end;
-    padding-bottom: 5px;
-}
-// .list-user{
-//  display: flex; 
-//   justify-content: space-between; 
-//   align-items: center; 
-//   padding-bottom: 5px;
-  
-// }
-
-.lonly-trash {
-  display: flex; 
-  flex-direction: row; 
-  align-items: flex-end;
-  padding-bottom: 5px;
-  
-}
-.name-user-limit{
-  display: flex; 
-     justify-content: space-between; 
-     align-items: center; 
-     padding-bottom: 5px;
-
-     
 }

@@ -1,0 +1,86 @@
+<div class="button-two">
+    <button
+      type="button"
+      class="btn btn-warning"
+      style="border-radius: 10px; margin-bottom: 10px"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <i class="bi bi-file-earmark-plus-fill"></i>
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <input
+          #dodawanieKarty
+          (keyup.enter)="dodajKarte(dodawanieKarty.value)"
+          type="text"
+          class="input-textv2"
+          placeholder="Wpisz nazwe"
+          style="padding-left: 7px; margin-right: 5px"
+        />
+        <button
+          (click)="dodajKarte(dodawanieKarty.value)"
+          type="button"
+          class="btn btn-light"
+        >
+          <i class="bi bi-plus-circle"></i>
+        </button>
+      </li>
+    </ul>
+
+    <button
+      type="button"
+      class="btn btn-secondary"
+      style="margin-bottom: 10px"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <i class="bi bi-building-fill-add"></i>
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <input
+          #dodawanieWiersza
+          (keyup.enter)="dodajWiersz(dodawanieWiersza.value)"
+          type="text"
+          class="input-textv2"
+          placeholder="Wpisz nazwe"
+          style="padding-left: 7px; margin-right: 5px"
+        />
+        <button
+          (click)="dodajWiersz(dodawanieWiersza.value)"
+          type="button"
+          class="btn btn-light"
+        >
+          <i class="bi bi-plus-circle"></i>
+        </button>
+      </li>
+    </ul>
+    <div class="dropdown-user">
+    <button type="button"  class="btn btn-success"data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+        <i class="bi bi-person-add"></i>
+    </button>
+    <div class="dropdown-menu p-4">
+        <form (ngSubmit)="dodajUsera()" [formGroup]="addUserForm" class="px-4 py-3">
+            
+        <div class="mb-3">
+          <label for="name" class="form-label">Imię</label>
+          <input  class="form-control" id="name" placeholder="first name" formControlName="firstName">
+        </div>
+        <div class="mb-3">
+            <label for="last-name" class="form-label">Nazwisko</label>
+            <input  class="form-control" id="last-name" placeholder="last name" formControlName="lastName" >
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="email@example.com" formControlName="email">
+          </div>
+        <button [disabled]="!addUserForm.value"  type="submit"  class="btn btn-primary">Dodaj</button>
+        
+      </form>
+      <div class="dropdown-divider" ></div>
+      <app-list-of-users [allUsers]="allUsers" (refreshParent)="reloadParent()"></app-list-of-users>
+</div>
+      
+</div>
+  </div>
