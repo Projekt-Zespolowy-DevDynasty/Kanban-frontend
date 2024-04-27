@@ -1,5 +1,5 @@
-import { TaskComponent } from "../task/task.component";
-import { Task } from "./task.model";
+import { TaskComponent } from '../task/task.component';
+import { Task } from './task.model';
 
 export interface Card {
   id: number;

@@ -1,15 +1,16 @@
 <div class="user-trash">
-    @for (item of allUsers; track $index){
-    
+  @for (item of allUsers; track $index) {
     <div class="name-user-limit">
-      <div style="display: flex; flex-wrap: nowrap;">
-        <p style="padding-right: 5px;">{{item.firstName}}</p>
-        <p style="padding-right: 5px;">{{item.lastName}}</p>
+      <div style="display: flex; flex-wrap: nowrap">
+        <p style="padding-right: 5px">{{ item.firstName }}</p>
+        <p style="padding-right: 5px">{{ item.lastName }}</p>
       </div>
-      <div class="wip-limit-text" style="width: 100%; justify-content: flex-end; padding-right: 8px;">
-
+      <div
+        class="wip-limit-text"
+        style="width: 100%; justify-content: flex-end; padding-right: 8px"
+      >
         <p>
-           <input
+          <input
             #limit
             (keyup.enter)="changeLimitUser(item.id, limit.value)"
             class="wip-limit-number"
@@ -19,15 +20,15 @@
           />
         </p>
       </div>
-    <div class="lonly-trash">
-  <button
-  (click)="usunUsera(item.id)"
-  type="button"
-  class="dangernew btn btn-danger">
-  <i class="bi bi-trash-fill"></i>
-</button>
-</div>
-</div>
- 
- }
+      <div class="lonly-trash">
+        <button
+          (click)="usunUsera(item.id)"
+          type="button"
+          class="dangernew btn btn-danger"
+        >
+          <i class="bi bi-trash-fill"></i>
+        </button>
+      </div>
+    </div>
+  }
 </div>

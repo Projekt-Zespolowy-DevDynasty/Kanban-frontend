@@ -1,11 +1,10 @@
-import { Task } from "./task.model";
+import { Task } from './task.model';
 
 export interface SubTask {
-    id: number;
-    name: string;
-    finished: boolean;
-    position: number;
-    color: string;
-    task: Task;
-    
+  id: number;
+  name: string;
+  finished: boolean;
+  position: number;
+  color: string;
+  task: Task;
 }

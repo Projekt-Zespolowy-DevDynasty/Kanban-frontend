@@ -16,7 +16,9 @@ body {
   height: 535px;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:
+    0 4px 6px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 10px;
   margin: 10px 10px 10px 10px;
   width: 345px;
@@ -28,8 +30,8 @@ body {
   margin-bottom: 18px;
   margin-left: 5px;
 }
-.newinfo{
-  margin-left:5px; 
+.newinfo {
+  margin-left: 5px;
   margin-bottom: 10px;
 }
 .input-text {
@@ -174,7 +176,7 @@ input::-webkit-inner-spin-button {
   display: flex;
   font-size: large;
   padding-left: 8px;
-  p{
+  p {
     padding-top: 6px;
   }
 }
@@ -209,6 +211,6 @@ a:hover {
   align-items: flex-start;
   align-content: flex-start;
 }
-.naglowek-do-przyciskuv2{
-  margin-left: 10px
+.naglowek-do-przyciskuv2 {
+  margin-left: 10px;
 }

@@ -10,10 +10,9 @@ xdescribe('Comp1Component', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BoardComponent],
-      imports: [Comp1Component, BoardComponent]
-    })
-    .compileComponents();
-    
+      imports: [Comp1Component, BoardComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(Comp1Component);
     component = fixture.componentInstance;
     fixture.detectChanges();

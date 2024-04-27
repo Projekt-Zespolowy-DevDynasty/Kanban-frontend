@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   providers: [UserService, TaskService],
   imports: [],
   templateUrl: './list-of-users-not-in-task.component.html',
-  styleUrl: './list-of-users-not-in-task.component.scss'
+  styleUrl: './list-of-users-not-in-task.component.scss',
 })
 export class ListOfUsersNotInTaskComponent {
   @Input() taskId!: number;
@@ -22,7 +22,11 @@ export class ListOfUsersNotInTaskComponent {
   @Input() task!: Task;
   usersInTask!: User[];
 
-  constructor(private userService: UserService, private taskService: TaskService, private toastr: ToastrService) { }
+  constructor(
+    private userService: UserService,
+    private taskService: TaskService,
+    private toastr: ToastrService,
+  ) {}
 
   ngOnInit(): void {
     this.getAllUsersNotInTask(this.taskId);
@@ -38,13 +42,13 @@ export class ListOfUsersNotInTaskComponent {
     this.reloadComponent();
   }
 
-  getAllUsersNotInTask(taskId: number){
+  getAllUsersNotInTask(taskId: number) {
     this.userService.AllUserNotInTAsk(taskId).subscribe((users) => {
       this.usersNotInTask = users;
     });
   }
 
-  getAllUsersInTask(taskId: number){
+  getAllUsersInTask(taskId: number) {
     this.userService.AllUserInTask(taskId).subscribe((users) => {
       this.usersInTask = users;
     });
@@ -55,28 +59,27 @@ export class ListOfUsersNotInTaskComponent {
       next: () => {
         this.refreshParent.emit();
         this.reloadComponent();
-        this.toastr.success("Dodano Usera do zadania")
+        this.toastr.success('Dodano Usera do zadania');
       },
       error: (err) => {
-        console.log(err.status)
+        console.log(err.status);
         // if err.status 410
         // //max limit
-        // else 
+        // else
         //blad na serwerze
-        this.toastr.error('nie udało się dodać Usera do zadania')
+        this.toastr.error('nie udało się dodać Usera do zadania');
       },
     });
-    }
-  usunUsera(userId: number,argTaskId: number) {
+  }
+  usunUsera(userId: number, argTaskId: number) {
     this.userService.deleteUserFromTask(userId, argTaskId).subscribe({
       next: () => {
         this.refreshParent.emit();
         this.reloadComponent();
-        this.toastr.success("Usunięto Usera z zadania")
+        this.toastr.success('Usunięto Usera z zadania');
       },
       error: (err) => {
- 
-        this.toastr.error('Nie udało się usunąć usera z zadania')
+        this.toastr.error('Nie udało się usunąć usera z zadania');
       },
     });
   }

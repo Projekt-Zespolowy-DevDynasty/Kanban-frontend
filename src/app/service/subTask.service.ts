@@ -9,26 +9,32 @@ import { SubTask } from '../models/subTask.model';
   providedIn: 'root',
 })
 export class SubTaskService {
-
   constructor(private http: HttpClient) {}
 
   //http://localhost:8080/api
 
-
   getSubTasksByTaskId(taskId: number): Observable<SubTask[]> {
-    return this.http.get<SubTask[]>(`${environment.backendUrl}/subtasks/tasks/${taskId}/subtasks`);
+    return this.http.get<SubTask[]>(
+      `${environment.backendUrl}/subtasks/tasks/${taskId}/subtasks`,
+    );
   }
 
   addSubtask(name: string, taskId: number): Observable<string> {
-    return this.http.post<string>(`${environment.backendUrl}/subtasks/${taskId}`, name,
-    {responseType: 'text' as 'json'}
+    return this.http.post<string>(
+      `${environment.backendUrl}/subtasks/${taskId}`,
+      name,
+      { responseType: 'text' as 'json' },
     );
   }
   deleteSubTask(subTaskId: number): Observable<void> {
-    return this.http.delete<void>(`${environment.backendUrl}/subtasks/${subTaskId}`);
+    return this.http.delete<void>(
+      `${environment.backendUrl}/subtasks/${subTaskId}`,
+    );
   }
   changeSubTaskStatus(subTaskId: number, status: boolean): Observable<void> {
-    return this.http.put<void>(`${environment.backendUrl}/subtasks/${subTaskId}/finished?finished=${status}`, null);
+    return this.http.put<void>(
+      `${environment.backendUrl}/subtasks/${subTaskId}/finished?finished=${status}`,
+      null,
+    );
   }
-
 }

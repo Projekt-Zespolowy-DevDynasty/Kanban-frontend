@@ -1,12 +1,11 @@
-import { Task } from "./task.model";
+import { Task } from './task.model';
 
 export interface User {
-    id: number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    maxUserTasksLimit: number;
-    color: string;
-    tasks: Task[];
-  }
-  
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  maxUserTasksLimit: number;
+  color: string;
+  tasks: Task[];
+}

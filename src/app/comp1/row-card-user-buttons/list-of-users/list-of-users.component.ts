@@ -8,16 +8,16 @@ import { UserService } from '../../../service/user.service';
   standalone: true,
   imports: [],
   templateUrl: './list-of-users.component.html',
-  styleUrl: './list-of-users.component.scss'
+  styleUrl: './list-of-users.component.scss',
 })
 export class ListOfUsersComponent {
   @Input() allUsers!: User[];
   @Output() refreshParent: EventEmitter<any> = new EventEmitter();
-  
+
   constructor() {}
   userService = inject(UserService);
   toastr = inject(ToastrService);
-  
+
   reloadParentUsers() {
     this.refreshParent.emit();
   }
@@ -34,7 +34,6 @@ export class ListOfUsersComponent {
     });
   }
 
-
   changeLimitUser(userId: number, limit: string) {
     let limit3 = parseInt(limit);
 
@@ -44,12 +43,12 @@ export class ListOfUsersComponent {
         this.reloadParentUsers();
       },
       error: (error) => {
-        if(limit3 < 0){
+        if (limit3 < 0) {
           this.toastr.error('Limit nie może być mniejszy niż 0');
-          
+
           return;
         }
-        if(error.status == 415){
+        if (error.status == 415) {
           this.toastr.error('User aktualnie ma więcej zadań niż nowy limit');
           return;
         }
@@ -57,7 +56,4 @@ export class ListOfUsersComponent {
       },
     });
   }
-
-
-
 }

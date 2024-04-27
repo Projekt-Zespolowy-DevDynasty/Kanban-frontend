@@ -1,64 +1,72 @@
 <div class="kanban-board">
   <div class="tablica-kolumn overflow-hidden">
     @for (card of data; track card.id) {
-    <div
-      class="column"
-      [ngStyle]="{
-        border:
-          card.tasks.length > card.maxTasksLimit && card.maxTasksLimit !== -1
-            ? '3px solid red'
-            : '3px solid transparent'
-      }"
-    >
       <div
-        class="naglowek"
-        style="
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        "
+        class="column"
+        [ngStyle]="{
+          border:
+            card.tasks.length > card.maxTasksLimit && card.maxTasksLimit !== -1
+              ? '3px solid red'
+              : '3px solid transparent'
+        }"
       >
-        @if (card.name == "To do") {
-
-        <h2 style="margin: 0; padding-top: 10px; padding-bottom: 8px">
-          {{ newRow.name }}
-        </h2>
-        <span style="padding-top: 5px; padding-bottom: 20px">{{
-          card.tasks.length
-        }}</span>
-
-        }@else if(card.name != "Done") {
-        <div class="wip-limit-text" style="width: 100px; padding-bottom: 20px">
-          {{ card.tasks.length }} / {{ card.maxTasksLimit }}
+        <div
+          class="naglowek"
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          @if (card.name == "To do") {
+            <h2 style="margin: 0; padding-top: 10px; padding-bottom: 8px">
+              {{ newRow.name }}
+            </h2>
+            <span style="padding-top: 5px; padding-bottom: 20px">{{
+              card.tasks.length
+            }}</span>
+          } @else if (card.name != "Done") {
+            <div
+              class="wip-limit-text"
+              style="width: 100px; padding-bottom: 20px"
+            >
+              {{ card.tasks.length }} / {{ card.maxTasksLimit }}
+            </div>
+          } @else if (card.name == "Done") {
+            <div
+              class="wip-limit-text"
+              style="width: 100px; padding-bottom: 20px"
+            >
+              {{ card.tasks.length }}
+            </div>
+          }
         </div>
-        }@else if (card.name == "Done") {
-        <div class="wip-limit-text" style="width: 100px; padding-bottom: 20px">
-          {{ card.tasks.length }}
+        <hr />
+        <div>
+          <app-task
+            [allUsers]="allUsers"
+            [card]="card"
+            (refreshParent)="fetchCards()"
+          ></app-task>
+          <div class="dodawanieTaska">
+            <input
+              type="text"
+              #box
+              (keyup.enter)="onEnter(box.value, card.id)"
+              class="input-text"
+              placeholder="Wpisz nazwe"
+              style="padding-left: 7px; margin-right: 5px"
+            />
+            <button
+              type="button"
+              (click)="onEnter(box.value, card.id)"
+              class="btn btn-success"
+            >
+              <i class="bi bi-plus-circle-fill"></i>
+            </button>
+          </div>
         </div>
-        }
       </div>
-      <hr />
-      <div>
-        <app-task [allUsers]="allUsers" [card]="card" (refreshParent)="fetchCards()"></app-task>
-        <div class="dodawanieTaska">
-          <input
-            type="text"
-            #box
-            (keyup.enter)="onEnter(box.value, card.id)"
-            class="input-text"
-            placeholder="Wpisz nazwe"
-            style="padding-left: 7px; margin-right: 5px"
-          />
-          <button
-            type="button"
-            (click)="onEnter(box.value, card.id)"
-            class="btn btn-success"
-          >
-            <i class="bi bi-plus-circle-fill"></i>
-          </button>
-        </div>
-      </div>
-    </div>
     }
   </div>
 </div>

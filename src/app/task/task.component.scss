@@ -1,151 +1,149 @@
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
-.task-container{
-    height: 340px;
+.task-container {
+  height: 340px;
 }
 .task {
   //  background-color: #f0f0f0;
-    max-width: 292px;
-    margin: 8px 8px 8px 8px;
-    margin-bottom: 12px;
-    border-radius: 10px;
-    width: 100%;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  max-width: 292px;
+  margin: 8px 8px 8px 8px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.task-context-container{
+.task-context-container {
   border-radius: 0px 8px 8px 0px;
   padding-left: 5px;
   margin-left: 15px;
   padding-bottom: 5px;
   padding-top: 5px;
-  width: 100%; 
+  width: 100%;
   background-color: #f0f0f0;
 }
 .tekst-zadan {
-    /* Ustawienie automatycznej wysokości */
-        height: auto;
-    /* Maksymalna szerokość, aby uniknąć zbyt szerokich kontenerów */
-    max-width: 245px;
-    /* Zawijanie tekstu tylko w granicach słów */
-    word-wrap: break-word;
-    /* Rozwiązanie problemu zbyt długich pojedynczych słów */
-    overflow-wrap: break-word;
-    /* Ograniczenie dozwolonej szerokości */
-  }
+  /* Ustawienie automatycznej wysokości */
+  height: auto;
+  /* Maksymalna szerokość, aby uniknąć zbyt szerokich kontenerów */
+  max-width: 245px;
+  /* Zawijanie tekstu tylko w granicach słów */
+  word-wrap: break-word;
+  /* Rozwiązanie problemu zbyt długich pojedynczych słów */
+  overflow-wrap: break-word;
+  /* Ograniczenie dozwolonej szerokości */
+}
 .przycisk-do-edycji {
-    margin-top: -11px;
-    display: flex; 
-    padding-top: 15px;
-  
+  margin-top: -11px;
+  display: flex;
+  padding-top: 15px;
 
-   // justify-content: space-between; 
-   // align-items: center;
-    
-    
-
+  // justify-content: space-between;
+  // align-items: center;
 }
 
 .dropdown-menu li {
-    display: flex; /* Używa Flexboxa do wyrównania elementów w linii */
-    align-items: center; /* Wyrównuje elementy pionowo do środka */
-    margin-right: 10px;
-    margin-left: 10px;
-  }
+  display: flex; /* Używa Flexboxa do wyrównania elementów w linii */
+  align-items: center; /* Wyrównuje elementy pionowo do środka */
+  margin-right: 10px;
+  margin-left: 10px;
+}
 .input-textv3 {
-    border: none;
-    outline: none;
-    height: 36px;
-    width: 262px;
-    border-bottom: 2px solid #ccc;
-    font-weight: normal;
-    border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
-    border-top-right-radius: 5px;
-  }
+  border: none;
+  outline: none;
+  height: 36px;
+  width: 262px;
+  border-bottom: 2px solid #ccc;
+  font-weight: normal;
+  border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
+  border-top-right-radius: 5px;
+}
 .input-textv3:focus {
-    border-bottom-color: #0b1cd0;
-    border-bottom-width: 2px;
-  }
+  border-bottom-color: #0b1cd0;
+  border-bottom-width: 2px;
+}
 
-  .cdk-drag-preview {
-    box-sizing: border-box;
-    border-radius: 10px;
-    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  }
-  
-  .cdk-drag-placeholder {
-    opacity: 0;
-  }
-  
-  .cdk-drag-animating {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow:
+    0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
 
-  .list-user{
-    display: flex; 
-     justify-content: space-between; 
-     align-items: center; 
-     padding-bottom: 5px;
-   }
-   
-   .lonly-trash {
-     display: flex; 
-     flex-direction: row; 
-     align-items: flex-end;
-     padding-bottom: 5px;
-     
-   }
-   .dangernew {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
-    margin-left: 5px;
-  }
-  .small-circle{
-    padding: 5px; 
-    background-color: aquamarine; 
-    width: 34px; 
-    height: 34px; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    border-radius: 50%;
-  }
-  .circle-name {
-    display: flex; 
-    align-items: center; 
-    gap: 1px;
-    padding-left: 18px;
+.cdk-drag-placeholder {
+  opacity: 0;
+}
 
-  }
- 
-  .color-task {
-    -webkit-appearance: none;
-    appearance: none;
-    padding: 0;
-    border: none;
-    width: 20px; 
-    height: 20px; 
-  }
-  
-  .color-task::-webkit-color-swatch-wrapper {
-    padding: 0;
-  }
-  
-  .color-task::-webkit-color-swatch {
-    border: none;
-    border-radius: 50%;
-  }
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
 
-  .mat-expansion-panel-header {
-    max-height: 20px;
-    padding-left: 5px;
-  }
-  .tekst-zadan p {
-    margin-bottom: 0;
-  }
+.list-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+}
 
- .podzadanie{
-   width: 260px; 
- }
+.lonly-trash {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding-bottom: 5px;
+}
+.dangernew {
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  margin-left: 5px;
+}
+.small-circle {
+  padding: 5px;
+  background-color: aquamarine;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.circle-name {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  padding-left: 18px;
+}
+
+.color-task {
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: none;
+  width: 20px;
+  height: 20px;
+}
+
+.color-task::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-task::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+.mat-expansion-panel-header {
+  max-height: 20px;
+  padding-left: 5px;
+}
+.tekst-zadan p {
+  margin-bottom: 0;
+}
+
+.podzadanie {
+  width: 260px;
+}

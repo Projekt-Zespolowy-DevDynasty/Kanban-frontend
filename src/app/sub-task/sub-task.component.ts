@@ -1,7 +1,7 @@
 import { Component, Input, inject } from '@angular/core';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SubTask } from '../models/subTask.model';
 import { Task } from '../models/task.model';
 import { SubTaskService } from '../service/subTask.service';
@@ -14,14 +14,13 @@ import { FormsModule } from '@angular/forms';
     MatExpansionModule,
     MatCheckboxModule,
     MatProgressBarModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [SubTaskService],
   templateUrl: './sub-task.component.html',
-  styleUrl: './sub-task.component.scss'
+  styleUrl: './sub-task.component.scss',
 })
 export class SubTaskComponent {
-
   @Input() subTasks!: SubTask[];
   @Input() task!: Task;
 
@@ -39,7 +38,7 @@ export class SubTaskComponent {
 
   calculatePercentDone() {
     const total = this.subTasks.length;
-    const completed = this.subTasks.filter(st => st.finished).length;
+    const completed = this.subTasks.filter((st) => st.finished).length;
     this.percentDone = total > 0 ? Math.round((completed / total) * 100) : 0;
   }
 
@@ -50,7 +49,7 @@ export class SubTaskComponent {
       },
       (error) => {
         this.toastr.error('Błąd podczas zmiany statusu podzadania');
-      }
+      },
     );
     this.calculatePercentDone();
   }
@@ -63,7 +62,7 @@ export class SubTaskComponent {
       },
       (error) => {
         this.toastr.error('Błąd podczas pobierania podzadań');
-      }
+      },
     );
   }
 
@@ -74,7 +73,7 @@ export class SubTaskComponent {
       },
       () => {
         this.toastr.error('Błąd podczas usuwania podzadania');
-      }
+      },
     );
     this.calculatePercentDone();
   }
@@ -86,9 +85,8 @@ export class SubTaskComponent {
       },
       (error) => {
         this.toastr.error('Błąd podczas dodawania podzadania');
-      }
+      },
     );
     this.calculatePercentDone();
   }
-
 }

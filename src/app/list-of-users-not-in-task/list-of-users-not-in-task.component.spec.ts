@@ -10,10 +10,9 @@ xdescribe('ListOfUsersNotInTaskComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BoardComponent],
-      imports: [ListOfUsersNotInTaskComponent]
-    })
-    .compileComponents();
-    
+      imports: [ListOfUsersNotInTaskComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ListOfUsersNotInTaskComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

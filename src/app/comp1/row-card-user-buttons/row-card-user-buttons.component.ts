@@ -10,23 +10,17 @@ import { ListOfUsersComponent } from './list-of-users/list-of-users.component';
 @Component({
   selector: 'app-row-card-user-buttons',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    ListOfUsersComponent
-  ],
+  imports: [ReactiveFormsModule, ListOfUsersComponent],
   templateUrl: './row-card-user-buttons.component.html',
-  styleUrl: './row-card-user-buttons.component.scss'
+  styleUrl: './row-card-user-buttons.component.scss',
 })
 export class RowCardUserButtonsComponent {
-
   @Input() allUsers!: User[];
   @Output() refreshParent: EventEmitter<any> = new EventEmitter();
-
 
   toastr = inject(ToastrService);
   rowService = inject(RowService);
   userService = inject(UserService);
-  
 
   reloadParent() {
     this.refreshParent.emit();
@@ -56,11 +50,16 @@ export class RowCardUserButtonsComponent {
     email: new FormControl(''),
   });
 
-  
   dodajUsera() {
     const user: User = this.addUserForm.value as User;
-    if(user.firstName.trim() == '' || user.lastName.trim() == '' || user.email.trim() == '') {
-      this.toastr.warning('Nie można dodać użytkownika bez imienia, nazwiska lub emaila');
+    if (
+      user.firstName.trim() == '' ||
+      user.lastName.trim() == '' ||
+      user.email.trim() == ''
+    ) {
+      this.toastr.warning(
+        'Nie można dodać użytkownika bez imienia, nazwiska lub emaila',
+      );
       return;
     }
     // validate email
@@ -70,7 +69,7 @@ export class RowCardUserButtonsComponent {
       this.toastr.warning('Niepoprawny email');
       return;
     }
-    
+
     this.userService.addUser(user).subscribe({
       next: (users: User) => {
         this.toastr.success('Dodano Użytkownika');
@@ -93,6 +92,4 @@ export class RowCardUserButtonsComponent {
       },
     });
   }
-
-
 }

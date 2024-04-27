@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, inject } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  inject,
+} from '@angular/core';
 import { Comp1Component } from '../comp1/comp1.component';
 import { Row } from '../models/row.model';
 import {
@@ -40,7 +48,7 @@ export class BoardComponent implements OnInit, OnChanges {
     private rowService: RowService,
     private cardService: CardsService,
     private http: HttpClient,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {}
 
   userService = inject(UserService);
@@ -51,8 +59,6 @@ export class BoardComponent implements OnInit, OnChanges {
   @Input() allUsers!: User[];
   newRow!: Row;
   data!: Card[];
-
-
 
   //private cardService = inject(CardsService);
 

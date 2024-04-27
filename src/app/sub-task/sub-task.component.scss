@@ -1,61 +1,58 @@
 .dodawaniePodTaska {
-    margin-bottom: 0;
-
+  margin-bottom: 0;
 }
 .input-text_podZadanie {
-    border: none;
-    border-bottom: 2px solid #ccc;
-    outline: none;
-    height: 36px;
-    width: 75%;
-    font-weight: normal;
-    border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
-    border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
-    margin-bottom: 10px; /* Dodaj margines na dole dla odstępu między polem tekstowym a przyciskiem */
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  height: 36px;
+  width: 75%;
+  font-weight: normal;
+  border-top-left-radius: 5px; /* Zaokrągla lewy górny róg */
+  border-top-right-radius: 5px; /* Zaokrągla prawy górny róg */
+  margin-bottom: 10px; /* Dodaj margines na dole dla odstępu między polem tekstowym a przyciskiem */
 }
-  
+
 .input-text_podZadanie:focus {
-    border-bottom-color: #2ca611;
-    border-bottom-width: 2px;
+  border-bottom-color: #2ca611;
+  border-bottom-width: 2px;
 }
 
-.pasek-progresu{
-    padding-top: 50px;
-    margin-right: 9px;
-  
+.pasek-progresu {
+  padding-top: 50px;
+  margin-right: 9px;
 }
-.procent{
+.procent {
+  align-content: center;
+  p {
+    padding-right: 3px;
+    padding-top: 11px;
     align-content: center;
-    p{
-        padding-right: 3px;
-        padding-top: 11px;
-        align-content: center;
-    }
+  }
 }
-.check-only{
-    display: flex; 
-     justify-content: space-between; 
-     align-items: center; 
-     padding-bottom: 5px;
-   }
-   .lonly-trashv2 {
-    display: flex; 
-    flex-direction: row; 
-    align-items: flex-end;
-    padding-bottom: 5px;
-    
-  }
-  .mat-expansion-panel-header {
-    max-height: 40px;
-    padding-left: 5px;
-  }
-  .tekst-zadan p {
-    margin-bottom: 0;
-  }
+.check-only {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+}
+.lonly-trashv2 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding-bottom: 5px;
+}
+.mat-expansion-panel-header {
+  max-height: 40px;
+  padding-left: 5px;
+}
+.tekst-zadan p {
+  margin-bottom: 0;
+}
 
- .podzadanie{
-   width: 260px; 
- }
- .expansion-container{
-    margin-bottom: 5px;
- }
+.podzadanie {
+  width: 260px;
+}
+.expansion-container {
+  margin-bottom: 5px;
+}

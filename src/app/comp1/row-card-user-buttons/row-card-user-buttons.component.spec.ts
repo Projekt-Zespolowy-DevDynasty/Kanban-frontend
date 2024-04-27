@@ -10,10 +10,9 @@ xdescribe('RowCardUserButtonsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BoardComponent],
-      imports: [RowCardUserButtonsComponent]
-    })
-    .compileComponents();
-    
+      imports: [RowCardUserButtonsComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(RowCardUserButtonsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

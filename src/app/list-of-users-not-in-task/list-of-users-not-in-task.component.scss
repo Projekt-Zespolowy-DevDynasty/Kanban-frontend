@@ -1,19 +1,19 @@
-.list-user{
-    display: flex; 
-     justify-content: space-between; 
-     align-items: center; 
-     padding-bottom: 5px;
-   }
-   .lonly-trash {
-    display: flex; 
-    flex-direction: row; 
-    align-items: flex-end;
-    padding-bottom: 5px;
-    
-  }
-  .dangernew {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
-    margin-left: 5px;
-  }
-  
+.list-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+}
+.lonly-trash {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding-bottom: 5px;
+}
+.dangernew {
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  margin-left: 5px;
+}

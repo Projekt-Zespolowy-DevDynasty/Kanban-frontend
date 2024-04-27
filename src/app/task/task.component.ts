@@ -31,10 +31,10 @@ import { SubTaskComponent } from '../sub-task/sub-task.component';
     NgStyle,
     BoardComponent,
     ListOfUsersNotInTaskComponent,
-    SubTaskComponent
+    SubTaskComponent,
   ],
   templateUrl: './task.component.html',
-  styleUrl: './task.component.scss'
+  styleUrl: './task.component.scss',
 })
 export class TaskComponent {
   @Input() card!: Card;
@@ -50,33 +50,42 @@ export class TaskComponent {
   usersInTask!: User[];
   sortedListOfTasks!: Task[];
 
-
   drop(event: CdkDragDrop<Task[]>) {
     // source id
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
         event.previousIndex,
-        event.currentIndex
+        event.currentIndex,
       );
     } else {
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex
+        event.currentIndex,
       );
     }
     console.log('New index of the moved item:', event.currentIndex);
-    this.przesTask(event.item.data[0].id,event.item.data[1].id,Number(event.container.id),event.currentIndex);
+    this.przesTask(
+      event.item.data[0].id,
+      event.item.data[1].id,
+      Number(event.container.id),
+      event.currentIndex,
+    );
   }
-  przesTask(sourceCardId: number, taskId: number, destinationCardId: number, index: number) {
-    this.cardService.moveTasks(sourceCardId, taskId, destinationCardId, index).subscribe(() => {
+  przesTask(
+    sourceCardId: number,
+    taskId: number,
+    destinationCardId: number,
+    index: number,
+  ) {
+    this.cardService
+      .moveTasks(sourceCardId, taskId, destinationCardId, index)
+      .subscribe(() => {
         this.refreshParent.emit();
       });
   }
-
-
 
   usunTask(taskId: number, cardId: number) {
     if (confirm('Usunąć zadanie ' + '?')) {
@@ -92,19 +101,18 @@ export class TaskComponent {
     });
   }
 
-  
-
   updateTask() {
     this.cardService.getOneCard(this.card.id).subscribe((card: Card) => {
       this.card = card;
-      this.sortedListOfTasks = this.card.tasks.sort((a, b) => a.position - b.position);
+      this.sortedListOfTasks = this.card.tasks.sort(
+        (a, b) => a.position - b.position,
+      );
     });
   }
   getAllUsers() {
     this.userService.getAllUser().subscribe((users: User[]) => {
       this.allUsers = users;
     });
-
   }
   ngOnInit(): void {
     this.getAllUsers();
@@ -113,18 +121,18 @@ export class TaskComponent {
     /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES **************/
     this.fetchCard();
   }
-  fetchCard(){
+  fetchCard() {
     this.cardService.getOneCard(this.card.id).subscribe((card: Card) => {
       this.card = card;
-      this.sortedListOfTasks = this.card.tasks.sort((a, b) => a.position - b.position);
+      this.sortedListOfTasks = this.card.tasks.sort(
+        (a, b) => a.position - b.position,
+      );
     });
   }
 
   zmianaKolorTaska(taskId: number, color: string) {
-    this.taskService
-      .changeColorTask(taskId, color)
-      .subscribe(() => {
-        this.fetchCard();
-      });
+    this.taskService.changeColorTask(taskId, color).subscribe(() => {
+      this.fetchCard();
+    });
   }
 }

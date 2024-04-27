@@ -15,7 +15,7 @@ export class RowService {
   addColumnInRow(name: string): Observable<Row> {
     return this.http.post<Row>(
       `${environment.backendUrl}/row/add-column`,
-      name
+      name,
     );
   }
   getAll(): Observable<Row[]> {
@@ -30,18 +30,18 @@ export class RowService {
   moveUpRow(rowId: number): Observable<Row> {
     return this.http.put<Row>(
       `${environment.backendUrl}/row/${rowId}/move-up`,
-      rowId
+      rowId,
     );
   }
   moveDownRow(rowId: number): Observable<Row> {
     return this.http.put<Row>(
       `${environment.backendUrl}/row/${rowId}/move-down`,
-      rowId
+      rowId,
     );
   }
   deleteColumnInRow(columnPosition: number): Observable<Row> {
     return this.http.delete<Row>(
-      `${environment.backendUrl}/row/remove-column/${columnPosition}`
+      `${environment.backendUrl}/row/remove-column/${columnPosition}`,
     );
   }
   getByPosition(rowPosition: number): Observable<Row> {
@@ -49,22 +49,22 @@ export class RowService {
   }
   getRowById(rowId: number): Observable<Row> {
     return this.http.get<Row>(
-      `${environment.backendUrl}/row/getrowbyid/${rowId}`
+      `${environment.backendUrl}/row/getrowbyid/${rowId}`,
     );
   }
   moveColumn(
     sourceColumnPosition: number,
-    targetColumnPosition: number
+    targetColumnPosition: number,
   ): Observable<any> {
     return this.http.put<Row>(
       `${environment.backendUrl}/row/move-column/${sourceColumnPosition}/${targetColumnPosition}`,
-      null
+      null,
     );
   }
   renameRow(rowId: number, newName: string): Observable<any> {
     return this.http.put(
       `${environment.backendUrl}/row/rename-row/${rowId}`,
-      newName
+      newName,
     );
   }
 }

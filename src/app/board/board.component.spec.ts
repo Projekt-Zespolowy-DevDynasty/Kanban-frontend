@@ -23,11 +23,10 @@ xdescribe('BoardComponent', () => {
         CdkDropListGroup,
         NgStyle,
         TaskComponent,
-        BoardComponent
+        BoardComponent,
       ],
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(BoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

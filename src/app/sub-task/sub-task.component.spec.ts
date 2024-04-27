@@ -10,10 +10,9 @@ xdescribe('SubTaskComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BoardComponent],
-      imports: [SubTaskComponent]
-    })
-    .compileComponents();
-    
+      imports: [SubTaskComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(SubTaskComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

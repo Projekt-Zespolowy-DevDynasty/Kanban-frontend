@@ -1,123 +1,241 @@
 <div class="kanban-board">
   <div class="part-board overflow-x-auto">
     <div class="tablica-kolumn">
-      <app-row-card-user-buttons [allUsers]="allUsers" (refreshParent)="ngOnInit()"></app-row-card-user-buttons>
+      <app-row-card-user-buttons
+        [allUsers]="allUsers"
+        (refreshParent)="ngOnInit()"
+      ></app-row-card-user-buttons>
       @for (card of data; track card.id) {
-      <div
-        class="column"
-        [ngStyle]="{
-          border:
-            card.tasks.length > card.maxTasksLimit && card.maxTasksLimit !== -1
-              ? '3px solid red'
-              : '3px solid transparent'
-        }"
-      >
-        <div class="naglowek">
-          <h2 style="width: 100%; padding-bottom: 10px; padding-right: 20px">
-            {{ card.name }}
-          </h2>
+        <div
+          class="column"
+          [ngStyle]="{
+            border:
+              card.tasks.length > card.maxTasksLimit &&
+              card.maxTasksLimit !== -1
+                ? '3px solid red'
+                : '3px solid transparent'
+          }"
+        >
+          <div class="naglowek">
+            <h2 style="width: 100%; padding-bottom: 10px; padding-right: 20px">
+              {{ card.name }}
+            </h2>
 
-          @if (card.name == "To do" || card.name == "Done") {
-          <div
-            style="display: flex; justify-content: space-between; width: 100%"
-          >
-            <div class="button-group-container">
-              <div class="wip-limit-text" style="width: 100px">
-                <p style="padding-bottom: 10px; padding-top: 5px">
-                  {{ card.tasks.length }}
-                </p>
+            @if (card.name == "To do" || card.name == "Done") {
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                "
+              >
+                <div class="button-group-container">
+                  <div class="wip-limit-text" style="width: 100px">
+                    <p style="padding-bottom: 10px; padding-top: 5px">
+                      {{ card.tasks.length }}
+                    </p>
+                  </div>
+                  <div class="button-group">
+                    <button
+                      (click)="usunKarte(card.position, card.name)"
+                      disabled
+                      type="button"
+                      class="btn btn-danger"
+                      style="margin-left: 40px; margin-top: -5px"
+                    >
+                      <i class="bi bi-trash-fill"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div class="button-group">
+            } @else {
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                "
+              >
+                <div class="button-group-container">
+                  <div class="wip-limit-text" style="width: 100px">
+                    <p>
+                      {{ card.tasks.length }} /<input
+                        #limit
+                        (keyup.enter)="
+                          changeLimit(card.id, limit.value, card.maxTasksLimit)
+                        "
+                        class="wip-limit-number"
+                        [value]="card.maxTasksLimit"
+                        type="number"
+                        [placeholder]="card.maxTasksLimit"
+                      />
+                    </p>
+                  </div>
+                  <div class="button-group" style="margin-left: 70px">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <i class="bi bi-pen-fill"></i>
+                    </button>
+                    <div class="przycisk-do-sortowania">
+                      <button
+                        class="btn btn-info"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        <i class="bi bi-three-dots-vertical"></i>
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-dark">
+                        <p class="naglowek-do-przyciskuv2">Przenieś za:</p>
+                        @for (cardy of data; track cardy.id) {
+                          @if (cardy.name != "Done" || cardy.id != card.id) {
+                            @if (cardy.name == "To do") {
+                              <li>
+                                <a
+                                  (click)="
+                                    przesunKarte(
+                                      card.position,
+                                      cardy.position + 1
+                                    )
+                                  "
+                                  class="dropdown-item"
+                                >
+                                  {{ cardy.name }}</a
+                                >
+                              </li>
+                            } @else {
+                              <li>
+                                <a
+                                  (click)="
+                                    przesunKarte(card.position, cardy.position)
+                                  "
+                                  class="dropdown-item"
+                                >
+                                  {{ cardy.name }}</a
+                                >
+                              </li>
+                            }
+                          }
+                        }
+                      </ul>
+                    </div>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <input
+                          #zmianakarty
+                          (keyup.enter)="
+                            zmainaNazwyKarty(card.id, zmianakarty.value)
+                          "
+                          type="text"
+                          class="input-textv3"
+                          placeholder="Wpisz nazwe"
+                          style="padding-left: 7px; margin-right: 5px"
+                        />
+                        <button
+                          (click)="zmainaNazwyKarty(card.id, zmianakarty.value)"
+                          type="button"
+                          class="btn btn-light"
+                        >
+                          <i class="bi bi-plus-circle"></i>
+                        </button>
+                      </li>
+                    </ul>
+
+                    <button
+                      (click)="usunKarte(card.position, card.name)"
+                      type="button"
+                      class="btn btn-danger"
+                      style="margin-left: 5px"
+                    >
+                      <i class="bi bi-trash-fill"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+          <hr />
+          <div>
+            <app-task
+              [allUsers]="allUsers"
+              [card]="card"
+              (refreshParent)="fetchCards()"
+            ></app-task>
+            <div class="dodawanieTaska">
+              <input
+                type="text"
+                #box
+                (keyup.enter)="onEnter(box.value, card.id)"
+                class="input-text"
+                placeholder="Wpisz nazwe"
+                style="padding-left: 7px; margin-right: 5px"
+              />
+              <button
+                type="button"
+                (click)="onEnter(box.value, card.id)"
+                class="btn btn-success"
+              >
+                <i class="bi bi-plus-circle-fill"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="down-space">
+      @if (dlugoscListyRows > 1) {
+        @for (row of allRows; track $index) {
+          @if (row.position != 0) {
+            <div class="caly-wiersz">
+              <div class="button-option" style="margin-right: 0px">
                 <button
-                  (click)="usunKarte(card.position, card.name)"
-                  disabled
+                  (click)="przeniesGora(row.id)"
+                  class="btn newinfo btn-info"
+                  type="button"
+                >
+                  <i class="bi bi-arrow-up-circle-fill"></i>
+                </button>
+                <button
+                  (click)="przeniesDol(row.id)"
+                  class="btn newinfo btn-info"
+                  type="button"
+                >
+                  <i class="bi bi-arrow-down-circle-fill"></i>
+                </button>
+                <button
+                  (click)="usunWiersz(row.id)"
                   type="button"
                   class="btn btn-danger"
-                  style="margin-left: 40px; margin-top: -5px"
+                  style="margin-bottom: 10px; margin-left: 5px"
                 >
                   <i class="bi bi-trash-fill"></i>
                 </button>
-              </div>
-            </div>
-          </div>
-          }@else {
-          <div
-            style="display: flex; justify-content: space-between; width: 100%"
-          >
-            <div class="button-group-container">
-              <div class="wip-limit-text" style="width: 100px">
-                <p>
-                  {{ card.tasks.length }} /<input
-                    #limit
-                    (keyup.enter)="
-                      changeLimit(card.id, limit.value, card.maxTasksLimit)
-                    "
-                    class="wip-limit-number"
-                    [value]="card.maxTasksLimit"
-                    type="number"
-                    [placeholder]="card.maxTasksLimit"
-                  />
-                </p>
-              </div>
-              <div class="button-group" style="margin-left: 70px">
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  class="btn btn-secondary"
+                  style="margin-bottom: 10px"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   <i class="bi bi-pen-fill"></i>
                 </button>
-                <div class="przycisk-do-sortowania">
-                  <button
-                    class="btn btn-info"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-dark">
-                    <p class="naglowek-do-przyciskuv2">Przenieś za:</p>
-                    @for (cardy of data; track cardy.id) { 
-                        @if(cardy.name != "Done" || cardy.id!= card.id){ 
-                        @if(cardy.name == "To do"){
-                    <li>
-                      <a
-                        (click)="
-                          przesunKarte(card.position, cardy.position + 1)
-                        "
-                        class="dropdown-item"
-                      >
-                        {{ cardy.name }}</a
-                      >
-                    </li>
-                    }@else {
-                    <li>
-                      <a
-                        (click)="przesunKarte(card.position, cardy.position)"
-                        class="dropdown-item"
-                      >
-                        {{ cardy.name }}</a
-                      >
-                    </li>
-                    } } }
-                  </ul>
-                </div>
                 <ul class="dropdown-menu">
                   <li>
                     <input
-                      #zmianakarty
-                      (keyup.enter)="
-                        zmainaNazwyKarty(card.id, zmianakarty.value)
-                      "
+                      #renameRowText
+                      (keyup.enter)="renameRow(row.id, renameRowText.value)"
                       type="text"
-                      class="input-textv3"
+                      class="input-textv2"
                       placeholder="Wpisz nazwe"
                       style="padding-left: 7px; margin-right: 5px"
                     />
                     <button
-                      (click)="zmainaNazwyKarty(card.id, zmianakarty.value)"
+                      (click)="renameRow(row.id, renameRowText.value)"
                       type="button"
                       class="btn btn-light"
                     >
@@ -125,111 +243,21 @@
                     </button>
                   </li>
                 </ul>
+              </div>
 
-                <button
-                  (click)="usunKarte(card.position, card.name)"
-                  type="button"
-                  class="btn btn-danger"
-                  style="margin-left: 5px"
+              <div class="row">
+                <app-board
+                  (refreshParent)="fetchCards()"
+                  [allUsers]="allUsers"
+                  [rowId]="row.id"
+                  [allRows]="allRows"
                 >
-                  <i class="bi bi-trash-fill"></i>
-                </button>
+                </app-board>
               </div>
             </div>
-          </div>
-
           }
-        </div>
-        <hr />
-        <div>
-            <app-task [allUsers]="allUsers" [card]="card" (refreshParent)="fetchCards()"></app-task>
-          <div class="dodawanieTaska">
-            <input
-              type="text"
-              #box
-              (keyup.enter)="onEnter(box.value, card.id)"
-              class="input-text"
-              placeholder="Wpisz nazwe"
-              style="padding-left: 7px; margin-right: 5px"
-            />
-            <button
-              type="button"
-              (click)="onEnter(box.value, card.id)"
-              class="btn btn-success"
-            >
-              <i class="bi bi-plus-circle-fill"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+        }
       }
-    </div>
-
-    <div class="down-space">
-      @if(dlugoscListyRows > 1){ 
-        @for(row of allRows; track $index){
-            @if(row.position != 0 ){
-
-      <div class="caly-wiersz">
-        <div class="button-option" style="margin-right: 0px">
-          <button
-            (click)="przeniesGora(row.id)"
-            class="btn newinfo btn-info"
-            type="button"
-          >
-            <i class="bi bi-arrow-up-circle-fill"></i>
-          </button>
-          <button
-            (click)="przeniesDol(row.id)"
-            class="btn newinfo btn-info"
-            type="button"
-          >
-            <i class="bi bi-arrow-down-circle-fill"></i>
-          </button>
-          <button
-            (click)="usunWiersz(row.id)"
-            type="button"
-            class="btn btn-danger"
-            style="margin-bottom: 10px; margin-left: 5px"
-          >
-            <i class="bi bi-trash-fill"></i>
-          </button>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            style="margin-bottom: 10px"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i class="bi bi-pen-fill"></i>
-          </button>
-          <ul class="dropdown-menu">
-            <li>
-              <input
-                #renameRowText
-                (keyup.enter)="renameRow(row.id, renameRowText.value)"
-                type="text"
-                class="input-textv2"
-                placeholder="Wpisz nazwe"
-                style="padding-left: 7px; margin-right: 5px"
-              />
-              <button
-                (click)="renameRow(row.id, renameRowText.value)"
-                type="button"
-                class="btn btn-light"
-              >
-                <i class="bi bi-plus-circle"></i>
-              </button>
-            </li>
-          </ul>
-        </div>
-
-        <div class="row">
-          <app-board (refreshParent)="fetchCards()" [allUsers]="allUsers" [rowId]="row.id" [allRows]="allRows"> </app-board>
-        </div>
-      </div>
-
-      } } }
     </div>
   </div>
 </div>

@@ -4,11 +4,7 @@ import { CardsService } from '../service/cards.service';
 import { NgStyle } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {
-  CdkDrag,
-  CdkDropList,
-  CdkDropListGroup,
-} from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
 import { BoardComponent } from '../board/board.component';
 import { Row } from '../models/row.model';
 import { RowService } from '../service/row.service';
@@ -33,10 +29,10 @@ import { RowCardUserButtonsComponent } from './row-card-user-buttons/row-card-us
     BoardComponent,
     TaskComponent,
     ReactiveFormsModule,
-    RowCardUserButtonsComponent
+    RowCardUserButtonsComponent,
   ],
 })
-// main board 
+// main board
 export class Comp1Component {
   allRows!: Row[];
   dlugoscListyRows!: number;
@@ -55,10 +51,8 @@ export class Comp1Component {
     private cardService: CardsService,
     private rowService: RowService,
     private userService: UserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {}
-
-
 
   usunKarte(positionNumber: number, name: string) {
     if (confirm('Usunąć kolumne ' + name + '?')) {
@@ -152,7 +146,6 @@ export class Comp1Component {
     });
   }
 
-
   fetchUsers() {
     this.userService.getAllUser().subscribe({
       next: (users: User[]) => {
@@ -160,6 +153,5 @@ export class Comp1Component {
       },
       error: (error) => {},
     });
-}   
-
+  }
 }

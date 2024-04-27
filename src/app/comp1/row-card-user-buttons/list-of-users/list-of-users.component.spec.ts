@@ -11,10 +11,9 @@ xdescribe('ListOfUsersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListOfUsersComponent, BoardComponent ]
+      declarations: [ListOfUsersComponent, BoardComponent],
       // Add any necessary providers or imports here, e.g., services that the component depends on
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -31,15 +30,19 @@ xdescribe('ListOfUsersComponent', () => {
   it('should display user names correctly', () => {
     // Assuming component.allUsers is already populated
     const userNames = de.queryAll(By.css('.name-user-limit p'));
-    expect(userNames[0].nativeElement.textContent).toContain(component.allUsers[0].firstName);
-    expect(userNames[1].nativeElement.textContent).toContain(component.allUsers[0].lastName);
+    expect(userNames[0].nativeElement.textContent).toContain(
+      component.allUsers[0].firstName,
+    );
+    expect(userNames[1].nativeElement.textContent).toContain(
+      component.allUsers[0].lastName,
+    );
   });
 
   it('should call changeLimitUser when enter is pressed on the input', () => {
     spyOn(component, 'changeLimitUser');
     const input = de.query(By.css('.wip-limit-number'));
-    const event = new KeyboardEvent('keyup', { 'key': 'Enter' });
-    input.triggerEventHandler('keyup.enter', {target: input.nativeElement});
+    const event = new KeyboardEvent('keyup', { key: 'Enter' });
+    input.triggerEventHandler('keyup.enter', { target: input.nativeElement });
     fixture.detectChanges();
 
     expect(component.changeLimitUser).toHaveBeenCalled();

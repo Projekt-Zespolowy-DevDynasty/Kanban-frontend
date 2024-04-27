@@ -24,13 +24,11 @@ export class CardsService {
   }
   deleteTask(taskId: number, cardId: number): Observable<any> {
     return this.http.delete(
-      `${environment.backendUrl}/card/${cardId}/task/${taskId}`
+      `${environment.backendUrl}/card/${cardId}/task/${taskId}`,
     );
   }
   putTask(name: string, cardId: number): Observable<any> {
-    return this.http.put(
-      `${environment.backendUrl}/addtask/${cardId}`,
-      name);
+    return this.http.put(`${environment.backendUrl}/addtask/${cardId}`, name);
   }
   deleteCard(cardId: number): Observable<any> {
     return this.http.delete(`${environment.backendUrl}/card/${cardId}`);
@@ -38,31 +36,36 @@ export class CardsService {
   changeLimit(cardId: number, limit: number): Observable<any> {
     return this.http.put(
       `${environment.backendUrl}/card/${cardId}/maxTasksLimit`,
-      limit
+      limit,
     );
   }
-  moveTasks( sourceCardId: number, taskId: number, destinationCardId: number, index: number): Observable<any> {
+  moveTasks(
+    sourceCardId: number,
+    taskId: number,
+    destinationCardId: number,
+    index: number,
+  ): Observable<any> {
     return this.http.put(
       `${environment.backendUrl}/card/${sourceCardId}/move-task/${taskId}/to-card/${destinationCardId}/at-index/${index}`,
-      null
+      null,
     );
   }
   zmainaNazwyKarty(cardId: number, newName: string): Observable<any> {
     return this.http.put(
       `${environment.backendUrl}/card/${cardId}/edit-name`,
-      newName
+      newName,
     );
   }
   zmianaNazwyTaska(taskId: number, newNameTask: string): Observable<any> {
     return this.http.put(
       `${environment.backendUrl}/task/${taskId}/rename`,
-      newNameTask
+      newNameTask,
     );
   }
   przesunKarte(sourceId: number, destinationId: number): Observable<any> {
     return this.http.put(
       `${environment.backendUrl}/card/${destinationId}/position/${sourceId}`,
-      sourceId
+      sourceId,
     );
   }
 }

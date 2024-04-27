@@ -16,8 +16,10 @@ export class TaskService {
   getTaskById(taskId: number): Observable<Task> {
     return this.http.get<Task>(`${environment.backendUrl}/task/${taskId}`);
   }
-  changeColorTask(taskId: number, color: string): Observable<Task>{
-    return this.http.put<Task>(`${environment.backendUrl}/task/changecolor/${taskId}`, color);
+  changeColorTask(taskId: number, color: string): Observable<Task> {
+    return this.http.put<Task>(
+      `${environment.backendUrl}/task/changecolor/${taskId}`,
+      color,
+    );
   }
-
 }
