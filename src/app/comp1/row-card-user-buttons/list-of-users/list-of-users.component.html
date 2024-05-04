@@ -2,8 +2,8 @@
   @for (item of allUsers; track $index) {
     <div class="name-user-limit">
       <div style="display: flex; flex-wrap: nowrap">
-        <p style="padding-right: 5px">{{ item.firstName }}</p>
-        <p style="padding-right: 5px">{{ item.lastName }}</p>
+        <p class="first-name" style="padding-right: 5px">{{ item.firstName }}</p>
+        <p class="last-name" style="padding-right: 5px">{{ item.lastName }}</p>
       </div>
       <div
         class="wip-limit-text"
