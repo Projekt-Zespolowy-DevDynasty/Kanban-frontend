@@ -29,7 +29,6 @@ import { SubTaskComponent } from '../sub-task/sub-task.component';
     CdkDrag,
     CdkDropListGroup,
     NgStyle,
-    BoardComponent,
     ListOfUsersNotInTaskComponent,
     SubTaskComponent,
   ],

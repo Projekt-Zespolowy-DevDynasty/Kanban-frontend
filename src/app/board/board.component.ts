@@ -7,18 +7,13 @@ import {
   Output,
   inject,
 } from '@angular/core';
-import { Comp1Component } from '../comp1/comp1.component';
 import { Row } from '../models/row.model';
 import {
   CdkDrag,
-  CdkDragDrop,
   CdkDropList,
   CdkDropListGroup,
-  moveItemInArray,
-  transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { CardsService } from '../service/cards.service';
-import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Card } from '../models/card.model';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -47,11 +42,10 @@ export class BoardComponent implements OnInit, OnChanges {
   constructor(
     private rowService: RowService,
     private cardService: CardsService,
-    private http: HttpClient,
     private toastr: ToastrService,
+    private userService: UserService
   ) {}
 
-  userService = inject(UserService);
 
   @Input() rowId!: number;
   @Input() allRows!: Row[];
@@ -59,8 +53,6 @@ export class BoardComponent implements OnInit, OnChanges {
   @Input() allUsers!: User[];
   newRow!: Row;
   data!: Card[];
-
-  //private cardService = inject(CardsService);
 
   value = '';
 
@@ -108,11 +100,13 @@ export class BoardComponent implements OnInit, OnChanges {
     });
     //  }
   }
+
   przeniesGora(rowId: number) {
     this.rowService.moveUpRow(rowId).subscribe(() => {
       this.fetchCards();
     });
   }
+  
   przeniesDol(rowId: number) {
     this.rowService.moveDownRow(rowId).subscribe(() => {
       this.fetchCards();
