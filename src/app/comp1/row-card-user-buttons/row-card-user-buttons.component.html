@@ -43,14 +43,14 @@
         #dodawanieWiersza
         (keyup.enter)="dodajWiersz(dodawanieWiersza.value)"
         type="text"
-        class="input-textv2"
+        class="input-textv2 add-row-input"
         placeholder="Wpisz nazwe"
         style="padding-left: 7px; margin-right: 5px"
       />
       <button
         (click)="dodajWiersz(dodawanieWiersza.value)"
         type="button"
-        class="btn btn-light"
+        class="btn btn-light add-row-button"
       >
         <i class="bi bi-plus-circle"></i>
       </button>
@@ -70,7 +70,7 @@
       <form
         (ngSubmit)="dodajUsera()"
         [formGroup]="addUserForm"
-        class="px-4 py-3"
+        class="px-4 py-3 add-user-form"
       >
         <div class="mb-3">
           <label for="name" class="form-label">Imię</label>
@@ -103,7 +103,7 @@
         <button
           [disabled]="!addUserForm.value"
           type="submit"
-          class="btn btn-primary"
+          class="btn btn-primary add-user-button"
         >
           Dodaj
         </button>

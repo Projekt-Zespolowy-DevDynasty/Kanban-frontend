@@ -117,16 +117,3 @@ describe('BoardComponent', () => {
 
   });
 });
-// it('should call changeLimitUser when enter is pressed on the input', () => {
-//   spyOn(component, 'changeLimitUser');
-
-//   userServiceSpy.setLimitUser.and.returnValue(of("success"));
-
-//   const input = de.query(By.css('.wip-limit-number'));
-  
-//   input.triggerEventHandler('keyup.enter', { target: input.nativeElement });
-//   fixture.detectChanges();
-//   expect(component.changeLimitUser).toHaveBeenCalled();
-
-
-// });
