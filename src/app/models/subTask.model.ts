@@ -6,5 +6,5 @@ export interface SubTask {
   finished: boolean;
   position: number;
   color: string;
-  task: Task;
+  task?: Task;
 }

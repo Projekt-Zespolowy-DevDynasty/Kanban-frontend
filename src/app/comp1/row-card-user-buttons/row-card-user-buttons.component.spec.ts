@@ -85,22 +85,31 @@ describe('RowCardUserButtonsComponent', () => {
 
   });
   
-  it('should show danger toastr on wrong email in form', () => {
-    spyOn(component, 'dodajUsera');
+  it('should show error toastr on wrong email in form', () => {
+    const toastrSpy = spyOn(component.toastr, 'warning');
 
-    const user = {id: 1, firstName: "A", lastName: "B", email: "a", maxUserTasksLimit: 2, color: "red", tasks: []};
-    userServiceSpy.addUser.and.returnValue(of(user));
-
-    const form = de.query(By.css('.add-user-form'));
-    form.triggerEventHandler('ngSubmit', null);
-    fixture.detectChanges();
-
-    // expect danger toastr
-
+    component.addUserForm.setValue({firstName: 'John', lastName: 'Doe', email: 'invalidEmail'});
+    component.dodajUsera();
+  
+    expect(toastrSpy).toHaveBeenCalledWith('Niepoprawny email');
   });
 
 
   it('should call addColumnInRow', () => {
+    spyOn(component, 'dodajKarte');
+    const row = {id: 1, name: "Row", position: 1, cardsinrow: []}
+    rowServiceSpy.addColumnInRow.and.returnValue(of(row));
 
+    const input = de.query(By.css('.add-card-input'));
+    
+    input.triggerEventHandler('keyup.enter', {target: input.nativeElement});
+    fixture.detectChanges();
+    expect(component.dodajKarte).toHaveBeenCalled();
+
+    const btn = de.query(By.css('.add-card-button'));
+    btn.triggerEventHandler('click', null);
+    fixture.detectChanges();
+
+    expect(component.dodajKarte).toHaveBeenCalled();
   });
 });

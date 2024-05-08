@@ -2,14 +2,14 @@
 <div class="user-trash">
   @for (item of usersNotInTask; track $index) {
     <div class="list-user">
-      <p style="padding-right: 10px">
+      <p style="padding-right: 10px" class="first-and-last-name">
         {{ item.firstName }} {{ item.lastName }}
       </p>
       <div class="lonly-trash">
         <button
           (click)="przypiszUsera(item.id, taskId)"
           type="button"
-          class="dangernew btn btn-info"
+          class="dangernew btn btn-info add-user-to-task-button"
         >
           +
         </button>
@@ -28,7 +28,7 @@
       (click)="usunUsera(item.id, taskId)"
       type="button"
       style="width: 35px"
-      class="btn btn-warning"
+      class="btn btn-warning delete-user-from-task-button" 
     >
       -
     </button>
